@@ -117,4 +117,6 @@ publication:
   visibility: private
   repository: https://github.com/perlson713/geerlings-al-kinetic-resonator
   release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/em-results-v1
+  square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1
   initial_commit: 3f408a46f22c6054a9c406b410e94fcceef6746f
+  square_9ghz_commit: d749221ef42a609fb3b6599b1c01c219f6d91736

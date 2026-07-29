@@ -34,6 +34,8 @@ The preview, field plot, compact solver output, and thickness results are under
 [`results/square_9ghz`](results/square_9ghz). Numerical mesh uncertainty remains
 larger than these residual target errors, so more displayed digits are not a
 fabrication-accuracy claim.
+The complete mesh and VTU fields are attached to GitHub Release
+[`square-9ghz-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1).
 
 ## Main result
 

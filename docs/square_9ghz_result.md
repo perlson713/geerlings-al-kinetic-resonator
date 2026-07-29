@@ -69,5 +69,6 @@ Reproduction inputs:
 - `configs/square_9ghz_kinetic.toml`
 
 The complete selected solver output (mesh plus three VTU mode fields) is
-published as GitHub Release asset `raw-square-9ghz-ngsolve.tar.gz` with
+published in [GitHub Release `square-9ghz-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1)
+as asset `raw-square-9ghz-ngsolve.tar.gz` with
 SHA-256 `83F91FF8FA03D05B36EA7EFDDBC3ABD30D3951EB4ECD466999C8747D1FB9FF90`.
