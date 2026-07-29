@@ -20,6 +20,8 @@ objective_graph:
       state: complete
     - id: publish_github_private_repository
       state: complete
+    - id: near_square_9ghz_layout
+      state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
   geometry_variant: design_A_isolated
@@ -68,6 +70,24 @@ key_results:
   delta_100_to_200_mhz: 94.1228709
   sheet_inductance_100nm_fH_per_square: 116.694047
   sheet_inductance_200nm_fH_per_square: 70.421856
+square_9ghz_variant:
+  config_150nm: configs/design_square_9ghz_al150.toml
+  config_200nm: configs/design_square_9ghz_al200.toml
+  feedline_present: false
+  IDC_fingers: 14
+  meander_turns: 7
+  cutout_width_um: 413.0
+  cutout_height_um: 420.0
+  aspect_width_over_height: 0.9833333333333333
+  pec_frequency_ghz: 9.098137314852767
+  frequency_150nm_ghz: 8.975563321880614
+  frequency_200nm_ghz: 8.993531311864238
+  target_error_150nm_mhz: -24.436678119386
+  target_error_200nm_mhz: -6.468688135762
+  mesh_edge_um: 5.0
+  tetrahedra: 316634
+  hcurl_dofs: 739652
+  numerical_mesh_envelope_ghz: 0.10
 validation:
   geometry_centerline_length_um: 3058.157153320309
   trace_width_um: 5.0
@@ -80,6 +100,7 @@ known_limitations:
   - no_conductor_loss_Q
   - no_full_wave_surface_impedance_coupling
   - generic_Al_fit_not_process_specific_measurement
+  - square_9ghz_4um_mesh_generated_but_factorization_exceeded_available_memory
 security:
   secrets_expected_in_repository: false
   raw_solver_artifacts_policy: github_release_not_git_history
@@ -87,6 +108,11 @@ raw_release_asset:
   name: raw-ngsolve-results.tar.gz
   byte_count: 410071814
   sha256: A06DFE2984DB7559763CCAC1C0AA03742D76CA0C4353E2713B2BB2CD72E650FA
+raw_square_9ghz_release_asset:
+  name: raw-square-9ghz-ngsolve.tar.gz
+  byte_count: 113919017
+  sha256: 83F91FF8FA03D05B36EA7EFDDBC3ABD30D3951EB4ECD466999C8747D1FB9FF90
+  contents: [model.msh, modes.csv, mode_01.vtu, mode_02.vtu, mode_03.vtu, mode_03_E_xy.png, mesh_summary.json, results.json]
 publication:
   visibility: private
   repository: https://github.com/perlson713/geerlings-al-kinetic-resonator

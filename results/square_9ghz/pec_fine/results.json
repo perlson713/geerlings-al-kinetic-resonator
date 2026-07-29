@@ -1,0 +1,261 @@
+{
+  "aluminium": {
+    "model": "PEC sheet",
+    "nominal_thickness_nm": 175.0,
+    "provided_range_nm": [
+      150.0,
+      200.0
+    ],
+    "thickness_effect_in_this_model": "none"
+  },
+  "basis_order": 1,
+  "configuration": {
+    "overrides": [
+      "resonator.finger_count=14",
+      "resonator.turn_count=7",
+      "resonator.nominal_width_um=413"
+    ],
+    "resonator": {
+      "capacitor_finger_count": 14,
+      "capacitor_w_um": null,
+      "coupling_ground_width_um": 20.0,
+      "design_name": "A",
+      "feedline_end_clearance_um": 10.0,
+      "feedline_gap_um": 6.0,
+      "feedline_length_um": null,
+      "feedline_width_um": 10.0,
+      "g_c_um": 10.0,
+      "g_l_um": 20.0,
+      "g_r_um": 10.0,
+      "ground_bridge_width_um": 20.0,
+      "ground_margin_um": 100.0,
+      "include_feedline": false,
+      "include_ports": false,
+      "inductor_turns": 7,
+      "inductor_w_um": null,
+      "left_port_layer": 201,
+      "metal_datatype": 0,
+      "metal_layer": 1,
+      "metal_thickness_um": 0.175,
+      "nominal_width_um": 413,
+      "port_datatype": 0,
+      "port_depth_um": 2.0,
+      "right_port_layer": 202,
+      "substrate_thickness_um": 430.0,
+      "w_um": 5.0,
+      "z0_ohm": 100.0
+    },
+    "source": "design_a.toml"
+  },
+  "coordinate_unit": "mm",
+  "finite_box_warning": "PEC box; not an open/radiating boundary model",
+  "formulation": "lossless Maxwell eigenproblem, zero-thickness PEC sheet",
+  "frequency_conversion": "f = c0*1000*sqrt(lambda)/(2*pi)",
+  "hcurl_dofs": 739652,
+  "mesh": {
+    "boundaries": {
+      "interface": [
+        16,
+        22
+      ],
+      "metal_pec": [
+        23,
+        14
+      ],
+      "outer_pec": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    "domain_mm": {
+      "xmax": 0.5565,
+      "xmin": -0.5565,
+      "ymax": 0.7600000000000001,
+      "ymin": -0.36,
+      "zmax": 0.3,
+      "zmin": -0.43
+    },
+    "materials": {
+      "air": [
+        2
+      ],
+      "sapphire": [
+        1
+      ]
+    },
+    "mesh_path": "$PROJECT_ROOT/build/square_tuning/n14_t7_w413/fine/model.msh",
+    "mesh_seconds": 10.504770800005645,
+    "metal_components": [
+      {
+        "area_um2": 206600.0,
+        "role": "ground",
+        "vertices": 4
+      },
+      {
+        "area_um2": 42310.15410363714,
+        "role": "resonator",
+        "vertices": 442
+      }
+    ],
+    "nodes": 76016,
+    "units": "mm",
+    "volume_elements": 316634
+  },
+  "modes": [
+    {
+      "classification": "harmonic_zero",
+      "eigenvalue_last_relative_change": 3.6250760440837806,
+      "eigenvalue_per_mm2": -3.5025962783816152e-15,
+      "electric_energy_sapphire_fraction": 0.9031168833144945,
+      "frequency_ghz": 0.0,
+      "mode": 1,
+      "pinvit_correction_relative": 3.1225051331531766e-13,
+      "rayleigh_quotient_per_mm2": 5.101456945708534e-26
+    },
+    {
+      "classification": "harmonic_zero",
+      "eigenvalue_last_relative_change": 0.16417343284520503,
+      "eigenvalue_per_mm2": 6.86126710044064e-15,
+      "electric_energy_sapphire_fraction": 0.8947768286948953,
+      "frequency_ghz": 3.952237164245026e-06,
+      "mode": 2,
+      "pinvit_correction_relative": 8.83215841907786e-14,
+      "rayleigh_quotient_per_mm2": 6.635314899903455e-27
+    },
+    {
+      "classification": "physical",
+      "eigenvalue_last_relative_change": 1.1257587677890679e-12,
+      "eigenvalue_per_mm2": 0.03635995233644782,
+      "electric_energy_sapphire_fraction": 0.9029519244736182,
+      "frequency_ghz": 9.098137314852767,
+      "mode": 3,
+      "pinvit_correction_relative": 1.266754446249677e-12,
+      "rayleigh_quotient_per_mm2": 0.03635995233623461
+    }
+  ],
+  "outer_boundary": "PEC",
+  "pinvit_history": [
+    [
+      0.00012709234659764336,
+      0.018807387033761787,
+      0.6359436839514662
+    ],
+    [
+      2.9319166933767862e-06,
+      0.006297716140880567,
+      0.10591025485477452
+    ],
+    [
+      5.944895972203023e-08,
+      0.0007975136790872377,
+      0.03999114268554284
+    ],
+    [
+      1.2590258411876029e-09,
+      5.2117542960301166e-05,
+      0.03662375304259495
+    ],
+    [
+      2.7348735218823485e-11,
+      3.339314251628853e-06,
+      0.036380472924279775
+    ],
+    [
+      6.0296538480744e-13,
+      2.1897102181394287e-07,
+      0.03636158909218819
+    ],
+    [
+      1.468933827285273e-14,
+      1.4472158434039723e-08,
+      0.036360083704525634
+    ],
+    [
+      -9.994225982587907e-15,
+      9.609845567822814e-10,
+      0.03635996292285015
+    ],
+    [
+      1.911618055970892e-14,
+      6.38937260794486e-11,
+      0.03635995319081644
+    ],
+    [
+      1.4862599658278664e-15,
+      4.272462753523146e-12,
+      0.03635995240539323
+    ],
+    [
+      1.0068891958326086e-16,
+      1.7875686346953733e-13,
+      0.03635995234199789
+    ],
+    [
+      -2.0365741761044063e-14,
+      1.3448667626226038e-14,
+      0.036359952336865
+    ],
+    [
+      -1.6677192472008419e-13,
+      9.599873904396949e-15,
+      0.03635995233647409
+    ],
+    [
+      -1.1018940988019176e-13,
+      1.2741682789138284e-14,
+      0.03635995233639811
+    ],
+    [
+      -6.181708354489512e-14,
+      1.6282965163575793e-14,
+      0.036359952336432196
+    ],
+    [
+      -3.362226818482066e-14,
+      5.732378098533271e-15,
+      0.03635995233621943
+    ],
+    [
+      -1.0185606296624096e-13,
+      1.624378250429566e-14,
+      0.03635995233648753
+    ],
+    [
+      -9.958193043878757e-14,
+      6.935386022019675e-15,
+      0.036359952336405224
+    ],
+    [
+      -1.1741354320721417e-13,
+      2.2678918078080985e-14,
+      0.03635995233659741
+    ],
+    [
+      -9.133395090759006e-14,
+      1.2088389193167023e-14,
+      0.03635995233641566
+    ],
+    [
+      -1.6199774139239812e-14,
+      7.987704873987846e-15,
+      0.03635995233640689
+    ],
+    [
+      -3.5025962783816152e-15,
+      6.86126710044064e-15,
+      0.03635995233644782
+    ]
+  ],
+  "preconditioner": "bddc",
+  "sapphire_relative_permittivity": 9.4,
+  "solve_seconds": 119.59333149995655,
+  "solver": "NGSolve 6.2.2606 HCurl / NumPy PINVIT"
+}

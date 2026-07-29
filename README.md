@@ -18,6 +18,23 @@ TOML geometry -> GDS/SVG/STEP -> Gmsh tetrahedra -> NGSolve H(curl) PEC mode
 
 ![Design A reconstruction](docs/fig1_design_a.svg)
 
+## Near-square 9 GHz variant
+
+The adjusted isolated layout is configured in
+[`configs/design_square_9ghz_al200.toml`](configs/design_square_9ghz_al200.toml)
+with a 150 nm alternative in the adjacent config. The ground-cutout bounding
+rectangle is **413 x 420 um** (aspect ratio 0.9833; side mismatch 1.67%). The
+IDC retains 14 fingers while the meander is reduced from 10 to 7 turns.
+
+The 5 um H(curl) PEC solve gives 9.098137 GHz. Applying the same documented
+low-temperature Al kinetic-inductance correction gives **8.975563 GHz at
+150 nm** and **8.993531 GHz at 200 nm**. Thus 200 nm is the primary 9 GHz
+design point (-6.47 MHz, -0.072%); 150 nm remains within -24.44 MHz (-0.272%).
+The preview, field plot, compact solver output, and thickness results are under
+[`results/square_9ghz`](results/square_9ghz). Numerical mesh uncertainty remains
+larger than these residual target errors, so more displayed digits are not a
+fabrication-accuracy claim.
+
 ## Main result
 
 The converged zero-thickness PEC baseline is **10.416985 GHz**. Applying the

@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "aluminium_london": {
+      "clean_coherence_length_nm": 1600.0,
+      "london_penetration_nm": 15.7,
+      "model": "Lopez-Nunez_2025_Eq4_Eq6_low_temperature",
+      "scattering_factor": 1.26,
+      "scattering_factor_sigma": 0.03,
+      "source": "https://doi.org/10.1088/1361-6668/adf360",
+      "temperature_mk": 20.0
+    },
+    "analysis_type": "reduced_order_kinetic_inductance_correction",
+    "baseline": {
+      "modal_impedance_ohm": 100.0,
+      "pec_frequency_ghz": 9.098137314852767,
+      "pec_mesh_uncertainty_ghz": 0.1,
+      "source": "results/square_9ghz/pec_fine/results.json"
+    },
+    "derived": {
+      "capacitance_ff": 174.93134867515562,
+      "effective_squares": 581.2124487257722,
+      "geometric_inductance_ph": 1749.313486751556
+    },
+    "equations": {
+      "frequency_correction": "f=f_PEC/sqrt(1+Lk/Lg)",
+      "geometric_inductance": "Lg=Z_mode/(2*pi*f_PEC)",
+      "penetration_depth": "lambda(d)=a*lambda_L*sqrt(xi_0/d)",
+      "sheet_inductance": "Lk_square=mu0*lambda*coth(d/lambda)"
+    },
+    "finite_geometric_metal_thickness_included": false,
+    "geometry_reduction": {
+      "branch_squares": 569.5881997512568,
+      "expected_centerline_length_um": 2814.2100073242163,
+      "expected_trace_width_um": 5.0,
+      "meander_energy_fraction": 0.98,
+      "squares_relative_uncertainty": 0.05
+    },
+    "geometry_validation": {
+      "design_config": "configs/design_square_9ghz_al200.toml",
+      "feedline_present": false,
+      "inductor_centerline_length_um": 2814.2100073242163,
+      "inductor_trace_width_um": 5.0,
+      "port_count": 0
+    },
+    "not_full_wave_kinetic_inductance_eigenanalysis": true,
+    "pec_current_distribution_frozen": true,
+    "runtime": {
+      "matplotlib": "3.11.0",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.14.3"
+    },
+    "sources": [
+      {
+        "id": "Lopez-Nunez-2025",
+        "url": "https://doi.org/10.1088/1361-6668/adf360",
+        "use": "Al thickness-dependent penetration depth and sheet inductance"
+      },
+      {
+        "id": "Geerlings-2012",
+        "url": "https://doi.org/10.1063/1.4710520",
+        "use": "resonator geometry and modal-impedance target"
+      }
+    ],
+    "sweep": {
+      "count": 2,
+      "frequency_change_start_to_stop_mhz": 17.967989983624477,
+      "start_nm": 150.0,
+      "stop_nm": 200.0
+    },
+    "temperature_mk": 20.0,
+    "uncertainty_semantics": {
+      "model_band": "corner envelope of a +/- sigma and N_eff +/- relative uncertainty",
+      "not_statistical_confidence_interval": true,
+      "total_band": "model corners plus converged PEC frequency +/- mesh uncertainty"
+    }
+  },
+  "points": [
+    {
+      "corrected_modal_impedance_ohm": 101.36564122580856,
+      "effective_squares": 581.2124487257722,
+      "frequency_ghz": 8.975563321880614,
+      "frequency_shift_mhz": -122.57399297215343,
+      "geometric_inductance_ph": 1749.313486751556,
+      "kinetic_fraction": 0.026763348179550707,
+      "kinetic_inductance_ph": 48.10493504693145,
+      "model_frequency_high_ghz": 8.984528237877473,
+      "model_frequency_low_ghz": 8.966285858917969,
+      "penetration_depth_nm": 64.6077414556491,
+      "sheet_inductance_fh_per_sq": 82.76652565235803,
+      "thickness_nm": 150.0,
+      "total_frequency_high_ghz": 9.082040900116752,
+      "total_frequency_low_ghz": 8.869137683880878
+    },
+    {
+      "corrected_modal_impedance_ohm": 101.16312491012881,
+      "effective_squares": 581.2124487257722,
+      "frequency_ghz": 8.993531311864238,
+      "frequency_shift_mhz": -104.60600298852896,
+      "geometric_inductance_ph": 1749.313486751556,
+      "kinetic_fraction": 0.022862844262925484,
+      "kinetic_inductance_ph": 40.930059388098364,
+      "model_frequency_high_ghz": 9.001030530923606,
+      "model_frequency_low_ghz": 8.985799215394112,
+      "penetration_depth_nm": 55.95194538172914,
+      "sheet_inductance_fh_per_sq": 70.42185603187242,
+      "thickness_nm": 200.0,
+      "total_frequency_high_ghz": 9.098901547633927,
+      "total_frequency_low_ghz": 8.88823283712507
+    }
+  ]
+}

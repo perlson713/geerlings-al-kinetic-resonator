@@ -302,7 +302,7 @@ def main() -> int:
         "count": len(rows),
         "start_nm": rows[0]["thickness_nm"],
         "stop_nm": rows[-1]["thickness_nm"],
-        "frequency_change_100_to_200_mhz": (
+        "frequency_change_start_to_stop_mhz": (
             rows[-1]["frequency_ghz"] - rows[0]["frequency_ghz"]
         )
         * 1.0e3,

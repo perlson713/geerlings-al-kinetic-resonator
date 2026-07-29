@@ -40,6 +40,8 @@ class RunSettings:
     aluminium_nominal_nm: float = 175.0
     aluminium_min_nm: float = 150.0
     aluminium_max_nm: float = 200.0
+    overrides: tuple[str, ...] = ()
+    gradient_inverse: str = "sparsecholesky"
 
 
 def _metal_components(layout, simplify_um: float):
@@ -392,7 +394,7 @@ def solve_mesh(config, settings: RunSettings, mesh_summary: dict[str, object]):
         gradient_t = gradient.CreateTranspose()
         h1_mass = gradient_t @ mass.mat @ gradient
         h1_inverse = h1_mass.Inverse(
-            freedofs=h1_space.FreeDofs(), inverse="sparsecholesky"
+            freedofs=h1_space.FreeDofs(), inverse=settings.gradient_inverse
         )
         projector = (
             IdentityMatrix()
@@ -490,8 +492,14 @@ def solve_mesh(config, settings: RunSettings, mesh_summary: dict[str, object]):
         },
         "sapphire_relative_permittivity": config.stackup.sapphire_permittivity,
         "finite_box_warning": "PEC box; not an open/radiating boundary model",
+        "configuration": {
+            "source": settings.config.name,
+            "overrides": list(settings.overrides),
+            "resonator": asdict(config.resonator),
+        },
         "basis_order": settings.order,
         "preconditioner": settings.preconditioner,
+        "gradient_inverse": settings.gradient_inverse,
         "hcurl_dofs": fes.ndof,
         "solve_seconds": solve_seconds,
         "mesh": mesh_summary,
@@ -519,9 +527,23 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--preconditioner", choices=("direct", "bddc", "local"), default="direct"
     )
+    parser.add_argument(
+        "--gradient-inverse",
+        choices=("sparsecholesky", "pardisospd", "pardiso", "umfpack", "superlu"),
+        default="sparsecholesky",
+        help="direct inverse used by the H1 gradient-nullspace projector",
+    )
     parser.add_argument("--outer-boundary", choices=("pec", "pmc"), default="pec")
     parser.add_argument("--reuse-mesh", action="store_true")
     parser.add_argument("--mesh-only", action="store_true")
+    parser.add_argument(
+        "--set",
+        dest="overrides",
+        action="append",
+        default=[],
+        metavar="SECTION.KEY=VALUE",
+        help="repeatable typed TOML override, for example resonator.finger_count=10",
+    )
     return parser
 
 
@@ -545,8 +567,10 @@ def main(argv: list[str] | None = None) -> int:
         order=args.order,
         preconditioner=args.preconditioner,
         outer_boundary=args.outer_boundary,
+        overrides=tuple(args.overrides),
+        gradient_inverse=args.gradient_inverse,
     )
-    config = load_project(config_path)
+    config = load_project(config_path, overrides=args.overrides)
     if config.resonator.include_feedline:
         raise RuntimeError("This baseline expects include_feedline=false")
     if args.reuse_mesh:

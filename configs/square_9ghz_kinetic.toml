@@ -1,0 +1,30 @@
+# Kinetic-inductance evaluation of the selected 413 x 420 um layout.
+
+[baseline]
+pec_frequency_ghz = 9.098137314852767
+pec_mesh_uncertainty_ghz = 0.10
+modal_impedance_ohm = 100.0
+source = "results/square_9ghz/pec_fine/results.json"
+
+[geometry_reduction]
+# Reference bend/connector correction transferred from the validated Design-A reduction.
+branch_squares = 569.5881997512568
+meander_energy_fraction = 0.98
+squares_relative_uncertainty = 0.05
+expected_centerline_length_um = 2814.2100073242163
+expected_trace_width_um = 5.0
+
+[aluminium_london]
+model = "Lopez-Nunez_2025_Eq4_Eq6_low_temperature"
+london_penetration_nm = 15.7
+clean_coherence_length_nm = 1600.0
+scattering_factor = 1.26
+scattering_factor_sigma = 0.03
+temperature_mk = 20.0
+source = "https://doi.org/10.1088/1361-6668/adf360"
+
+[sweep]
+start_nm = 150.0
+stop_nm = 200.0
+step_nm = 50.0
+output_directory = "results/square_9ghz/kinetic"
