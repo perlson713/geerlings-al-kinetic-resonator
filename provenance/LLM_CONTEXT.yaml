@@ -19,7 +19,7 @@ objective_graph:
     - id: al_thickness_100_200nm_with_kinetic_inductance
       state: complete
     - id: publish_github_private_repository
-      state: pending_external_auth_at_context_creation
+      state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
   geometry_variant: design_A_isolated
@@ -87,3 +87,8 @@ raw_release_asset:
   name: raw-ngsolve-results.tar.gz
   byte_count: 410071814
   sha256: A06DFE2984DB7559763CCAC1C0AA03742D76CA0C4353E2713B2BB2CD72E650FA
+publication:
+  visibility: private
+  repository: https://github.com/perlson713/geerlings-al-kinetic-resonator
+  release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/em-results-v1
+  initial_commit: 3f408a46f22c6054a9c406b410e94fcceef6746f
