@@ -1,0 +1,30 @@
+# Low-temperature aluminium kinetic-inductance correction of the converged PEC mode.
+
+[baseline]
+pec_frequency_ghz = 10.416985438861417
+pec_mesh_uncertainty_ghz = 0.10
+modal_impedance_ohm = 100.0
+source = "results/baseline_pec/analysis_summary.json"
+
+[geometry_reduction]
+# centerline/w plus two terminal connectors and annular-bend correction
+branch_squares = 618.9624168
+meander_energy_fraction = 0.98
+squares_relative_uncertainty = 0.05
+expected_centerline_length_um = 3058.157153320309
+expected_trace_width_um = 5.0
+
+[aluminium_london]
+model = "Lopez-Nunez_2025_Eq4_Eq6_low_temperature"
+london_penetration_nm = 15.7
+clean_coherence_length_nm = 1600.0
+scattering_factor = 1.26
+scattering_factor_sigma = 0.03
+temperature_mk = 20.0
+source = "https://doi.org/10.1088/1361-6668/adf360"
+
+[sweep]
+start_nm = 100.0
+stop_nm = 200.0
+step_nm = 10.0
+output_directory = "results/kinetic_inductance_sweep_100_200nm"

@@ -1,0 +1,16 @@
+preset = "C"
+
+[project]
+name = "geerlings_design_c"
+output_directory = "build/design_c"
+
+[stackup]
+nb_thickness_um = 0.2
+
+[mesh]
+refined_cell_size_um = 8.0
+max_cell_size_um = 120.0
+
+[eigenmode]
+target_frequency_ghz = 3.0
+search_max_frequency_ghz = 12.0

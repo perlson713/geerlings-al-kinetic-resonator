@@ -1,0 +1,48 @@
+{
+  "aluminium_range_nm": [
+    150,
+    200
+  ],
+  "coarse_pec_frequency_ghz": 10.749728040487886,
+  "coarse_pmc_frequency_ghz": 10.747727757285293,
+  "conservative_mesh_uncertainty_ghz": 0.1,
+  "convergence": [
+    {
+      "case": "coarse",
+      "change_from_previous_percent": "",
+      "frequency_ghz": 10.749728040487886,
+      "metal_edge_um": 15.0,
+      "nodes": 9371,
+      "tetrahedra": 38792
+    },
+    {
+      "case": "medium",
+      "change_from_previous_percent": -1.7318615250537392,
+      "frequency_ghz": 10.563557636506763,
+      "metal_edge_um": 7.5,
+      "nodes": 45523,
+      "tetrahedra": 212684
+    },
+    {
+      "case": "fine",
+      "change_from_previous_percent": -0.8389061018590509,
+      "frequency_ghz": 10.47493930692071,
+      "metal_edge_um": 5.0,
+      "nodes": 68934,
+      "tetrahedra": 288488
+    },
+    {
+      "case": "finer",
+      "change_from_previous_percent": -0.5532620892705659,
+      "frequency_ghz": 10.416985438861417,
+      "metal_edge_um": 4.0,
+      "nodes": 105368,
+      "tetrahedra": 452993
+    }
+  ],
+  "model": "Al 175 nm metadata; zero-thickness PEC sheet on eps_r=9.4 sapphire",
+  "outer_boundary": "PEC baseline",
+  "pec_pmc_difference_percent": -0.01860775635494056,
+  "recommended_baseline_frequency_ghz": 10.416985438861417,
+  "thickness_dependence_in_pec_model": "none"
+}

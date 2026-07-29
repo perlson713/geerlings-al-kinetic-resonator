@@ -1,0 +1,16 @@
+{
+  "analysis_type": "full_wave_PEC_eigenmode_baseline",
+  "published_files": [
+    "analysis_summary.json",
+    "convergence.csv",
+    "convergence.png",
+    "finer_mesh_summary.json",
+    "finer_modes.csv",
+    "finer_results.json",
+    "layout-preview.png",
+    "layout.svg",
+    "mode_03_E_xy.png"
+  ],
+  "raw_archive_release_tag": "em-results-v1",
+  "source_root": "$PROJECT_ROOT/build/design_a"
+}

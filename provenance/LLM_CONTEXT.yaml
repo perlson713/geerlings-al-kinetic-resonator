@@ -1,0 +1,89 @@
+schema_id: codex.llm_context.v1
+encoding: UTF-8
+project_id: geerlings-al-kinetic-resonator
+context_purpose: continuation_state_for_machine_reasoner
+read_order:
+  - provenance/LLM_CONTEXT.yaml
+  - provenance/EVENTS.jsonl
+  - provenance/ARTIFACTS.sha256
+  - results/kinetic_inductance_sweep_100_200nm/results.json
+objective_graph:
+  root: reproduce_fig1_then_compute_resonance
+  nodes:
+    - id: layout_parametric
+      state: complete
+    - id: remove_upper_feedline
+      state: complete
+    - id: pec_em_baseline
+      state: complete
+    - id: al_thickness_100_200nm_with_kinetic_inductance
+      state: complete
+    - id: publish_github_private_repository
+      state: pending_external_auth_at_context_creation
+hard_invariants:
+  canonical_workspace: I:/dono/work/geerlings-resonator
+  geometry_variant: design_A_isolated
+  feedline_present: false
+  ports_present: false
+  conductor: aluminium
+  requested_thickness_nm: [100, 200]
+  sweep_grid_nm: [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+source_inputs:
+  geometry_paper: doi:10.1063/1.4710520
+  kinetic_model_paper: doi:10.1088/1361-6668/adf360
+  requested_repositories:
+    - https://github.com/VolkerMuehlhaus/setupEM
+    - https://github.com/awslabs/palace
+    - https://gdsfactory.github.io/gdsfactory/
+    - https://github.com/gumyr/build123d
+electromagnetic_baseline:
+  solver: NGSolve-6.2.2606
+  mesher: Gmsh-4.15.2
+  formulation: first_order_Hcurl_PEC_eigenproblem
+  selected_mode_semantics: first_positive_localized_resonator_mode_after_two_harmonic_zero_modes
+  converged_frequency_ghz: 10.416985438861417
+  mesh_envelope_ghz: 0.10
+  tetrahedra: 452993
+kinetic_reduction:
+  analysis_type: reduced_order_kinetic_inductance_correction
+  full_wave_surface_impedance: false
+  frozen_PEC_current: true
+  finite_geometric_thickness: false
+  lambda_expression: a*lambda_L*sqrt(xi_0/d)
+  sheet_inductance_expression: mu0*lambda*coth(d/lambda)
+  frequency_expression: f_PEC/sqrt(1+Lk/Lg)
+  lambda_L_nm: 15.7
+  xi_0_nm: 1600.0
+  a_nominal: 1.26
+  a_sigma: 0.03
+  temperature_mK: 20.0
+  branch_squares: 618.9624168
+  effective_squares: 631.5943028571429
+  effective_squares_relative_envelope: 0.05
+  modal_impedance_target_ohm: 100.0
+key_results:
+  frequency_100nm_ghz: 10.1744667730
+  frequency_150nm_ghz: 10.2432239726
+  frequency_200nm_ghz: 10.2685896439
+  delta_100_to_200_mhz: 94.1228709
+  sheet_inductance_100nm_fH_per_square: 116.694047
+  sheet_inductance_200nm_fH_per_square: 70.421856
+validation:
+  geometry_centerline_length_um: 3058.157153320309
+  trace_width_um: 5.0
+  pec_pmc_coarse_delta_percent: -0.0186
+  dependency_free_tests_before_kinetic_extension: 26
+known_limitations:
+  - schematic_reconstruction_not_original_mask
+  - scalar_sapphire_permittivity_assumption
+  - configured_modal_impedance_not_field_extracted
+  - no_conductor_loss_Q
+  - no_full_wave_surface_impedance_coupling
+  - generic_Al_fit_not_process_specific_measurement
+security:
+  secrets_expected_in_repository: false
+  raw_solver_artifacts_policy: github_release_not_git_history
+raw_release_asset:
+  name: raw-ngsolve-results.tar.gz
+  byte_count: 410071814
+  sha256: A06DFE2984DB7559763CCAC1C0AA03742D76CA0C4353E2713B2BB2CD72E650FA

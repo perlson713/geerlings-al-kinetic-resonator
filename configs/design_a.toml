@@ -1,0 +1,67 @@
+# Geerlings et al., APL 100, 192601 (2012), Fig. 1 / benchmark Design A.
+# Values marked "paper" are stated in the article. Counts and dimensions
+# marked "inferred" reproduce the schematic because no mask dimensions exist.
+preset = "A"
+
+[project]
+name = "geerlings_design_a"
+output_directory = "build/design_a"
+
+[resonator]
+gC = 10.0                 # um, paper
+gL = 20.0                 # um, paper
+gR = 10.0                 # um, paper
+w = 5.0                   # um, paper
+Z0 = 100.0                # ohm modal sqrt(L/C), paper
+nominal_width_um = 300.0  # um, Fig. 1 horizontal scale
+finger_count = 14         # inferred by counting Fig. 1 (7 per electrode)
+turn_count = 10           # inferred: 10 half-width spans/side + top bridge
+
+[cpw]
+include_feedline = false       # requested isolated-resonator variant
+feedline_width_um = 10.0       # assumption; not reported
+feedline_gap_um = 6.0          # assumption; not reported
+feedline_end_clearance_um = 10.0 # open-end gap before ground reconnects
+ground_bridge_width_um = 20.0  # reconnects both CPW grounds outside each end
+coupling_ground_width_um = 20.0 # assumption; tune external coupling
+ground_margin_um = 100.0
+
+[ports]
+include_ports = false          # no ports when the feedline is omitted
+port_depth_um = 2.0
+left_port_layer = 201
+right_port_layer = 202
+
+[stackup]
+substrate_thickness_um = 430.0 # assumption; paper only says c-plane sapphire
+air_thickness_um = 300.0
+sapphire_permittivity = 9.4    # scalar initial model; not a paper value
+sapphire_loss_tangent = 1.0e-6
+nb_thickness_um = 0.175        # compatibility field: Al nominal 175 nm (range 150-200 nm)
+nb_conductivity_s_per_m = 3.5e7 # normal-state Al placeholder; PEC mode ignores it
+metal_layer = 1
+
+[mesh]
+dielectric_margin_um = 150.0
+air_margin_xy_um = 250.0
+air_below_um = 100.0
+air_above_um = 300.0
+refined_cell_size_um = 4.0
+max_cell_size_um = 80.0
+cells_per_wavelength = 12
+adaptive_iterations = 0
+boundary = "ABC"
+preprocess_gds = true
+
+[eigenmode]
+target_frequency_ghz = 3.0
+search_max_frequency_ghz = 12.0
+modes = 8
+save_modes = 8
+order = 2
+tolerance = 1.0e-8
+linear_tolerance = 1.0e-8
+linear_max_iterations = 500
+mpi_processes = 4
+metal_model = "pec"
+keep_passive_ports = false
