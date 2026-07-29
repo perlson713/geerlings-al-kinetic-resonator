@@ -25,6 +25,8 @@ objective_graph:
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
   geometry_variant: design_A_isolated
+  preserve_meander_hairpin_shape: true
+  hairpin_shape_definition: constant_radius_semicircle_with_radius_equal_half_pitch_and_left_right_mirror_symmetry
   feedline_present: false
   ports_present: false
   conductor: aluminium

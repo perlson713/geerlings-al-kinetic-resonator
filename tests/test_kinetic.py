@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+from math import hypot
 
 from geerlings_resonator.config import load_project
 from geerlings_resonator.geometry import generate_layout
@@ -64,6 +65,26 @@ class KineticInductanceTests(unittest.TestCase):
         self.assertLess(abs(cutout.bounds.width / cutout.bounds.height - 1.0), 0.02)
         self.assertIsNone(layout.centerlines.feedline)
         self.assertEqual(layout.ports, ())
+
+        # Lock the Fig. 1-style hairpins: seven constant-radius semicircles per
+        # side, mirrored about x=0. Parameter tuning may change straight-run
+        # lengths or turn count, but must not distort these fold shapes.
+        inductor = layout.centerlines.inductor
+        self.assertAlmostEqual(inductor.width_um, 5.0)
+        self.assertEqual(len(inductor.points), 184)
+        left_points = inductor.points[:92]
+        for row in range(7):
+            radius = 12.5
+            center_x = -25.0 if row % 2 == 0 else -181.5
+            center_y = 222.5 + row * 25.0 + radius
+            turn_start = 1 + row * 13
+            for point in left_points[turn_start : turn_start + 13]:
+                self.assertAlmostEqual(
+                    hypot(point.x - center_x, point.y - center_y), radius, places=9
+                )
+        for left, mirrored_right in zip(left_points, reversed(inductor.points[92:])):
+            self.assertAlmostEqual(left.x, -mirrored_right.x, places=9)
+            self.assertAlmostEqual(left.y, mirrored_right.y, places=9)
 
         resonator = ReducedOrderResonator(
             pec_frequency_ghz=9.098137314852767,
