@@ -553,7 +553,9 @@ def main(argv: list[str] | None = None) -> int:
 
     config_path = args.config.resolve()
     output = args.output.resolve()
+    output.mkdir(parents=True, exist_ok=True)
     mesh_path = (args.mesh or output / "model.msh").resolve()
+    config = load_project(config_path, overrides=args.overrides)
     settings = RunSettings(
         config=config_path,
         output=output,
@@ -567,15 +569,18 @@ def main(argv: list[str] | None = None) -> int:
         order=args.order,
         preconditioner=args.preconditioner,
         outer_boundary=args.outer_boundary,
+        aluminium_nominal_nm=config.stackup.nb_thickness_um * 1.0e3,
         overrides=tuple(args.overrides),
         gradient_inverse=args.gradient_inverse,
     )
-    config = load_project(config_path, overrides=args.overrides)
     if config.resonator.include_feedline:
         raise RuntimeError("This baseline expects include_feedline=false")
     if args.reuse_mesh:
         mesh_summary = json.loads(
             (mesh_path.parent / "mesh_summary.json").read_text(encoding="utf-8")
+        )
+        (output / "mesh_summary.json").write_text(
+            json.dumps(mesh_summary, indent=2) + "\n", encoding="utf-8"
         )
     else:
         mesh_summary = generate_mesh(config, settings)

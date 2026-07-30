@@ -1,0 +1,29 @@
+# Kinetic-inductance evaluation for the approved 424 x 395 um Fig. 1 topology.
+
+[baseline]
+pec_frequency_ghz = 9.111777769251562
+pec_mesh_uncertainty_ghz = 0.10
+modal_impedance_ohm = 100.0
+source = "results/fig1_square_9ghz/pec_fine/results.json"
+
+[geometry_reduction]
+branch_squares = 569.3219026641857
+meander_energy_fraction = 0.98
+squares_relative_uncertainty = 0.05
+expected_centerline_length_um = 2812.8942919921856
+expected_trace_width_um = 5.0
+
+[aluminium_london]
+model = "Lopez-Nunez_2025_Eq4_Eq6_low_temperature"
+london_penetration_nm = 15.7
+clean_coherence_length_nm = 1600.0
+scattering_factor = 1.26
+scattering_factor_sigma = 0.03
+temperature_mk = 20.0
+source = "https://doi.org/10.1088/1361-6668/adf360"
+
+[sweep]
+start_nm = 150.0
+stop_nm = 200.0
+step_nm = 50.0
+output_directory = "results/fig1_square_9ghz/kinetic"

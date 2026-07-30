@@ -2,6 +2,10 @@
 
 Result date: 2026-07-29
 
+Status: superseded on 2026-07-30 by
+`docs/fig1_square_9ghz_result.md`. This seven-turn result is retained as search
+history; it does not preserve the accepted Fig. 1 full-width top return.
+
 ## Selected geometry
 
 ```yaml

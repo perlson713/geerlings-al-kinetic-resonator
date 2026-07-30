@@ -99,6 +99,54 @@ class KineticInductanceTests(unittest.TestCase):
         self.assertLess(abs(thin.frequency_ghz - 9.0), 0.03)
         self.assertLess(abs(thick.frequency_ghz - 9.0), 0.01)
 
+    def test_approved_fig1_topology_idc_bottom_and_frequency(self) -> None:
+        project = load_project("configs/design_fig1_square_9ghz_al200.toml")
+        layout = generate_layout(project.resonator)
+        cutout = next(poly for poly in layout.etch_polygons if poly.role == "ground_cutout")
+        self.assertAlmostEqual(cutout.bounds.width, 424.0)
+        self.assertAlmostEqual(cutout.bounds.height, 395.0)
+        self.assertLess(abs(cutout.bounds.width / cutout.bounds.height - 1.0), 0.08)
+        self.assertEqual(project.resonator.inductor_turns % 2, 0)
+        self.assertIsNone(layout.centerlines.feedline)
+        self.assertEqual(layout.ports, ())
+
+        # An even turn count preserves the paper's full-width top return.
+        inductor = layout.centerlines.inductor
+        self.assertEqual(len(inductor.points), 158)
+        left_top = inductor.points[78]
+        right_top = inductor.points[79]
+        self.assertAlmostEqual(left_top.x, -187.0)
+        self.assertAlmostEqual(right_top.x, 187.0)
+        self.assertAlmostEqual(left_top.y, 372.5)
+        self.assertAlmostEqual(right_top.y, 372.5)
+
+        # Fig. 1 IDC bottom: the lowest finger belongs to the left bus; the
+        # first right-bus finger is one 15 um pitch above it. Both buses retain
+        # their straight tails down to the common y=0 lower edge.
+        fingers = layout.centerlines.capacitor_fingers
+        left_bus, right_bus = layout.centerlines.capacitor_buses
+        self.assertEqual(fingers[0].name, "capacitor_finger_00_left")
+        self.assertEqual(fingers[1].name, "capacitor_finger_01_right")
+        self.assertAlmostEqual(fingers[0].points[0].x, left_bus.points[0].x)
+        self.assertAlmostEqual(fingers[0].points[0].y, 2.5)
+        self.assertAlmostEqual(fingers[1].points[0].x, right_bus.points[0].x)
+        self.assertAlmostEqual(fingers[1].points[0].y, 17.5)
+        self.assertAlmostEqual(left_bus.points[0].y, 0.0)
+        self.assertAlmostEqual(right_bus.points[0].y, 0.0)
+
+        resonator = ReducedOrderResonator(
+            pec_frequency_ghz=9.111777769251562,
+            modal_impedance_ohm=100.0,
+            branch_squares=569.3219026641857,
+            meander_energy_fraction=0.98,
+        )
+        thin = evaluate_point(150.0, material=self.material, resonator=resonator)
+        thick = evaluate_point(200.0, material=self.material, resonator=resonator)
+        self.assertAlmostEqual(thin.frequency_ghz, 8.9888959880, places=7)
+        self.assertAlmostEqual(thick.frequency_ghz, 9.0069087787, places=7)
+        self.assertLess(abs(thin.frequency_ghz - 9.0), 0.012)
+        self.assertLess(abs(thick.frequency_ghz - 9.0), 0.007)
+
 
 if __name__ == "__main__":
     unittest.main()

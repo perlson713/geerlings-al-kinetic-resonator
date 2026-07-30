@@ -1,0 +1,65 @@
+# Approved Fig. 1 topology: even-turn full-width top return, 150 nm aluminium.
+preset = "A"
+
+[project]
+name = "geerlings_fig1_square_9ghz_al150"
+output_directory = "build/fig1_square_9ghz/al150"
+
+[resonator]
+gC = 10.0
+gL = 20.0
+gR = 10.0
+w = 5.0
+Z0 = 100.0
+nominal_width_um = 424.0
+finger_count = 14
+turn_count = 6
+
+[cpw]
+include_feedline = false
+feedline_width_um = 10.0
+feedline_gap_um = 6.0
+feedline_end_clearance_um = 10.0
+ground_bridge_width_um = 20.0
+coupling_ground_width_um = 20.0
+ground_margin_um = 100.0
+
+[ports]
+include_ports = false
+port_depth_um = 2.0
+left_port_layer = 201
+right_port_layer = 202
+
+[stackup]
+substrate_thickness_um = 430.0
+air_thickness_um = 300.0
+sapphire_permittivity = 9.4
+sapphire_loss_tangent = 1.0e-6
+nb_thickness_um = 0.150
+nb_conductivity_s_per_m = 3.5e7
+metal_layer = 1
+
+[mesh]
+dielectric_margin_um = 150.0
+air_margin_xy_um = 250.0
+air_below_um = 100.0
+air_above_um = 300.0
+refined_cell_size_um = 5.0
+max_cell_size_um = 120.0
+cells_per_wavelength = 12
+adaptive_iterations = 0
+boundary = "PEC"
+preprocess_gds = true
+
+[eigenmode]
+target_frequency_ghz = 9.0
+search_max_frequency_ghz = 12.0
+modes = 3
+save_modes = 3
+order = 1
+tolerance = 1.0e-8
+linear_tolerance = 1.0e-8
+linear_max_iterations = 500
+mpi_processes = 1
+metal_model = "pec"
+keep_passive_ports = false

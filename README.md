@@ -16,26 +16,33 @@ TOML geometry -> GDS/SVG/STEP -> Gmsh tetrahedra -> NGSolve H(curl) PEC mode
                                   thickness-corrected resonance sweep
 ```
 
-![Design A reconstruction](docs/fig1_design_a.svg)
+![Approved Fig. 1-topology 9 GHz layout](results/fig1_square_9ghz/layout_preview.png)
 
-## Near-square 9 GHz variant
+## Approved Fig. 1-topology near-square 9 GHz variant
 
-The adjusted isolated layout is configured in
-[`configs/design_square_9ghz_al200.toml`](configs/design_square_9ghz_al200.toml)
-with a 150 nm alternative in the adjacent config. The ground-cutout bounding
-rectangle is **413 x 420 um** (aspect ratio 0.9833; side mismatch 1.67%). The
-IDC retains 14 fingers while the meander is reduced from 10 to 7 turns.
+The accepted isolated layout is configured in
+[`configs/design_fig1_square_9ghz_al200.toml`](configs/design_fig1_square_9ghz_al200.toml),
+with a 150 nm alternative in the adjacent config. It has 14 IDC fingers and
+six meander turns. The even turn count preserves the paper's full-width top
+return. The IDC bottom also follows Fig. 1 exactly: the lowest finger is tied
+to the left bus, the first right-bus finger is one 15 um pitch above it, and
+both buses extend to the common lower edge. The feedline and ports are absent.
 
-The 5 um H(curl) PEC solve gives 9.098137 GHz. Applying the same documented
-low-temperature Al kinetic-inductance correction gives **8.975563 GHz at
-150 nm** and **8.993531 GHz at 200 nm**. Thus 200 nm is the primary 9 GHz
-design point (-6.47 MHz, -0.072%); 150 nm remains within -24.44 MHz (-0.272%).
+The ground-cutout rectangle is **424 x 395 um** (width/height 1.0734; 29 um
+side difference). The 5 um H(curl) PEC solve gives **9.111777769 GHz** on
+270,428 tetrahedra and 632,082 H(curl) degrees of freedom. Applying the
+documented low-temperature Al kinetic-inductance correction gives
+**8.988895988 GHz at 150 nm** and **9.006908779 GHz at 200 nm**. These are
+-11.104 MHz (-0.123%) and +6.909 MHz (+0.077%) from 9 GHz, respectively.
+
 The preview, field plot, compact solver output, and thickness results are under
-[`results/square_9ghz`](results/square_9ghz). Numerical mesh uncertainty remains
-larger than these residual target errors, so more displayed digits are not a
-fabrication-accuracy claim.
-The complete mesh and VTU fields are attached to GitHub Release
-[`square-9ghz-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1).
+[`results/fig1_square_9ghz`](results/fig1_square_9ghz); the numerical details
+are in [`docs/fig1_square_9ghz_result.md`](docs/fig1_square_9ghz_result.md).
+The previous seven-turn search result remains under `results/square_9ghz` as
+superseded history. Numerical mesh uncertainty remains larger than the
+residual target errors, so the displayed digits are not a fabrication-accuracy
+claim. The complete mesh and VTU fields are attached to GitHub Release
+[`fig1-square-9ghz-v2`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/fig1-square-9ghz-v2).
 
 ## Main result
 

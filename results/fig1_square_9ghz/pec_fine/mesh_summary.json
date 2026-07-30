@@ -1,0 +1,57 @@
+{
+  "boundaries": {
+    "interface": [
+      16,
+      22
+    ],
+    "metal_pec": [
+      23,
+      14
+    ],
+    "outer_pec": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  "domain_mm": {
+    "xmax": 0.562,
+    "xmin": -0.562,
+    "ymax": 0.735,
+    "ymin": -0.36,
+    "zmax": 0.3,
+    "zmin": -0.43
+  },
+  "materials": {
+    "air": [
+      2
+    ],
+    "sapphire": [
+      1
+    ]
+  },
+  "mesh_path": "$PROJECT_ROOT/build/fig1_tuning/n14_t6_w424/fine/model.msh",
+  "mesh_seconds": 9.091661399928853,
+  "metal_components": [
+    {
+      "area_um2": 203800.0,
+      "role": "ground",
+      "vertices": 4
+    },
+    {
+      "area_um2": 42656.44530991742,
+      "role": "resonator",
+      "vertices": 217
+    }
+  ],
+  "nodes": 68129,
+  "units": "mm",
+  "volume_elements": 270428
+}

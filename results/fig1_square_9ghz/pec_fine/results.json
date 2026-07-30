@@ -1,0 +1,208 @@
+{
+  "aluminium": {
+    "model": "PEC sheet",
+    "nominal_thickness_nm": 200.0,
+    "provided_range_nm": [
+      150.0,
+      200.0
+    ],
+    "thickness_effect_in_this_model": "none"
+  },
+  "basis_order": 1,
+  "configuration": {
+    "overrides": [],
+    "resonator": {
+      "capacitor_finger_count": 14,
+      "capacitor_w_um": null,
+      "coupling_ground_width_um": 20.0,
+      "design_name": "A",
+      "feedline_end_clearance_um": 10.0,
+      "feedline_gap_um": 6.0,
+      "feedline_length_um": null,
+      "feedline_width_um": 10.0,
+      "g_c_um": 10.0,
+      "g_l_um": 20.0,
+      "g_r_um": 10.0,
+      "ground_bridge_width_um": 20.0,
+      "ground_margin_um": 100.0,
+      "include_feedline": false,
+      "include_ports": false,
+      "inductor_turns": 6,
+      "inductor_w_um": null,
+      "left_port_layer": 201,
+      "metal_datatype": 0,
+      "metal_layer": 1,
+      "metal_thickness_um": 0.2,
+      "nominal_width_um": 424.0,
+      "port_datatype": 0,
+      "port_depth_um": 2.0,
+      "right_port_layer": 202,
+      "substrate_thickness_um": 430.0,
+      "w_um": 5.0,
+      "z0_ohm": 100.0
+    },
+    "source": "design_fig1_square_9ghz_al200.toml"
+  },
+  "coordinate_unit": "mm",
+  "finite_box_warning": "PEC box; not an open/radiating boundary model",
+  "formulation": "lossless Maxwell eigenproblem, zero-thickness PEC sheet",
+  "frequency_conversion": "f = c0*1000*sqrt(lambda)/(2*pi)",
+  "gradient_inverse": "umfpack",
+  "hcurl_dofs": 632082,
+  "mesh": {
+    "boundaries": {
+      "interface": [
+        16,
+        22
+      ],
+      "metal_pec": [
+        23,
+        14
+      ],
+      "outer_pec": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    "domain_mm": {
+      "xmax": 0.562,
+      "xmin": -0.562,
+      "ymax": 0.735,
+      "ymin": -0.36,
+      "zmax": 0.3,
+      "zmin": -0.43
+    },
+    "materials": {
+      "air": [
+        2
+      ],
+      "sapphire": [
+        1
+      ]
+    },
+    "mesh_path": "$PROJECT_ROOT/build/fig1_tuning/n14_t6_w424/fine/model.msh",
+    "mesh_seconds": 9.091661399928853,
+    "metal_components": [
+      {
+        "area_um2": 203800.0,
+        "role": "ground",
+        "vertices": 4
+      },
+      {
+        "area_um2": 42656.44530991742,
+        "role": "resonator",
+        "vertices": 217
+      }
+    ],
+    "nodes": 68129,
+    "units": "mm",
+    "volume_elements": 270428
+  },
+  "modes": [
+    {
+      "classification": "harmonic_zero",
+      "eigenvalue_last_relative_change": 0.6215789746607214,
+      "eigenvalue_per_mm2": 9.350844316022529e-15,
+      "electric_energy_sapphire_fraction": 0.8946727369766514,
+      "frequency_ghz": 4.61387949833626e-06,
+      "mode": 1,
+      "pinvit_correction_relative": 1.0360736420573593e-08,
+      "rayleigh_quotient_per_mm2": 3.780975780931982e-17
+    },
+    {
+      "classification": "harmonic_zero",
+      "eigenvalue_last_relative_change": 1.638571265129353,
+      "eigenvalue_per_mm2": 1.170604243263424e-13,
+      "electric_energy_sapphire_fraction": 0.9033780513332176,
+      "frequency_ghz": 1.632472528320693e-05,
+      "mode": 2,
+      "pinvit_correction_relative": 1.1921251762695242e-07,
+      "rayleigh_quotient_per_mm2": 2.2179098680175848e-14
+    },
+    {
+      "classification": "physical",
+      "eigenvalue_last_relative_change": 1.8545418762884426e-12,
+      "eigenvalue_per_mm2": 0.036469059958215,
+      "electric_energy_sapphire_fraction": 0.9030810836892142,
+      "frequency_ghz": 9.111777769251562,
+      "mode": 3,
+      "pinvit_correction_relative": 9.407396460520759e-09,
+      "rayleigh_quotient_per_mm2": 0.03646905995809574
+    }
+  ],
+  "outer_boundary": "PEC",
+  "pinvit_history": [
+    [
+      4.411253809962196e-05,
+      0.08326350934934107,
+      0.2299679750289519
+    ],
+    [
+      3.150677967564244e-07,
+      0.009122173034065826,
+      0.037721991948502544
+    ],
+    [
+      5.4279909070146755e-09,
+      0.000548795172431681,
+      0.036503794189231185
+    ],
+    [
+      1.4119109204279956e-10,
+      3.781922207082226e-05,
+      0.03647025409092864
+    ],
+    [
+      3.908428645817373e-12,
+      2.6369279576190347e-06,
+      0.036469106060614716
+    ],
+    [
+      1.0861747331573683e-13,
+      1.847180867804234e-07,
+      0.03646906203987284
+    ],
+    [
+      1.8359782332459646e-14,
+      1.2956416201167128e-08,
+      0.03646906007304469
+    ],
+    [
+      1.0313256519163752e-14,
+      9.09929959938836e-10,
+      0.036469059965830095
+    ],
+    [
+      6.81633612797988e-15,
+      6.401500670989847e-11,
+      0.036469059958755455
+    ],
+    [
+      2.2402690141574244e-14,
+      4.515777815750571e-12,
+      0.03646905995808765
+    ],
+    [
+      3.5385560938572103e-15,
+      3.0887227191133614e-13,
+      0.03646905995828263
+    ],
+    [
+      9.350844316022529e-15,
+      1.170604243263424e-13,
+      0.036469059958215
+    ]
+  ],
+  "preconditioner": "bddc",
+  "sapphire_relative_permittivity": 9.4,
+  "solve_seconds": 175.2127676999662,
+  "solver": "NGSolve 6.2.2606 HCurl / NumPy PINVIT"
+}

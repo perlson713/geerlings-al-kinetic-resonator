@@ -6,6 +6,7 @@ read_order:
   - provenance/LLM_CONTEXT.yaml
   - provenance/EVENTS.jsonl
   - provenance/ARTIFACTS.sha256
+  - results/fig1_square_9ghz/kinetic/results.json
   - results/kinetic_inductance_sweep_100_200nm/results.json
 objective_graph:
   root: reproduce_fig1_then_compute_resonance
@@ -22,16 +23,22 @@ objective_graph:
       state: complete
     - id: near_square_9ghz_layout
       state: complete
+    - id: approved_fig1_topology_near_square_9ghz
+      state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
-  geometry_variant: design_A_isolated
+  geometry_variant: approved_fig1_topology_isolated
   preserve_meander_hairpin_shape: true
   hairpin_shape_definition: constant_radius_semicircle_with_radius_equal_half_pitch_and_left_right_mirror_symmetry
+  preserve_fig1_full_width_top_return: true
+  fig1_full_width_top_return_mechanism: even_meander_turn_count
+  preserve_fig1_idc_bottom_topology: true
+  fig1_idc_bottom_definition: lowest_finger_left_bus_first_right_bus_finger_one_15um_pitch_above_both_buses_to_y0
   feedline_present: false
   ports_present: false
   conductor: aluminium
-  requested_thickness_nm: [100, 200]
-  sweep_grid_nm: [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+  current_allowed_thickness_nm: [150, 200]
+  historical_sweep_grid_nm: [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
 source_inputs:
   geometry_paper: doi:10.1063/1.4710520
   kinetic_model_paper: doi:10.1088/1361-6668/adf360
@@ -73,6 +80,7 @@ key_results:
   sheet_inductance_100nm_fH_per_square: 116.694047
   sheet_inductance_200nm_fH_per_square: 70.421856
 square_9ghz_variant:
+  lifecycle: superseded_by_fig1_square_9ghz_variant
   config_150nm: configs/design_square_9ghz_al150.toml
   config_200nm: configs/design_square_9ghz_al200.toml
   feedline_present: false
@@ -90,11 +98,39 @@ square_9ghz_variant:
   tetrahedra: 316634
   hcurl_dofs: 739652
   numerical_mesh_envelope_ghz: 0.10
+fig1_square_9ghz_variant:
+  lifecycle: accepted_current
+  config_150nm: configs/design_fig1_square_9ghz_al150.toml
+  config_200nm: configs/design_fig1_square_9ghz_al200.toml
+  feedline_present: false
+  ports_present: false
+  IDC_fingers: 14
+  idc_bottom_lowest_finger_bus: left
+  idc_bottom_first_right_finger_y_um: 17.5
+  idc_bus_lower_edge_y_um: 0.0
+  meander_turns: 6
+  full_width_top_return: true
+  cutout_width_um: 424.0
+  cutout_height_um: 395.0
+  aspect_width_over_height: 1.0734177215189873
+  inductor_centerline_length_um: 2812.8942919921856
+  pec_frequency_ghz: 9.111777769251562
+  frequency_150nm_ghz: 8.988895987978905
+  frequency_200nm_ghz: 9.006908778692608
+  target_error_150nm_mhz: -11.104012021095
+  target_error_200nm_mhz: 6.908778692608
+  mesh_edge_um: 5.0
+  tetrahedra: 270428
+  hcurl_dofs: 632082
+  sapphire_energy_fraction: 0.9030810836892142
+  numerical_mesh_envelope_ghz: 0.10
 validation:
-  geometry_centerline_length_um: 3058.157153320309
+  geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
+  current_unittest_count: 32
+  current_unittest_result: pass
 known_limitations:
   - schematic_reconstruction_not_original_mask
   - scalar_sapphire_permittivity_assumption
@@ -115,10 +151,16 @@ raw_square_9ghz_release_asset:
   byte_count: 113919017
   sha256: 83F91FF8FA03D05B36EA7EFDDBC3ABD30D3951EB4ECD466999C8747D1FB9FF90
   contents: [model.msh, modes.csv, mode_01.vtu, mode_02.vtu, mode_03.vtu, mode_03_E_xy.png, mesh_summary.json, results.json]
+raw_fig1_square_9ghz_release_asset:
+  name: raw-fig1-square-9ghz-ngsolve.tar.gz
+  byte_count: 95613636
+  sha256: F9FBD7BFF1CA26491ECEB6E17E841B0E96C7D09E0B7AAA365D29E60BFF25F177
+  contents: [model.msh, modes.csv, mode_01.vtu, mode_02.vtu, mode_03.vtu, mode_03_E_xy.png, mesh_summary.json, results.json]
 publication:
   visibility: private
   repository: https://github.com/perlson713/geerlings-al-kinetic-resonator
   release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/em-results-v1
   square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1
+  fig1_square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/fig1-square-9ghz-v2
   initial_commit: 3f408a46f22c6054a9c406b410e94fcceef6746f
   square_9ghz_commit: d749221ef42a609fb3b6599b1c01c219f6d91736
