@@ -1,0 +1,129 @@
+{
+  "calibration": {
+    "anchor_pec_frequency_ghz": 9.111777769251562,
+    "anchor_width_um": 424.0,
+    "branch_square_scale": 1.0119859539068796,
+    "meander_energy_fraction": 0.98,
+    "method": "linear interpolation of two 5 um local-metal PEC solves",
+    "modal_impedance_ohm": 100.0,
+    "pec_mesh_uncertainty_ghz": 0.1,
+    "pec_slope_mhz_per_um": -21.524012329467418,
+    "second_pec_frequency_ghz": 8.96110968294529,
+    "second_width_um": 431.0
+  },
+  "center_frequency_ghz": 9.0,
+  "count": 8,
+  "nominal_spacing_mhz": 10.0,
+  "patterns": [
+    {
+      "branch_squares": 572.11012636439,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.968,
+      "inductor_centerline_um": 2826.670291992186,
+      "nominal_width_um": 425.968,
+      "pattern_id": "P01",
+      "predicted_al150_ghz": 8.947080924903654,
+      "predicted_al200_ghz": 8.96501387499588,
+      "predicted_pec_ghz": 9.06941851298717,
+      "target_al200_ghz": 8.965,
+      "target_error_al200_mhz": 0.013874995879348262
+    },
+    {
+      "branch_squares": 571.4442396067193,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.498,
+      "inductor_centerline_um": 2823.3802919921854,
+      "nominal_width_um": 425.498,
+      "pattern_id": "P02",
+      "predicted_al150_ghz": 8.957066726285468,
+      "predicted_al200_ghz": 8.975018818840208,
+      "predicted_pec_ghz": 9.07953479878202,
+      "target_al200_ghz": 8.975,
+      "target_error_al200_mhz": 0.018818840208822962
+    },
+    {
+      "branch_squares": 570.7811864097195,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.03,
+      "inductor_centerline_um": 2820.1042919921856,
+      "nominal_width_um": 425.03,
+      "pattern_id": "P03",
+      "predicted_al150_ghz": 8.967010358095632,
+      "predicted_al200_ghz": 8.984981465105346,
+      "predicted_pec_ghz": 9.08960803655221,
+      "target_al200_ghz": 8.985,
+      "target_error_al200_mhz": -0.018534894653754463
+    },
+    {
+      "branch_squares": 570.1152996520487,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 424.56,
+      "inductor_centerline_um": 2816.8142919921856,
+      "nominal_width_um": 424.56,
+      "pattern_id": "P04",
+      "predicted_al150_ghz": 8.976996809680083,
+      "predicted_al200_ghz": 8.994986965503921,
+      "predicted_pec_ghz": 9.09972432234706,
+      "target_al200_ghz": 8.995,
+      "target_error_al200_mhz": -0.013034496078034863
+    },
+    {
+      "branch_squares": 569.449412894378,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 424.09,
+      "inductor_centerline_um": 2813.5242919921857,
+      "nominal_width_um": 424.09,
+      "pattern_id": "P05",
+      "predicted_al150_ghz": 8.986983588622259,
+      "predicted_al200_ghz": 9.004992746110661,
+      "predicted_pec_ghz": 9.10984060814191,
+      "target_al200_ghz": 9.005,
+      "target_error_al200_mhz": -0.007253889339864372
+    },
+    {
+      "branch_squares": 568.7835261367073,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 423.62,
+      "inductor_centerline_um": 2810.2342919921857,
+      "nominal_width_um": 423.62,
+      "pattern_id": "P06",
+      "predicted_al150_ghz": 8.99697069596594,
+      "predicted_al200_ghz": 9.014998807818728,
+      "predicted_pec_ghz": 9.11995689393676,
+      "target_al200_ghz": 9.015,
+      "target_error_al200_mhz": -0.0011921812728132863
+    },
+    {
+      "branch_squares": 568.1176393790365,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 423.15,
+      "inductor_centerline_um": 2806.9442919921853,
+      "nominal_width_um": 423.15,
+      "pattern_id": "P07",
+      "predicted_al150_ghz": 9.00695813275501,
+      "predicted_al200_ghz": 9.025005151521375,
+      "predicted_pec_ghz": 9.13007317973161,
+      "target_al200_ghz": 9.025,
+      "target_error_al200_mhz": 0.005151521374813228
+    },
+    {
+      "branch_squares": 567.4517526213658,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 422.68,
+      "inductor_centerline_um": 2803.654291992186,
+      "nominal_width_um": 422.68,
+      "pattern_id": "P08",
+      "predicted_al150_ghz": 9.016945900033454,
+      "predicted_al200_ghz": 9.035011778111924,
+      "predicted_pec_ghz": 9.14018946552646,
+      "target_al200_ghz": 9.035,
+      "target_error_al200_mhz": 0.011778111923987922
+    }
+  ],
+  "reference_thickness_nm": 200.0,
+  "schema_id": "geerlings.frequency_bank.v1",
+  "uncertainty": {
+    "absolute_pec_mesh_envelope_ghz": 0.1,
+    "spacing_is_nominal_not_resolved_by_absolute_mesh_envelope": true
+  }
+}

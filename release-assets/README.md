@@ -19,3 +19,10 @@ Release [`fig1-square-9ghz-v2`](https://github.com/perlson713/geerlings-al-kinet
 
 - Byte count: `95613636`
 - SHA-256: `F9FBD7BFF1CA26491ECEB6E17E841B0E96C7D09E0B7AAA365D29E60BFF25F177`
+
+The eight-pattern nominal 10 MHz CAD bank is packaged as
+`frequency-bank-8x-cad.zip` for GitHub Release
+[`frequency-bank-8x-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1).
+
+- Byte count: `424603`
+- SHA-256: `E6937EBBED0519AFB0376F4583BB086A9B651FB59B90E3A8276E7E8D17FBDC1F`

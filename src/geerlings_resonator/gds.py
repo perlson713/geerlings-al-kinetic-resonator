@@ -67,6 +67,17 @@ def _gdsfactory() -> Any:
             "the project with `python -m pip install -e .` or run "
             "`python -m pip install gdsfactory`."
         ) from exc
+    # gdsfactory 9.47 stopped activating its generic PDK on import.  Raw
+    # numeric (layer, datatype) polygons still require an active PDK for layer
+    # resolution, so activate the bundled generic PDK when the caller has not
+    # selected one.  Older gdsfactory releases either already have an active
+    # PDK or do not expose this API and continue through the compatibility path.
+    try:
+        gf.get_active_pdk()
+    except ValueError:
+        gf.gpdk.PDK.activate()
+    except AttributeError:
+        pass
     return gf
 
 

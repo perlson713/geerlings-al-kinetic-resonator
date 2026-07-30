@@ -6,6 +6,7 @@ read_order:
   - provenance/LLM_CONTEXT.yaml
   - provenance/EVENTS.jsonl
   - provenance/ARTIFACTS.sha256
+  - results/frequency_bank_8x/results.json
   - results/fig1_square_9ghz/kinetic/results.json
   - results/kinetic_inductance_sweep_100_200nm/results.json
 objective_graph:
@@ -24,6 +25,8 @@ objective_graph:
     - id: near_square_9ghz_layout
       state: complete
     - id: approved_fig1_topology_near_square_9ghz
+      state: complete
+    - id: frequency_bank_8x_10mhz_spacing
       state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
@@ -124,13 +127,35 @@ fig1_square_9ghz_variant:
   hcurl_dofs: 632082
   sapphire_energy_fraction: 0.9030810836892142
   numerical_mesh_envelope_ghz: 0.10
+frequency_bank_8x:
+  lifecycle: accepted_current
+  reference_thickness_nm: 200.0
+  target_center_ghz: 9.0
+  target_spacing_mhz: 10.0
+  target_frequencies_ghz: [8.965, 8.975, 8.985, 8.995, 9.005, 9.015, 9.025, 9.035]
+  nominal_widths_um: [425.968, 425.498, 425.030, 424.560, 424.090, 423.620, 423.150, 422.680]
+  predicted_al150_ghz: [8.9470809249, 8.9570667263, 8.9670103581, 8.9769968097, 8.9869835886, 8.9969706960, 9.0069581328, 9.0169459000]
+  predicted_al200_ghz: [8.9650138750, 8.9750188188, 8.9849814651, 8.9949869655, 9.0049927461, 9.0149988078, 9.0250051515, 9.0350117781]
+  maximum_target_error_mhz: 0.0188188403
+  width_quantization_nm: 2.0
+  gds_coordinate_grid_nm: 1.0
+  frequency_method: linear_two_point_PEC_calibration_plus_geometry_specific_reduced_order_kinetic_inductance
+  pec_calibration_points: [[424.0, 9.111777769251562], [431.0, 8.96110968294529]]
+  pec_slope_mhz_per_um: -21.524012329467417
+  independent_fullwave_solve_per_pattern: false
+  nominal_spacing_below_absolute_pec_mesh_envelope: true
+  output: results/frequency_bank_8x
 validation:
   geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
-  current_unittest_count: 32
+  current_unittest_count: 36
   current_unittest_result: pass
+  frequency_bank_gds_files: 8
+  frequency_bank_gds_top_cells_each: 1
+  frequency_bank_gds_metal_polygons_each: 337
+  frequency_bank_gds_port_layers_absent: true
 known_limitations:
   - schematic_reconstruction_not_original_mask
   - scalar_sapphire_permittivity_assumption
@@ -156,12 +181,19 @@ raw_fig1_square_9ghz_release_asset:
   byte_count: 95613636
   sha256: F9FBD7BFF1CA26491ECEB6E17E841B0E96C7D09E0B7AAA365D29E60BFF25F177
   contents: [model.msh, modes.csv, mode_01.vtu, mode_02.vtu, mode_03.vtu, mode_03_E_xy.png, mesh_summary.json, results.json]
+frequency_bank_8x_release_asset:
+  name: frequency-bank-8x-cad.zip
+  byte_count: 424603
+  sha256: E6937EBBED0519AFB0376F4583BB086A9B651FB59B90E3A8276E7E8D17FBDC1F
+  contents: [8_layout_gds, 8_layout_svg, 8_stackup_xml, 8_pattern_manifest_json, frequency_table_csv, results_json, preview_png, generator_config, generator_script, documentation]
 publication:
   visibility: private
   repository: https://github.com/perlson713/geerlings-al-kinetic-resonator
   release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/em-results-v1
   square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1
   fig1_square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/fig1-square-9ghz-v2
+  frequency_bank_8x_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1
   initial_commit: 3f408a46f22c6054a9c406b410e94fcceef6746f
   square_9ghz_commit: d749221ef42a609fb3b6599b1c01c219f6d91736
   fig1_square_9ghz_commit: 6bf3c7dd50e64da5880ed0722cb8e90a271aafb0
+  frequency_bank_8x_commit: pending_first_publication_commit

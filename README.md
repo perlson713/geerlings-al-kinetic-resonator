@@ -44,6 +44,26 @@ residual target errors, so the displayed digits are not a fabrication-accuracy
 claim. The complete mesh and VTU fields are attached to GitHub Release
 [`fig1-square-9ghz-v2`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/fig1-square-9ghz-v2).
 
+## Eight-pattern 10 MHz frequency bank
+
+Eight accepted-topology layouts are generated symmetrically about 9 GHz at
+8.965, 8.975, 8.985, 8.995, 9.005, 9.015, 9.025, and 9.035 GHz. Aluminium
+200 nm is the tuning reference. Only the horizontal span length changes; the
+six folds, full-width top return, 14-finger IDC, and Fig. 1 IDC lower edge are
+locked. The corresponding cutout widths are 425.968 down to 422.680 um.
+
+![Eight-pattern frequency bank](results/frequency_bank_8x/frequency_bank_preview.png)
+
+Individual GDS, SVG, stackup XML, and JSON manifests are under
+[`results/frequency_bank_8x/patterns`](results/frequency_bank_8x/patterns).
+The table and method are documented in
+[`docs/frequency_bank_8x.md`](docs/frequency_bank_8x.md). The 10 MHz placement
+is a calibrated relative-design grid; it is finer than the conservative
++/-0.10 GHz absolute PEC mesh envelope and is not claimed as independently
+resolved by eight full-wave solves.
+The complete CAD bundle is attached to GitHub Release
+[`frequency-bank-8x-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1).
+
 ## Main result
 
 The converged zero-thickness PEC baseline is **10.416985 GHz**. Applying the
@@ -114,6 +134,7 @@ the material model are choices for this follow-up analysis.
 
 - `results/baseline_pec/`: compact PEC convergence data and selected field plot.
 - `results/kinetic_inductance_sweep_100_200nm/`: CSV, JSON, and sweep plot.
+- `results/frequency_bank_8x/`: eight GDS/SVG pattern sets and frequency table.
 - `build/`: regenerable raw solver output; excluded from Git history.
 - GitHub Release `em-results-v1`: archived raw NGSolve meshes and VTU fields.
 - `provenance/`: LLM-oriented context, event log, and SHA-256 manifest.

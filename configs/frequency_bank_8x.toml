@@ -1,0 +1,32 @@
+schema_version = 1
+base_design_config = "configs/design_fig1_square_9ghz_al200.toml"
+output_directory = "results/frequency_bank_8x"
+
+[grid]
+center_frequency_ghz = 9.0
+spacing_mhz = 10.0
+count = 8
+reference_thickness_nm = 200.0
+reported_thicknesses_nm = [150.0, 200.0]
+
+[geometry]
+width_quantization_um = 0.002
+solve_min_width_um = 420.0
+solve_max_width_um = 430.0
+
+[calibration]
+anchor_width_um = 424.0
+anchor_pec_frequency_ghz = 9.111777769251562
+second_width_um = 431.0
+second_pec_frequency_ghz = 8.96110968294529
+pec_mesh_uncertainty_ghz = 0.10
+branch_square_scale = 1.0119859539068796
+meander_energy_fraction = 0.98
+modal_impedance_ohm = 100.0
+
+[aluminium]
+model = "Lopez-Nunez_2025_Eq4_Eq6_low_temperature"
+london_penetration_nm = 15.7
+clean_coherence_length_nm = 1600.0
+scattering_factor = 1.26
+temperature_mk = 20.0
