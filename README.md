@@ -64,6 +64,27 @@ resolved by eight full-wave solves.
 The complete CAD bundle is attached to GitHub Release
 [`frequency-bank-8x-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1).
 
+## Four-resonator rectangle chips
+
+Four zero-rotation resonators are placed at the corners of an optimized
+rectangle on each 5.05 mm chip.  Every chip contains two modes below 9 GHz and
+two above 9 GHz; the GDS filenames and internal labels state both groups
+explicitly.  A current-depth 3-D cavity field solve plus a hybrid pin-coupling
+calibration gives a nominal sixteen-placement Qc max/min ratio of **1.002617**
+at `Qc = 1e6`, with 0.174 mm minimum ground-cutout clearance.
+
+![Four-resonator rectangle layout](results/four_resonator_chip/four_per_chip_layout_preview.png)
+
+The four optimized-rectangle fabrication GDS files and machine-readable results are under
+[`results/four_resonator_chip`](results/four_resonator_chip).  Coordinates,
+solver scope, reproduction commands, and the absolute-Qc limitation are
+documented in
+[`docs/four_resonator_chip_qc.md`](docs/four_resonator_chip_qc.md).
+
+A companion set fixes the four centers to a chip-centered 0.80 mm square
+(`x,y = +/-0.40 mm`).  These four GDS filenames contain `centered_square`;
+their fixed geometry gives a larger modeled Qc max/min ratio of 1.166631.
+
 ## Main result
 
 The converged zero-thickness PEC baseline is **10.416985 GHz**. Applying the
@@ -135,6 +156,7 @@ the material model are choices for this follow-up analysis.
 - `results/baseline_pec/`: compact PEC convergence data and selected field plot.
 - `results/kinetic_inductance_sweep_100_200nm/`: CSV, JSON, and sweep plot.
 - `results/frequency_bank_8x/`: eight GDS/SVG pattern sets and frequency table.
+- `results/four_resonator_chip/`: rectangle-chip GDS, FEM fields, and Qc tables.
 - `build/`: regenerable raw solver output; excluded from Git history.
 - GitHub Release `em-results-v1`: archived raw NGSolve meshes and VTU fields.
 - `provenance/`: LLM-oriented context, event log, and SHA-256 manifest.

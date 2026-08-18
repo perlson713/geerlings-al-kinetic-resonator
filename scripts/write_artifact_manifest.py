@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write SHA-256 hashes for every tracked file except the manifest itself."""
+"""Write SHA-256 hashes for tracked and pending repository files."""
 
 from __future__ import annotations
 
@@ -12,9 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "provenance" / "ARTIFACTS.sha256"
 
 
-def _tracked_files() -> list[Path]:
+def _repository_files() -> list[Path]:
     raw = subprocess.check_output(
-        ["git", "ls-files", "-z"], cwd=ROOT, stderr=subprocess.DEVNULL
+        ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT,
+        stderr=subprocess.DEVNULL,
     )
     paths = [Path(item.decode("utf-8")) for item in raw.split(b"\0") if item]
     return sorted(path for path in paths if path.as_posix() != "provenance/ARTIFACTS.sha256")
@@ -29,7 +31,7 @@ def _sha256(path: Path) -> str:
 
 
 def main() -> int:
-    lines = [f"{_sha256(ROOT / path)}  {path.as_posix()}" for path in _tracked_files()]
+    lines = [f"{_sha256(ROOT / path)}  {path.as_posix()}" for path in _repository_files()]
     OUTPUT.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {len(lines)} hashes to {OUTPUT}")
     return 0

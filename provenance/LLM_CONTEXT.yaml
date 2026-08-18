@@ -7,6 +7,8 @@ read_order:
   - provenance/EVENTS.jsonl
   - provenance/ARTIFACTS.sha256
   - results/frequency_bank_8x/results.json
+  - results/four_resonator_chip/optimization_summary.json
+  - docs/four_resonator_chip_qc.md
   - results/fig1_square_9ghz/kinetic/results.json
   - results/kinetic_inductance_sweep_100_200nm/results.json
 objective_graph:
@@ -27,6 +29,8 @@ objective_graph:
     - id: approved_fig1_topology_near_square_9ghz
       state: complete
     - id: frequency_bank_8x_10mhz_spacing
+      state: complete
+    - id: four_resonator_rectangle_chip_qc_equalization
       state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
@@ -145,17 +149,51 @@ frequency_bank_8x:
   independent_fullwave_solve_per_pattern: false
   nominal_spacing_below_absolute_pec_mesh_envelope: true
   output: results/frequency_bank_8x
+four_resonator_rectangle_chip:
+  lifecycle: accepted_current
+  config: configs/four_resonator_chip.toml
+  centers_form_axis_aligned_rectangle: true
+  resonators_per_chip: 4
+  chips_per_cavity: 2
+  rotation_deg: 0.0
+  frequency_partition_per_chip: two_below_9ghz_and_two_above_9ghz
+  target_resonator_external_qc: 1000000.0
+  cavity_A_pin_length_mm: 8.4635717497
+  cavity_B_pin_length_mm: 8.9309184375
+  cavity_A_qc_max_to_min: 1.0009035818
+  cavity_B_qc_max_to_min: 1.0026172033
+  global_16_qc_max_to_min: 1.0026172033
+  minimum_center_separation_mm: 0.600000
+  minimum_ground_cutout_edge_gap_mm: 0.174032
+  field_solver: NGSolve_closed_PEC_3D_Hcurl_current_depth
+  cavity_A_closed_mode_ghz: 9.7599247413
+  cavity_B_closed_mode_ghz: 9.7971949896
+  current_geometry_direct_port_sweep: false
+  absolute_qc_model: historical_pin_FEM_plus_current_frequency_alignment_plus_coupled_mode
+  centered_square_companion:
+    side_mm: 0.80
+    chip_local_centers_mm: [[-0.40, -0.40], [-0.40, 0.40], [0.40, -0.40], [0.40, 0.40]]
+    global_16_qc_max_to_min: 1.1666309138
+    minimum_ground_cutout_edge_gap_mm: 0.374032
+  output: results/four_resonator_chip
 validation:
   geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
-  current_unittest_count: 36
+  current_unittest_count: 44
   current_unittest_result: pass
   frequency_bank_gds_files: 8
   frequency_bank_gds_top_cells_each: 1
   frequency_bank_gds_metal_polygons_each: 337
   frequency_bank_gds_port_layers_absent: true
+  four_resonator_gds_files: 4
+  four_resonator_gds_readback_top_cells_each: 1
+  four_resonator_centers_rectangle_verified: true
+  four_resonator_unittest_result: pass
+  centered_square_gds_files: 4
+  total_four_resonator_gds_files: 8
+  centered_square_geometry_verified: true
 known_limitations:
   - schematic_reconstruction_not_original_mask
   - scalar_sapphire_permittivity_assumption
@@ -164,6 +202,7 @@ known_limitations:
   - no_full_wave_surface_impedance_coupling
   - generic_Al_fit_not_process_specific_measurement
   - square_9ghz_4um_mesh_generated_but_factorization_exceeded_available_memory
+  - four_resonator_absolute_qc_uses_hybrid_not_conformal_fullwave_calibration
 security:
   secrets_expected_in_repository: false
   raw_solver_artifacts_policy: github_release_not_git_history

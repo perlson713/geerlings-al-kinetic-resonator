@@ -1,0 +1,639 @@
+{
+  "artifacts": [
+    "cavity_A_left_centered_square_below9_P01-P02_above9_P05-P06_4res.gds",
+    "cavity_A_right_centered_square_below9_P03-P04_above9_P07-P08_4res.gds",
+    "cavity_B_left_centered_square_below9_P01-P02_above9_P05-P06_4res.gds",
+    "cavity_B_right_centered_square_below9_P03-P04_above9_P07-P08_4res.gds",
+    "centered_square_layout_preview.png",
+    "centered_square_qc_uniformity.png",
+    "centered_square_placements.csv",
+    "centered_square_pin_calibration.csv",
+    "centered_square_qc_predictions.csv",
+    "current_cavity_field_fem.json",
+    "centered_square_optimization_summary.json",
+    "centered_square_layout_manifest.json",
+    "centered_square_gds_readback_verification.json"
+  ],
+  "constraints": {
+    "centered_on_chip": true,
+    "centers_form_axis_aligned_rectangle": true,
+    "chip_size_mm": [
+      5.05,
+      5.05
+    ],
+    "chips_per_cavity": 2,
+    "frequency_partition": {
+      "left": {
+        "above_9ghz": [
+          "P05",
+          "P06"
+        ],
+        "below_9ghz": [
+          "P01",
+          "P02"
+        ]
+      },
+      "right": {
+        "above_9ghz": [
+          "P07",
+          "P08"
+        ],
+        "below_9ghz": [
+          "P03",
+          "P04"
+        ]
+      }
+    },
+    "frequency_split_ghz": 9.0,
+    "minimum_center_separation_mm": 0.6,
+    "rectangle_coordinate_limit_mm": 1.18,
+    "resonator_rotation_deg": 0.0,
+    "resonators_per_chip": 4,
+    "square_side_mm": 0.8
+  },
+  "coupled_mode_model": "Qc_res = fr*Qc_cavity*(fc-fr)^2/(fc*g^2)",
+  "fem_calibration_provenance": {
+    "absolute_qc_semantics": "historical direct pin-Qc anchors with current closed-cavity frequency alignment; not a current-geometry port full-wave sweep",
+    "cavity_commit": "c4f1f96e9642886d9b08d15d4b79748056be25f0",
+    "cavity_repository": "https://github.com/perlson713/aluminum-cavity-chip-layouts",
+    "current_depth_field_revalidated": true,
+    "current_field_fem": {
+      "frequency_alignment": {
+        "cavity_A": {
+          "applied_frequency_offset_ghz": -0.3313135287388853,
+          "current_closed_cavity_frequency_ghz": 9.759924741305026,
+          "historical_reference_frequency_ghz": 10.091238270043911,
+          "reference_pin_length_mm": 7.75
+        },
+        "cavity_B": {
+          "applied_frequency_offset_ghz": -0.29600492087084085,
+          "current_closed_cavity_frequency_ghz": 9.79719498959162,
+          "historical_reference_frequency_ghz": 10.093199910462461,
+          "reference_pin_length_mm": 7.75
+        }
+      },
+      "schema_id": "geerlings.current_cavity_field_fem.v1",
+      "solver": "NGSolve H(curl) closed-PEC eigenproblem",
+      "validity": {
+        "absolute_external_qc_computed": false,
+        "current_cavity_depths_included": true,
+        "sma_bore_and_pin_included": false,
+        "two_silicon_chips_included": true
+      }
+    },
+    "current_field_profile_source": "results/four_resonator_chip/current_cavity_field_fem.json",
+    "current_geometry_port_sweep_revalidated": false,
+    "field_semantics": "mean in-plane RMS electric-field samples from silicon-loaded direct 3-D FEM modes",
+    "field_sources": [
+      "cavity_project/results/four_per_chip_eight_per_cavity_qc/corner_fields_16.json",
+      "cavity_project/results/staggered_x3p5_field_grid/field_grid.json"
+    ],
+    "pin_case_mapping": {
+      "cavity_A": "historical original_high port case",
+      "cavity_B": "historical moved_low port case"
+    },
+    "pin_geometry_scope": "historical silicon-loaded Qc campaign near 10.1 GHz",
+    "pin_semantics": "direct 3-D FEM cavity-port anchors",
+    "pin_sources": [
+      "cavity_project/results/resonator_external_qc_pin_sweep_extended/sweep.json",
+      "cavity_project/results/resonator_external_qc_pin_sweep_deep/sweep.json",
+      "cavity_project/results/resonator_external_qc_pin_sweep_b11/sweep.json"
+    ]
+  },
+  "frequency_bank_ghz": {
+    "P01": 8.96501387499588,
+    "P02": 8.975018818840208,
+    "P03": 8.984981465105346,
+    "P04": 8.994986965503921,
+    "P05": 9.004992746110661,
+    "P06": 9.014998807818728,
+    "P07": 9.025005151521375,
+    "P08": 9.035011778111924
+  },
+  "global_16_resonator_qc_max_to_min": {
+    "1e+06": 1.1666309137513742
+  },
+  "inputs": {
+    "config": "configs/four_resonator_chip.toml",
+    "current_field_fem_results": "results/four_resonator_chip/current_cavity_field_fem.json",
+    "fem_calibration": "configs/four_resonator_chip_fem_calibration.json",
+    "frequency_bank_results": "results/frequency_bank_8x/results.json"
+  },
+  "mean_resonator_cavity_g_mhz_assumption": 25.0,
+  "minimum_ground_cutout_edge_gap_mm": 0.37403200000000003,
+  "minimum_nominal_footprint_edge_gap_mm": 0.37403200000000003,
+  "minimum_resonator_center_separation_mm": 0.8,
+  "optimizer": {
+    "cavity_A": {
+      "function_evaluations": 2,
+      "iterations": 2,
+      "local_refinement_function_evaluations": 0,
+      "local_refinement_success": null,
+      "message": "fixed geometry evaluated",
+      "mode": "fixed_centered_square_with_corner_assignment_enumeration",
+      "objective": 0.1402859398267977,
+      "seed": null,
+      "success": true
+    },
+    "cavity_B": {
+      "function_evaluations": 2,
+      "iterations": 2,
+      "local_refinement_function_evaluations": 0,
+      "local_refinement_success": null,
+      "message": "fixed geometry evaluated",
+      "mode": "fixed_centered_square_with_corner_assignment_enumeration",
+      "objective": 0.15653301143851345,
+      "seed": null,
+      "success": true
+    }
+  },
+  "pin_calibration": [
+    {
+      "cavity": "cavity_A",
+      "global_16_resonator_qc_max_to_min": 1.1666309137513742,
+      "interpolated_cavity_frequency_ghz": 9.750015257229656,
+      "interpolated_cavity_port_qc": 1202.5285290036832,
+      "pin_length_mm": 8.46405849093836,
+      "pin_protrusion_into_cavity_mm": 0.9640584909383598,
+      "resonator_qc_max": 1072376.184294073,
+      "resonator_qc_max_to_min": 1.1481264256892267,
+      "resonator_qc_min": 934022.7350401063,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "global_16_resonator_qc_max_to_min": 1.1666309137513742,
+      "interpolated_cavity_frequency_ghz": 9.790345231262178,
+      "interpolated_cavity_port_qc": 1087.3251426466734,
+      "pin_length_mm": 8.931576727188922,
+      "pin_protrusion_into_cavity_mm": 1.4315767271889221,
+      "resonator_qc_max": 1081106.9789782523,
+      "resonator_qc_max_to_min": 1.1666309137513742,
+      "resonator_qc_min": 926691.5236301133,
+      "target_resonator_external_qc": 1000000.0
+    }
+  ],
+  "placements": [
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 997394.6795640499,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.037052407430178444,
+      "x_mm": -3.125,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 973261.5120020455,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.037051574328280386,
+      "x_mm": -3.125,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 957187.5643935278,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.036901560976381365,
+      "x_mm": 3.125,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 934022.7350401063,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03688831526350312,
+      "x_mm": 3.125,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": -0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1072376.184294073,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03398924743023967,
+      "x_mm": -3.925,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": -0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1045067.6198780489,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03398691532283453,
+      "x_mm": -3.925,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": 0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1027053.2092390339,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.033835715718039575,
+      "x_mm": 3.925,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": 0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 1001069.9198613382,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03381772285549221,
+      "x_mm": 3.925,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 999867.7716011751,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03737683478792125,
+      "x_mm": -3.125,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 978108.4183244085,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.037353016070319725,
+      "x_mm": -3.125,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 948086.7607455343,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03749700804213002,
+      "x_mm": 3.125,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.4,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 926691.5236301133,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03747705450783544,
+      "x_mm": 3.125,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": -0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1081106.9789782523,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03428008958542198,
+      "x_mm": -3.925,
+      "y_mm": -0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": -0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1055852.86959357,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.034264697341751534,
+      "x_mm": -3.925,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": 0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1021760.177763988,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03440120680138225,
+      "x_mm": 3.925,
+      "y_mm": 0.4
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": 0.4,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 997851.9550129012,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03437478595728751,
+      "x_mm": 3.925,
+      "y_mm": -0.4
+    }
+  ],
+  "position_tolerance_worst_case_qc_max_to_min": {
+    "independent_xy_error_envelope": {
+      "10": 1.1720851787122208,
+      "2": 1.1677195436290342,
+      "20": 1.1775673327704794,
+      "5": 1.1693545705341744
+    },
+    "semantics": "deterministic corner envelope from the local 2-D FEM field interpolation; excludes linewidth, film, cavity-machining, and model-form uncertainty",
+    "tolerance_unit": "um"
+  },
+  "qc_definition": "external coupling Q from each chip resonator to its SMA port through the detuned cavity mode",
+  "qc_predictions": [
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 997394.6795640499,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 973261.5120020455,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 957187.5643935278,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 934022.7350401063,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1072376.184294073,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1045067.6198780489,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1027053.2092390339,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 1001069.9198613382,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 999867.7716011751,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 978108.4183244085,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 948086.7607455343,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 926691.5236301133,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1081106.9789782523,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1055852.86959357,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1021760.177763988,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 997851.9550129012,
+      "target_resonator_external_qc": 1000000.0
+    }
+  ],
+  "rectangle_geometry": {
+    "cavity_A": {
+      "left": {
+        "center_x_mm": 0.0,
+        "center_y_mm": 0.0,
+        "half_height_mm": 0.4,
+        "half_width_mm": 0.4,
+        "height_mm": 0.8,
+        "width_mm": 0.8,
+        "x_high_mm": 0.4,
+        "x_low_mm": -0.4,
+        "y_high_mm": 0.4,
+        "y_low_mm": -0.4
+      },
+      "right": {
+        "center_x_mm": 0.0,
+        "center_y_mm": 0.0,
+        "half_height_mm": 0.4,
+        "half_width_mm": 0.4,
+        "height_mm": 0.8,
+        "width_mm": 0.8,
+        "x_high_mm": 0.4,
+        "x_low_mm": -0.4,
+        "y_high_mm": 0.4,
+        "y_low_mm": -0.4
+      }
+    },
+    "cavity_B": {
+      "left": {
+        "center_x_mm": 0.0,
+        "center_y_mm": 0.0,
+        "half_height_mm": 0.4,
+        "half_width_mm": 0.4,
+        "height_mm": 0.8,
+        "width_mm": 0.8,
+        "x_high_mm": 0.4,
+        "x_low_mm": -0.4,
+        "y_high_mm": 0.4,
+        "y_low_mm": -0.4
+      },
+      "right": {
+        "center_x_mm": 0.0,
+        "center_y_mm": 0.0,
+        "half_height_mm": 0.4,
+        "half_width_mm": 0.4,
+        "height_mm": 0.8,
+        "width_mm": 0.8,
+        "x_high_mm": 0.4,
+        "x_low_mm": -0.4,
+        "y_high_mm": 0.4,
+        "y_low_mm": -0.4
+      }
+    }
+  },
+  "schema_id": "geerlings.four_resonator_chip.centered_square_qc.v1",
+  "target_resonator_external_qcs": [
+    1000000.0
+  ],
+  "validity": {
+    "cavity_pin_response": "historical direct 3-D FEM pin-Qc anchors with current-depth frequency alignment",
+    "field_position_response": "bilinear interpolation of direct current-depth 3-D FEM field samples",
+    "relative_position_equalization": "more robust than the absolute Qc calibration but still inherits cavity-model and fabrication uncertainty",
+    "resonator_external_qc": "coupled-mode conversion, not a conformal micron-to-centimeter full-wave solve; absolute values scale as 1/g^2"
+  }
+}
