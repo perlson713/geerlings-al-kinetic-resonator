@@ -23,6 +23,7 @@ side_mm = 0.80
 [cavity]
 case_a = "cavity_A"
 case_b = "cavity_B"
+case_c = "cavity_C"
 straight_length_mm = 15.0
 width_mm = 4.8
 end_radius_mm = 2.4

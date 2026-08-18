@@ -82,5 +82,47 @@
       "101/0": 4
     },
     "top_cells": 1
+  },
+  "cavity_C_left_below9_P01-P02_above9_P05-P06_4res.gds": {
+    "above_9ghz_patterns": [
+      "P05",
+      "P06"
+    ],
+    "below_9ghz_patterns": [
+      "P01",
+      "P02"
+    ],
+    "bounding_box_um": [
+      5050.0,
+      5050.0
+    ],
+    "rotation_labels_all_zero": true,
+    "shape_counts": {
+      "1/0": 1333,
+      "100/0": 1,
+      "101/0": 4
+    },
+    "top_cells": 1
+  },
+  "cavity_C_right_below9_P03-P04_above9_P07-P08_4res.gds": {
+    "above_9ghz_patterns": [
+      "P07",
+      "P08"
+    ],
+    "below_9ghz_patterns": [
+      "P03",
+      "P04"
+    ],
+    "bounding_box_um": [
+      5050.0,
+      5050.0
+    ],
+    "rotation_labels_all_zero": true,
+    "shape_counts": {
+      "1/0": 1333,
+      "100/0": 1,
+      "101/0": 4
+    },
+    "top_cells": 1
   }
 }

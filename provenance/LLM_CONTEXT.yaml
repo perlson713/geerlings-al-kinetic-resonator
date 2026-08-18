@@ -160,20 +160,26 @@ four_resonator_rectangle_chip:
   target_resonator_external_qc: 1000000.0
   cavity_A_pin_length_mm: 8.4635717497
   cavity_B_pin_length_mm: 8.9309184375
+  cavity_C_pin_length_mm: 9.5632364041
   cavity_A_qc_max_to_min: 1.0009035818
   cavity_B_qc_max_to_min: 1.0026172033
-  global_16_qc_max_to_min: 1.0026172033
+  cavity_C_qc_max_to_min: 1.0243933962
+  global_24_qc_max_to_min: 1.0243933962
   minimum_center_separation_mm: 0.600000
   minimum_ground_cutout_edge_gap_mm: 0.174032
   field_solver: NGSolve_closed_PEC_3D_Hcurl_current_depth
   cavity_A_closed_mode_ghz: 9.7599247413
   cavity_B_closed_mode_ghz: 9.7971949896
+  cavity_C_height_mm: 15.20
+  cavity_C_closed_mode_ghz: 10.3279998771
+  cavity_C_pin_anchor_proxy: cavity_B
   current_geometry_direct_port_sweep: false
   absolute_qc_model: historical_pin_FEM_plus_current_frequency_alignment_plus_coupled_mode
   centered_square_companion:
     side_mm: 0.80
     chip_local_centers_mm: [[-0.40, -0.40], [-0.40, 0.40], [0.40, -0.40], [0.40, 0.40]]
-    global_16_qc_max_to_min: 1.1666309138
+    cavity_C_qc_max_to_min: 1.1660481141
+    global_24_qc_max_to_min: 1.1673926944
     minimum_ground_cutout_edge_gap_mm: 0.374032
   output: results/four_resonator_chip
 validation:
@@ -181,18 +187,18 @@ validation:
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
-  current_unittest_count: 44
+  current_unittest_count: 45
   current_unittest_result: pass
   frequency_bank_gds_files: 8
   frequency_bank_gds_top_cells_each: 1
   frequency_bank_gds_metal_polygons_each: 337
   frequency_bank_gds_port_layers_absent: true
-  four_resonator_gds_files: 4
+  four_resonator_gds_files: 6
   four_resonator_gds_readback_top_cells_each: 1
   four_resonator_centers_rectangle_verified: true
   four_resonator_unittest_result: pass
-  centered_square_gds_files: 4
-  total_four_resonator_gds_files: 8
+  centered_square_gds_files: 6
+  total_four_resonator_gds_files: 12
   centered_square_geometry_verified: true
 known_limitations:
   - schematic_reconstruction_not_original_mask
@@ -232,6 +238,7 @@ publication:
   square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/square-9ghz-v1
   fig1_square_9ghz_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/fig1-square-9ghz-v2
   frequency_bank_8x_release: https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1
+  four_resonator_layout_pr: https://github.com/perlson713/geerlings-al-kinetic-resonator/pull/1
   initial_commit: 3f408a46f22c6054a9c406b410e94fcceef6746f
   square_9ghz_commit: d749221ef42a609fb3b6599b1c01c219f6d91736
   fig1_square_9ghz_commit: 6bf3c7dd50e64da5880ed0722cb8e90a271aafb0

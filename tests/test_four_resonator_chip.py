@@ -32,6 +32,7 @@ class FourResonatorChipTests(unittest.TestCase):
         cls.calibration = merge_current_cavity_field_calibration(
             pin_calibration, field_result
         )
+        cls.field_result = field_result
         cls.summary = json.loads(
             (
                 ROOT
@@ -57,7 +58,7 @@ class FourResonatorChipTests(unittest.TestCase):
 
     def test_current_field_merge_has_complete_2d_grids(self) -> None:
         grids = self.calibration["field_grids"]
-        self.assertEqual(set(grids), {"cavity_A", "cavity_B"})
+        self.assertEqual(set(grids), {"cavity_A", "cavity_B", "cavity_C"})
         for cavity in grids.values():
             self.assertEqual(set(cavity), {"left", "right"})
             for grid in cavity.values():
@@ -70,12 +71,12 @@ class FourResonatorChipTests(unittest.TestCase):
 
     def test_rectangle_solution_is_uniform_and_clear(self) -> None:
         placements = self.summary["placements"]
-        self.assertEqual(len(placements), 16)
+        self.assertEqual(len(placements), 24)
         self.assertTrue(all(row["rotation_deg"] == 0.0 for row in placements))
         self.assertTrue(
             self.summary["constraints"]["centers_form_axis_aligned_rectangle"]
         )
-        for cavity in ("cavity_A", "cavity_B"):
+        for cavity in ("cavity_A", "cavity_B", "cavity_C"):
             for chip in ("left", "right"):
                 selected = [
                     row
@@ -99,9 +100,17 @@ class FourResonatorChipTests(unittest.TestCase):
                     {row["frequency_band"] for row in selected},
                     {"below_9ghz", "above_9ghz"},
                 )
-        ratios = self.summary["global_16_resonator_qc_max_to_min"]
+        ratios = self.summary["global_resonator_qc_max_to_min"]
         self.assertEqual(set(ratios), {"1e+06"})
-        self.assertLess(ratios["1e+06"], 1.005)
+        self.assertLess(ratios["1e+06"], 1.03)
+        ratio_by_cavity = {
+            row["cavity"]: row["resonator_qc_max_to_min"]
+            for row in self.summary["pin_calibration"]
+            if row["target_resonator_external_qc"] == 1.0e6
+        }
+        self.assertLess(ratio_by_cavity["cavity_A"], 1.005)
+        self.assertLess(ratio_by_cavity["cavity_B"], 1.005)
+        self.assertLess(ratio_by_cavity["cavity_C"], 1.027)
         self.assertGreaterEqual(
             self.summary["minimum_resonator_center_separation_mm"], 0.60 - 1.0e-9
         )
@@ -109,7 +118,7 @@ class FourResonatorChipTests(unittest.TestCase):
             self.summary["minimum_ground_cutout_edge_gap_mm"], 0.174 - 1.0e-6
         )
         tolerance = self.summary["position_tolerance_worst_case_qc_max_to_min"]
-        self.assertLess(tolerance["independent_xy_error_envelope"]["10"], 1.02)
+        self.assertLess(tolerance["independent_xy_error_envelope"]["10"], 1.031)
 
     def test_pin_lengths_match_fem_interpolation(self) -> None:
         nominal = [
@@ -124,6 +133,17 @@ class FourResonatorChipTests(unittest.TestCase):
         self.assertAlmostEqual(
             by_case["cavity_B"]["pin_length_mm"], 8.93, delta=0.02
         )
+        self.assertIn("cavity_C", by_case)
+        self.assertGreaterEqual(by_case["cavity_C"]["pin_length_mm"], 7.75)
+        self.assertLessEqual(by_case["cavity_C"]["pin_length_mm"], 11.0)
+
+    def test_cavity_c_uses_15p2mm_current_field_and_explicit_pin_proxy(self) -> None:
+        geometry = self.field_result["cases"]["cavity_C"]["geometry"]
+        self.assertEqual(geometry["cavity_height_mm"], 15.2)
+        self.assertEqual(
+            self.calibration["provenance"]["pin_anchor_aliases_applied"],
+            {"cavity_C": "cavity_B"},
+        )
 
     def test_centered_square_is_exact_and_centered(self) -> None:
         self.assertEqual(
@@ -133,7 +153,7 @@ class FourResonatorChipTests(unittest.TestCase):
         self.assertTrue(self.square_summary["constraints"]["centered_on_chip"])
         self.assertEqual(self.square_summary["constraints"]["square_side_mm"], 0.8)
         placements = self.square_summary["placements"]
-        for cavity in ("cavity_A", "cavity_B"):
+        for cavity in ("cavity_A", "cavity_B", "cavity_C"):
             for chip in ("left", "right"):
                 selected = [
                     row
@@ -151,7 +171,7 @@ class FourResonatorChipTests(unittest.TestCase):
             self.square_summary["minimum_resonator_center_separation_mm"], 0.8
         )
         self.assertLess(
-            self.square_summary["global_16_resonator_qc_max_to_min"]["1e+06"],
+            self.square_summary["global_resonator_qc_max_to_min"]["1e+06"],
             1.17,
         )
 
@@ -160,7 +180,7 @@ class FourResonatorChipTests(unittest.TestCase):
         verification = json.loads(
             (result / "gds_readback_verification.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(len(verification), 4)
+        self.assertEqual(len(verification), 6)
         for name, row in verification.items():
             self.assertIn("below9_", name)
             self.assertIn("above9_", name)
@@ -180,7 +200,7 @@ class FourResonatorChipTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
-        self.assertEqual(len(verification), 4)
+        self.assertEqual(len(verification), 6)
         for name, row in verification.items():
             self.assertIn("centered_square", name)
             self.assertTrue((result / name).is_file())

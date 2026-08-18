@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Solve the current 18.00/17.77 mm silicon-loaded cavity field profiles.
+"""Solve the configured silicon-loaded cavity field profiles.
 
 This is a closed-PEC 3-D NGSolve eigenmode calculation used for relative
 resonator placement.  SMA bores and pins are intentionally excluded here;
@@ -288,29 +288,74 @@ def main() -> int:
     parser.add_argument("--maxh", type=float, default=0.9)
     parser.add_argument("--chip-maxh", type=float, default=0.20)
     parser.add_argument("--iterations", type=int, default=20)
+    parser.add_argument(
+        "--case",
+        action="append",
+        metavar="NAME=HEIGHT_MM",
+        help=(
+            "solve only the named case at the supplied cavity height; repeat for "
+            "multiple cases (default: cavity_A, cavity_B, and cavity_C)"
+        ),
+    )
+    parser.add_argument(
+        "--update-existing",
+        action="store_true",
+        help="merge selected cases into an existing output JSON",
+    )
     args = parser.parse_args()
     settings = Settings(
         maxh_mm=args.maxh,
         chip_maxh_mm=args.chip_maxh,
         iterations=args.iterations,
     )
-    cases = {
+    default_cases = {
         "cavity_A": Geometry(cavity_height_mm=18.00),
         "cavity_B": Geometry(cavity_height_mm=17.77),
+        "cavity_C": Geometry(cavity_height_mm=15.20),
     }
-    payload = {
-        "schema_id": "geerlings.current_cavity_field_fem.v1",
-        "solver": "NGSolve H(curl) closed-PEC eigenproblem",
-        "purpose": "relative in-plane field profile for position-only Qc equalization",
-        "profiles": {},
-        "cases": {},
-        "validity": {
-            "current_cavity_depths_included": True,
-            "two_silicon_chips_included": True,
-            "sma_bore_and_pin_included": False,
-            "absolute_external_qc_computed": False,
-        },
-    }
+    if args.case:
+        cases = {}
+        for specification in args.case:
+            name, separator, raw_height = specification.partition("=")
+            name = name.strip()
+            if not separator or not name:
+                parser.error(f"invalid --case {specification!r}; expected NAME=HEIGHT_MM")
+            try:
+                height_mm = float(raw_height)
+            except ValueError:
+                parser.error(f"invalid cavity height in --case {specification!r}")
+            if height_mm <= Geometry().split_from_floor_mm:
+                parser.error("cavity height must exceed the 6.7 mm split plane")
+            if name in cases:
+                parser.error(f"duplicate --case name {name!r}")
+            cases[name] = Geometry(cavity_height_mm=height_mm)
+    else:
+        cases = default_cases
+
+    if args.update_existing:
+        if not args.output.is_file():
+            parser.error("--update-existing requires an existing --output JSON")
+        payload = json.loads(args.output.read_text(encoding="utf-8"))
+        if payload.get("schema_id") != "geerlings.current_cavity_field_fem.v1":
+            parser.error("existing output has an incompatible schema")
+        if not isinstance(payload.get("profiles"), dict) or not isinstance(
+            payload.get("cases"), dict
+        ):
+            parser.error("existing output has no profiles/cases objects")
+    else:
+        payload = {
+            "schema_id": "geerlings.current_cavity_field_fem.v1",
+            "solver": "NGSolve H(curl) closed-PEC eigenproblem",
+            "purpose": "relative in-plane field profile for position-only Qc equalization",
+            "profiles": {},
+            "cases": {},
+            "validity": {
+                "current_cavity_depths_included": True,
+                "two_silicon_chips_included": True,
+                "sma_bore_and_pin_included": False,
+                "absolute_external_qc_computed": False,
+            },
+        }
     for name, geometry in cases.items():
         print(f"=== {name}: height {geometry.cavity_height_mm:.2f} mm ===", flush=True)
         mesh_path = args.work_directory / name / "mesh.vol"

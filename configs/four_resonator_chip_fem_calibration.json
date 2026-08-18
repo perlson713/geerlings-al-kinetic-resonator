@@ -17,11 +17,15 @@
     "pin_geometry_scope": "historical silicon-loaded Qc campaign near 10.1 GHz",
     "pin_case_mapping": {
       "cavity_A": "historical original_high port case",
-      "cavity_B": "historical moved_low port case"
+      "cavity_B": "historical moved_low port case",
+      "cavity_C": "proxy to historical moved_low port case; frequency-aligned to the current 15.20 mm closed-cavity solve"
     },
     "current_field_profile_source": "results/four_resonator_chip/current_cavity_field_fem.json",
     "current_depth_field_revalidated": true,
     "current_geometry_port_sweep_revalidated": false
+  },
+  "pin_anchor_aliases": {
+    "cavity_C": "cavity_B"
   },
   "historical_profiles_not_used": {
     "cavity_A": [

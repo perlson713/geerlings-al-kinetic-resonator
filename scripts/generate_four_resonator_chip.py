@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Optimize and build four-resonator chips for the two-cavity assembly."""
+"""Optimize and build four-resonator chips for the configured cavities."""
 
 from __future__ import annotations
 
@@ -323,7 +323,15 @@ def _render_layout_preview(
     width = float(cavity["width_mm"])
     radius = float(cavity["end_radius_mm"])
     total_length = straight + 2.0 * radius
-    figure, axes = plt.subplots(2, 1, figsize=(14.2, 8.1), dpi=190)
+    case_count = len(case_codes)
+    figure, axes_grid = plt.subplots(
+        case_count,
+        1,
+        figsize=(14.2, 3.9 * case_count + 0.3),
+        dpi=190,
+        squeeze=False,
+    )
+    axes = axes_grid[:, 0]
     figure.subplots_adjust(
         left=0.075, right=0.985, bottom=0.08, top=0.95, hspace=0.28
     )
@@ -385,7 +393,10 @@ def _render_qc_preview(
     case_codes: dict[str, str],
 ) -> None:
     figure, axes = plt.subplots(1, 2, figsize=(11.8, 4.6), dpi=190, layout="constrained")
-    colors = {key: color for key, color in zip(case_codes, ("#2878a8", "#b25b24"))}
+    colors = {
+        key: plt.get_cmap("tab10")(index)
+        for index, key in enumerate(case_codes)
+    }
     for case, code in case_codes.items():
         rows = [row for row in summary["pin_calibration"] if row["cavity"] == case]
         axes[0].loglog(
@@ -515,9 +526,12 @@ def main() -> int:
     output.mkdir(parents=True, exist_ok=True)
 
     case_codes = {
-        str(cavity["case_a"]): "A",
-        str(cavity["case_b"]): "B",
+        str(value): str(key).removeprefix("case_").upper()
+        for key, value in cavity.items()
+        if str(key).startswith("case_")
     }
+    if not case_codes or len(set(case_codes.values())) != len(case_codes):
+        raise ValueError("configured cavity case codes must be unique")
     if set(case_codes) != {
         row["cavity"] for row in summary["placements"]
     }:
@@ -622,7 +636,8 @@ def main() -> int:
         "chip_size_mm": [float(chip["size_mm"]), float(chip["size_mm"])],
         "resonators_per_chip": 4,
         "chips_per_cavity": 2,
-        "total_resonators": 16,
+        "cavity_design_cases": len(case_codes),
+        "total_resonators": len(summary["placements"]),
         "rotation_deg": 0.0,
         "centers_form_axis_aligned_rectangle": True,
         "frequency_partition": summary["constraints"]["frequency_partition"],
@@ -667,7 +682,8 @@ def main() -> int:
         "chip_size_mm": [float(chip["size_mm"]), float(chip["size_mm"])],
         "resonators_per_chip": 4,
         "chips_per_cavity": 2,
-        "total_resonators": 16,
+        "cavity_design_cases": len(case_codes),
+        "total_resonators": len(square_summary["placements"]),
         "rotation_deg": 0.0,
         "centers_form_axis_aligned_rectangle": True,
         "centered_on_chip": True,
@@ -696,13 +712,13 @@ def main() -> int:
                 "gds": gds_artifacts,
                 "centered_square_gds": square_gds_artifacts,
                 "global_qc_max_to_min": summary[
-                    "global_16_resonator_qc_max_to_min"
+                    "global_resonator_qc_max_to_min"
                 ],
                 "minimum_gap_mm": summary[
                     "minimum_nominal_footprint_edge_gap_mm"
                 ],
                 "centered_square_global_qc_max_to_min": square_summary[
-                    "global_16_resonator_qc_max_to_min"
+                    "global_resonator_qc_max_to_min"
                 ],
                 "centered_square_minimum_gap_mm": square_summary[
                     "minimum_nominal_footprint_edge_gap_mm"

@@ -73,15 +73,29 @@ def merge_current_cavity_field_calibration(
     The current closed-cavity frequency replaces the weak-pin anchor frequency;
     the historical pin-induced frequency shifts and cavity-port Qc values are
     retained.  This makes the hybrid nature of the absolute-Qc estimate explicit
-    while using the current 18.00/17.77 mm field shapes for position balancing.
+    while using the current cavity-height field shapes for position balancing.
     """
 
     merged = deepcopy(dict(calibration))
-    pin_anchors = merged.get("pin_anchors")
+    raw_pin_anchors = merged.get("pin_anchors")
     profiles = field_result.get("profiles")
     cases = field_result.get("cases")
-    if not isinstance(pin_anchors, Mapping):
+    if not isinstance(raw_pin_anchors, Mapping):
         raise ValueError("calibration has no pin_anchors object")
+    pin_anchors = deepcopy(dict(raw_pin_anchors))
+    raw_aliases = merged.get("pin_anchor_aliases", {})
+    if not isinstance(raw_aliases, Mapping):
+        raise ValueError("pin_anchor_aliases must be an object")
+    pin_anchor_aliases = {
+        str(cavity): str(source) for cavity, source in raw_aliases.items()
+    }
+    for cavity, source in pin_anchor_aliases.items():
+        if cavity in pin_anchors:
+            raise ValueError(f"pin anchor alias target {cavity} already exists")
+        if source not in pin_anchors:
+            raise ValueError(f"pin anchor alias source {source} does not exist")
+        pin_anchors[cavity] = deepcopy(pin_anchors[source])
+    merged["pin_anchors"] = pin_anchors
     if not isinstance(profiles, Mapping) or not isinstance(cases, Mapping):
         raise ValueError("current cavity FEM result has no profiles/cases objects")
     if set(pin_anchors) != set(profiles) or set(pin_anchors) != set(cases):
@@ -185,6 +199,7 @@ def merge_current_cavity_field_calibration(
         "historical direct pin-Qc anchors with current closed-cavity frequency "
         "alignment; not a current-geometry port full-wave sweep"
     )
+    provenance["pin_anchor_aliases_applied"] = pin_anchor_aliases
     merged["provenance"] = provenance
     return merged
 
@@ -507,7 +522,7 @@ def optimize_qc_positions(
         global_ratio = max(all_values) / min(all_values)
         global_ratios[f"{target:.0e}"] = global_ratio
         for row in target_rows:
-            row["global_16_resonator_qc_max_to_min"] = global_ratio
+            row["global_resonator_qc_max_to_min"] = global_ratio
             pin_calibration.append(row)
 
     return {
@@ -528,7 +543,7 @@ def optimize_qc_positions(
         "frequency_bank_ghz": frequencies,
         "target_resonator_external_qcs": targets,
         "pin_calibration": pin_calibration,
-        "global_16_resonator_qc_max_to_min": global_ratios,
+        "global_resonator_qc_max_to_min": global_ratios,
         "minimum_nominal_footprint_edge_gap_mm": minimum_gap,
         "position_tolerance_worst_case_qc_max_to_min": {
             "tolerance_unit": "um",
@@ -1157,7 +1172,7 @@ def optimize_rectangle_qc_positions(
         global_ratio = max(all_values) / min(all_values)
         global_ratios[f"{target:.0e}"] = global_ratio
         for row in target_rows:
-            row["global_16_resonator_qc_max_to_min"] = global_ratio
+            row["global_resonator_qc_max_to_min"] = global_ratio
             pin_calibration.append(row)
 
     tolerance_ratios: dict[str, float] = {}
@@ -1221,7 +1236,7 @@ def optimize_rectangle_qc_positions(
         "rectangle_geometry": rectangle_geometry,
         "optimizer": {cavity: optimized[cavity]["optimizer"] for cavity in cavity_keys},
         "pin_calibration": pin_calibration,
-        "global_16_resonator_qc_max_to_min": global_ratios,
+        "global_resonator_qc_max_to_min": global_ratios,
         "minimum_resonator_center_separation_mm": minimum_center_separation,
         "minimum_ground_cutout_edge_gap_mm": minimum_cutout_gap,
         "minimum_nominal_footprint_edge_gap_mm": minimum_cutout_gap,

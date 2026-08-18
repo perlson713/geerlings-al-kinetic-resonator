@@ -1937,6 +1937,1015 @@
         "sample_patch_offset_mm": 0.12,
         "sample_z_mm": 6.71
       }
+    },
+    "cavity_C": {
+      "fundamental": {
+        "eigenvalue_last_relative_change": 5.043900405393425e-06,
+        "eigenvalue_per_mm2": 0.04685444296086786,
+        "electric_energy_silicon_fraction": 0.40484710039619026,
+        "frequency_ghz": 10.327999877114472,
+        "ndof": 122416,
+        "pinvit_history": [
+          0.5497611502934898,
+          0.24657102276584342,
+          0.12523903183374963,
+          0.08311845593284937,
+          0.06756193173942539,
+          0.06103383999234823,
+          0.05779249972892998,
+          0.055822591011574746,
+          0.05447333849248808,
+          0.05345674263832009,
+          0.05265092950311195,
+          0.05198305497948269,
+          0.051414958130872254,
+          0.05092084722675919,
+          0.05048595013346015,
+          0.05009957235097762,
+          0.04975479728223317,
+          0.04944619984786582,
+          0.04916969395742763,
+          0.04892182778307266,
+          0.04869968244619842,
+          0.0485006819523538,
+          0.048322521449757114,
+          0.048163131466665086,
+          0.048020625408850534,
+          0.047893302683429034,
+          0.04777960929388905,
+          0.04767814598911208,
+          0.04758763815592116,
+          0.04750694097012191,
+          0.04743501613529168,
+          0.04737093346446566,
+          0.04731385279458388,
+          0.04726302309521061,
+          0.04721776835999112,
+          0.047177485361756304,
+          0.047141632627832955,
+          0.047109727634868294,
+          0.04708133818660379,
+          0.04705607953087776,
+          0.0470336076131875,
+          0.04701361637607251,
+          0.04699583247868143,
+          0.046980012897723786,
+          0.04696594079325308,
+          0.04695342344766332,
+          0.0469422890278393,
+          0.046932384853771804,
+          0.046923574861804464,
+          0.04691573817261184,
+          0.04690876710292874,
+          0.04690256599420038,
+          0.04689704965352194,
+          0.04689214240319333,
+          0.046887776857652545,
+          0.04688389315681886,
+          0.046880438006156114,
+          0.04687736406096256,
+          0.04687462917259423,
+          0.046872195895584765,
+          0.04687003089547311,
+          0.04686810455520014,
+          0.04686639050967755,
+          0.046864865332028494,
+          0.04686350816760612,
+          0.04686230048421319,
+          0.046861225784195056,
+          0.04686026940578705,
+          0.04685941829653132,
+          0.046858660855399595,
+          0.04685798675440042,
+          0.04685738681317212,
+          0.0468568528584787,
+          0.046856377624630935,
+          0.046855954642783484,
+          0.04685557816188571,
+          0.04685524306142861,
+          0.04685494478870408,
+          0.046854679290011705,
+          0.04685444296086786
+        ],
+        "solve_seconds": 21.160752800060436
+      },
+      "geometry": {
+        "cavity_height_mm": 15.2,
+        "cavity_width_mm": 4.8,
+        "chip_center_abs_x_mm": 3.525,
+        "chip_size_mm": 5.05,
+        "chip_thickness_mm": 0.5,
+        "end_radius_mm": 2.4,
+        "silicon_epsr": 11.68,
+        "split_from_floor_mm": 6.7,
+        "straight_length_mm": 15.0
+      },
+      "mesh": {
+        "boundaries": [
+          "pec",
+          "silicon_interface"
+        ],
+        "elements_3d": 49822,
+        "materials": [
+          "air",
+          "silicon",
+          "silicon"
+        ],
+        "raw_mesh": "build/current_cavity_field_fem/cavity_C/mesh.vol"
+      },
+      "samples": [
+        {
+          "e_in_plane_rms_normalized": 0.041549733037295734,
+          "ex_rms_normalized": 0.00036498640771439,
+          "ey_rms_normalized": 0.04154812992654096,
+          "ez_rms_normalized": 0.004608630120716737,
+          "x_mm": -2.325,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.041952627389148366,
+          "ex_rms_normalized": 0.0002238636060349572,
+          "ey_rms_normalized": 0.041952030105092825,
+          "ez_rms_normalized": 0.0025358620859813716,
+          "x_mm": -2.325,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.042162146389329545,
+          "ex_rms_normalized": 0.00011407963826625563,
+          "ey_rms_normalized": 0.04216199205435373,
+          "ez_rms_normalized": 0.0012273424661835984,
+          "x_mm": -2.325,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0422400051330771,
+          "ex_rms_normalized": 2.5338424628017752e-05,
+          "ey_rms_normalized": 0.0422399975332222,
+          "ez_rms_normalized": 0.00027303123901169343,
+          "x_mm": -2.325,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.042162316819157254,
+          "ex_rms_normalized": 9.439986380018088e-05,
+          "ey_rms_normalized": 0.042162211140127664,
+          "ez_rms_normalized": 0.0009698505607258985,
+          "x_mm": -2.325,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04196080936502295,
+          "ex_rms_normalized": 0.00020358206356655008,
+          "ey_rms_normalized": 0.04196031550061548,
+          "ez_rms_normalized": 0.002243283293580714,
+          "x_mm": -2.325,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04154542343351953,
+          "ex_rms_normalized": 0.00034014312735384904,
+          "ey_rms_normalized": 0.041544030990304105,
+          "ez_rms_normalized": 0.004247962034521654,
+          "x_mm": -2.325,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.041539754660617385,
+          "ex_rms_normalized": 0.00044689582210619236,
+          "ey_rms_normalized": 0.04153735067849739,
+          "ez_rms_normalized": 0.0046639020828741105,
+          "x_mm": 2.325,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04193388397062484,
+          "ex_rms_normalized": 0.00027981446261966575,
+          "ey_rms_normalized": 0.041932950393793376,
+          "ez_rms_normalized": 0.0025668872271793616,
+          "x_mm": 2.325,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04214564370911369,
+          "ex_rms_normalized": 0.0001519410653177941,
+          "ey_rms_normalized": 0.0421453698236025,
+          "ez_rms_normalized": 0.001244353830469111,
+          "x_mm": 2.325,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04221435659183437,
+          "ex_rms_normalized": 4.7596534098033815e-05,
+          "ey_rms_normalized": 0.042214329759365975,
+          "ez_rms_normalized": 0.00029325531626516176,
+          "x_mm": 2.325,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.042120906703702096,
+          "ex_rms_normalized": 6.512597963624357e-05,
+          "ey_rms_normalized": 0.042120856355833416,
+          "ez_rms_normalized": 0.0009526226657836566,
+          "x_mm": 2.325,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04190250785850587,
+          "ex_rms_normalized": 0.0001627445935047711,
+          "ey_rms_normalized": 0.041902191816531875,
+          "ez_rms_normalized": 0.0022325113365094023,
+          "x_mm": 2.325,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04149209331153489,
+          "ex_rms_normalized": 0.00027200356137208206,
+          "ey_rms_normalized": 0.041491201735256104,
+          "ez_rms_normalized": 0.004215026707955949,
+          "x_mm": 2.325,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040575304738976053,
+          "ex_rms_normalized": 0.00011938784362591449,
+          "ey_rms_normalized": 0.04057512909657303,
+          "ez_rms_normalized": 0.004824561082971915,
+          "x_mm": -2.725,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040967631460362926,
+          "ex_rms_normalized": 8.172975305935907e-05,
+          "ey_rms_normalized": 0.04096754993552315,
+          "ez_rms_normalized": 0.0026590606819567857,
+          "x_mm": -2.725,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04116826927725007,
+          "ex_rms_normalized": 4.089142732636603e-05,
+          "ey_rms_normalized": 0.04116824896902154,
+          "ez_rms_normalized": 0.0012818056195505515,
+          "x_mm": -2.725,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.041256193175063474,
+          "ex_rms_normalized": 1.2735836221560162e-05,
+          "ey_rms_normalized": 0.04125619120927948,
+          "ez_rms_normalized": 0.00027557045447366995,
+          "x_mm": -2.725,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04117989626476952,
+          "ex_rms_normalized": 3.124644248691276e-05,
+          "ey_rms_normalized": 0.04117988441019487,
+          "ez_rms_normalized": 0.0010197460469216608,
+          "x_mm": -2.725,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040953179963172756,
+          "ex_rms_normalized": 7.263576967976611e-05,
+          "ey_rms_normalized": 0.04095311554864877,
+          "ez_rms_normalized": 0.002344385594111157,
+          "x_mm": -2.725,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040571792684890376,
+          "ex_rms_normalized": 0.0001144996177075158,
+          "ey_rms_normalized": 0.04057163111711518,
+          "ez_rms_normalized": 0.004426314528805106,
+          "x_mm": -2.725,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0405682056301725,
+          "ex_rms_normalized": 0.00019252715129978312,
+          "ey_rms_normalized": 0.04056774878333739,
+          "ez_rms_normalized": 0.004914888529972556,
+          "x_mm": 2.725,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040945375575657465,
+          "ex_rms_normalized": 0.00013461622757369958,
+          "ey_rms_normalized": 0.04094515428598262,
+          "ez_rms_normalized": 0.002709748299056136,
+          "x_mm": 2.725,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04115329412029377,
+          "ex_rms_normalized": 8.4783620609613e-05,
+          "ey_rms_normalized": 0.04115320678500136,
+          "ez_rms_normalized": 0.0013205453511129107,
+          "x_mm": 2.725,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04124038362192897,
+          "ex_rms_normalized": 4.686950867726546e-05,
+          "ey_rms_normalized": 0.041240356988428505,
+          "ez_rms_normalized": 0.0003082829526806383,
+          "x_mm": 2.725,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.041162051761318416,
+          "ex_rms_normalized": 1.686347611944018e-05,
+          "ey_rms_normalized": 0.04116204830696147,
+          "ez_rms_normalized": 0.0009801172897378372,
+          "x_mm": 2.725,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.04094467364102882,
+          "ex_rms_normalized": 3.559721764869059e-05,
+          "ey_rms_normalized": 0.040944658166950865,
+          "ez_rms_normalized": 0.002318216772637393,
+          "x_mm": 2.725,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040566128662491846,
+          "ex_rms_normalized": 6.290194975704037e-05,
+          "ey_rms_normalized": 0.040566079894495094,
+          "ez_rms_normalized": 0.004397583320181848,
+          "x_mm": 2.725,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03937378588622298,
+          "ex_rms_normalized": 0.00012426736707364682,
+          "ey_rms_normalized": 0.039373589785992494,
+          "ez_rms_normalized": 0.004931218892947575,
+          "x_mm": -3.125,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039722588376159954,
+          "ex_rms_normalized": 7.236073365142476e-05,
+          "ey_rms_normalized": 0.03972252246806669,
+          "ez_rms_normalized": 0.0027108898140354664,
+          "x_mm": -3.125,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03992197042267003,
+          "ex_rms_normalized": 3.607554702330399e-05,
+          "ey_rms_normalized": 0.03992195412280626,
+          "ez_rms_normalized": 0.0013046977250878696,
+          "x_mm": -3.125,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.040002223018462436,
+          "ex_rms_normalized": 9.612181710889588e-06,
+          "ey_rms_normalized": 0.04000222186360114,
+          "ez_rms_normalized": 0.0002899692852871242,
+          "x_mm": -3.125,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039923631980877596,
+          "ex_rms_normalized": 4.033348777779625e-05,
+          "ey_rms_normalized": 0.03992361160709682,
+          "ez_rms_normalized": 0.0010312045387851796,
+          "x_mm": -3.125,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039715621757046855,
+          "ex_rms_normalized": 7.592370757685236e-05,
+          "ey_rms_normalized": 0.03971554918592265,
+          "ez_rms_normalized": 0.0024004094442899434,
+          "x_mm": -3.125,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03936421624571666,
+          "ex_rms_normalized": 0.00012607471530651478,
+          "ey_rms_normalized": 0.03936401435074558,
+          "ez_rms_normalized": 0.004489450452965039,
+          "x_mm": -3.125,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03932887400990777,
+          "ex_rms_normalized": 6.61255063176173e-05,
+          "ey_rms_normalized": 0.03932881841988916,
+          "ez_rms_normalized": 0.0050301775854662235,
+          "x_mm": 3.125,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03968564262120126,
+          "ex_rms_normalized": 3.7806847963234816e-05,
+          "ey_rms_normalized": 0.039685624612697645,
+          "ez_rms_normalized": 0.002787455199503311,
+          "x_mm": 3.125,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039891342604817186,
+          "ex_rms_normalized": 2.2643684195254522e-05,
+          "ey_rms_normalized": 0.03989133617815363,
+          "ez_rms_normalized": 0.0013573613000639657,
+          "x_mm": 3.125,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039966155158645045,
+          "ex_rms_normalized": 4.138304422352765e-05,
+          "ey_rms_normalized": 0.03996613373355672,
+          "ez_rms_normalized": 0.0003220899354430081,
+          "x_mm": 3.125,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039900246114820015,
+          "ex_rms_normalized": 6.990169948801049e-05,
+          "ey_rms_normalized": 0.039900184883977896,
+          "ez_rms_normalized": 0.000993590801049419,
+          "x_mm": 3.125,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039703073588057546,
+          "ex_rms_normalized": 0.00011277397052726382,
+          "ey_rms_normalized": 0.03970291342420962,
+          "ez_rms_normalized": 0.002341675547500824,
+          "x_mm": 3.125,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.039365288759760066,
+          "ex_rms_normalized": 0.00016224075058693233,
+          "ey_rms_normalized": 0.039364954427487164,
+          "ez_rms_normalized": 0.004448252529595629,
+          "x_mm": 3.125,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03792841778127376,
+          "ex_rms_normalized": 0.0003092974503808025,
+          "ey_rms_normalized": 0.03792715663582009,
+          "ez_rms_normalized": 0.004861139987307465,
+          "x_mm": -3.525,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.038227011925251984,
+          "ex_rms_normalized": 0.0001941582490834958,
+          "ey_rms_normalized": 0.03822651884893091,
+          "ez_rms_normalized": 0.0026839647134554515,
+          "x_mm": -3.525,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03842174495764561,
+          "ex_rms_normalized": 9.177532406982544e-05,
+          "ey_rms_normalized": 0.03842163534885336,
+          "ez_rms_normalized": 0.0013011029011025038,
+          "x_mm": -3.525,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03848427477295533,
+          "ex_rms_normalized": 2.4223123895112423e-05,
+          "ey_rms_normalized": 0.038484267149584576,
+          "ez_rms_normalized": 0.0002948164165352281,
+          "x_mm": -3.525,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.038408750818212906,
+          "ex_rms_normalized": 9.675736343773578e-05,
+          "ey_rms_normalized": 0.038408628944915375,
+          "ez_rms_normalized": 0.001021009745970153,
+          "x_mm": -3.525,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.038220081881334064,
+          "ex_rms_normalized": 0.00019422070147955933,
+          "ey_rms_normalized": 0.03821958839829384,
+          "ez_rms_normalized": 0.0023636253366281037,
+          "x_mm": -3.525,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.037897775481841645,
+          "ex_rms_normalized": 0.0003025587473344214,
+          "ey_rms_normalized": 0.03789656771630499,
+          "ez_rms_normalized": 0.004449384670505646,
+          "x_mm": -3.525,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03785350607526978,
+          "ex_rms_normalized": 0.000248389587409147,
+          "ey_rms_normalized": 0.03785269111705736,
+          "ez_rms_normalized": 0.005013548569918325,
+          "x_mm": 3.525,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0381924340057359,
+          "ex_rms_normalized": 0.00015600806354761957,
+          "ey_rms_normalized": 0.0381921153743361,
+          "ez_rms_normalized": 0.002766873868388822,
+          "x_mm": 3.525,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03837784334909125,
+          "ex_rms_normalized": 5.799616113595192e-05,
+          "ey_rms_normalized": 0.03837779952749611,
+          "ez_rms_normalized": 0.0013660819243082182,
+          "x_mm": 3.525,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.038468041178379105,
+          "ex_rms_normalized": 3.3928013175720326e-05,
+          "ey_rms_normalized": 0.0384680262164748,
+          "ez_rms_normalized": 0.0003118067923079833,
+          "x_mm": 3.525,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03839379411173422,
+          "ex_rms_normalized": 0.00011673233341516506,
+          "ey_rms_normalized": 0.03839361665507136,
+          "ez_rms_normalized": 0.0009772621204412006,
+          "x_mm": 3.525,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03821183947462755,
+          "ex_rms_normalized": 0.00020982340959312267,
+          "ey_rms_normalized": 0.0382112633940765,
+          "ez_rms_normalized": 0.0023002765595254806,
+          "x_mm": 3.525,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.037906833340777275,
+          "ex_rms_normalized": 0.000333670497170085,
+          "ey_rms_normalized": 0.03790536476443383,
+          "ez_rms_normalized": 0.004342342100406684,
+          "x_mm": 3.525,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03621524919685024,
+          "ex_rms_normalized": 0.0004654035433356644,
+          "ey_rms_normalized": 0.03621225861406345,
+          "ez_rms_normalized": 0.0046788472698980465,
+          "x_mm": -3.925,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036497972377420695,
+          "ex_rms_normalized": 0.00029552725011297457,
+          "ey_rms_normalized": 0.036496775902912365,
+          "ez_rms_normalized": 0.0025859690637516884,
+          "x_mm": -3.925,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03666672164908299,
+          "ex_rms_normalized": 0.00015187376817945162,
+          "ey_rms_normalized": 0.036666407116731116,
+          "ez_rms_normalized": 0.001253128650978535,
+          "x_mm": -3.925,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036743557107750784,
+          "ex_rms_normalized": 3.652108727956194e-05,
+          "ey_rms_normalized": 0.03674353895776408,
+          "ez_rms_normalized": 0.00027616097253061313,
+          "x_mm": -3.925,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036680820643420126,
+          "ex_rms_normalized": 0.00014675778621158189,
+          "ey_rms_normalized": 0.0366805270576493,
+          "ez_rms_normalized": 0.0009773408523953266,
+          "x_mm": -3.925,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036492129861659374,
+          "ex_rms_normalized": 0.0003022532828752886,
+          "ey_rms_normalized": 0.03649087810389335,
+          "ez_rms_normalized": 0.0022727552809261825,
+          "x_mm": -3.925,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03619687618389036,
+          "ex_rms_normalized": 0.0004702361765065277,
+          "ey_rms_normalized": 0.036193821619306704,
+          "ez_rms_normalized": 0.004262704167857694,
+          "x_mm": -3.925,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03613756028478201,
+          "ex_rms_normalized": 0.00041433920190461586,
+          "ey_rms_normalized": 0.03613518488069514,
+          "ez_rms_normalized": 0.0047977208800041166,
+          "x_mm": 3.925,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0364381153784197,
+          "ex_rms_normalized": 0.0002641117865457704,
+          "ey_rms_normalized": 0.03643715819455784,
+          "ez_rms_normalized": 0.002661303681984004,
+          "x_mm": 3.925,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036629443033212576,
+          "ex_rms_normalized": 0.00012150160832676156,
+          "ey_rms_normalized": 0.036629241519345435,
+          "ez_rms_normalized": 0.0013187224663432084,
+          "x_mm": 3.925,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.036688329873131406,
+          "ex_rms_normalized": 3.8730993197359205e-05,
+          "ey_rms_normalized": 0.03668830942943368,
+          "ez_rms_normalized": 0.0003183275477651479,
+          "x_mm": 3.925,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0366379845699875,
+          "ex_rms_normalized": 0.00015774034418265882,
+          "ey_rms_normalized": 0.03663764500257159,
+          "ez_rms_normalized": 0.000936228413898021,
+          "x_mm": 3.925,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03647999593096352,
+          "ex_rms_normalized": 0.00030038635583696756,
+          "ey_rms_normalized": 0.036478759177915335,
+          "ez_rms_normalized": 0.0022124780239731533,
+          "x_mm": 3.925,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03619054259985563,
+          "ex_rms_normalized": 0.0004613111561699894,
+          "ey_rms_normalized": 0.03618760237552577,
+          "ez_rms_normalized": 0.004187479382459322,
+          "x_mm": 3.925,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03426889544608735,
+          "ex_rms_normalized": 0.0006058750491331065,
+          "ey_rms_normalized": 0.034263539083400366,
+          "ez_rms_normalized": 0.004374492686971609,
+          "x_mm": -4.325,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.034544704633916234,
+          "ex_rms_normalized": 0.0003932199372925716,
+          "ey_rms_normalized": 0.03454246656400538,
+          "ez_rms_normalized": 0.0024170256787498473,
+          "x_mm": -4.325,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0346917539446231,
+          "ex_rms_normalized": 0.00019368827282091684,
+          "ey_rms_normalized": 0.03469121324784194,
+          "ez_rms_normalized": 0.0011691670266860015,
+          "x_mm": -4.325,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03474715179271791,
+          "ex_rms_normalized": 5.019035489969959e-05,
+          "ey_rms_normalized": 0.034747115544091635,
+          "ez_rms_normalized": 0.0002759376380447095,
+          "x_mm": -4.325,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.034695385475325226,
+          "ex_rms_normalized": 0.00019482360436388023,
+          "ey_rms_normalized": 0.03469483847843352,
+          "ez_rms_normalized": 0.000909077795338359,
+          "x_mm": -4.325,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03453164343481133,
+          "ex_rms_normalized": 0.0003900139678128916,
+          "ey_rms_normalized": 0.03452944087896384,
+          "ez_rms_normalized": 0.0021192260621499797,
+          "x_mm": -4.325,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.034252535216872396,
+          "ex_rms_normalized": 0.0006210287197543941,
+          "ey_rms_normalized": 0.034246904854487566,
+          "ez_rms_normalized": 0.003975573063823542,
+          "x_mm": -4.325,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.034175105870843416,
+          "ex_rms_normalized": 0.0005955772143407949,
+          "ey_rms_normalized": 0.03416991584808359,
+          "ez_rms_normalized": 0.004508719683802522,
+          "x_mm": 4.325,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03447614376180845,
+          "ex_rms_normalized": 0.0003749475032110442,
+          "ey_rms_normalized": 0.03447410481875809,
+          "ez_rms_normalized": 0.0025057022628195893,
+          "x_mm": 4.325,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03462530768596268,
+          "ex_rms_normalized": 0.00018089237547342664,
+          "ey_rms_normalized": 0.034624835166338075,
+          "ez_rms_normalized": 0.0012274441518105813,
+          "x_mm": 4.325,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03471524830090249,
+          "ex_rms_normalized": 4.797259312712999e-05,
+          "ey_rms_normalized": 0.034715215154505694,
+          "ez_rms_normalized": 0.0002897665742334984,
+          "x_mm": 4.325,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.034658629235381044,
+          "ex_rms_normalized": 0.0001973738404005961,
+          "ey_rms_normalized": 0.03465806722889687,
+          "ez_rms_normalized": 0.0008697514114645641,
+          "x_mm": 4.325,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03450077425581124,
+          "ex_rms_normalized": 0.00037659582538272703,
+          "ey_rms_normalized": 0.034498718814395875,
+          "ez_rms_normalized": 0.002067619491239941,
+          "x_mm": 4.325,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03423207868853549,
+          "ex_rms_normalized": 0.0005872713862348479,
+          "ey_rms_normalized": 0.03422704082530355,
+          "ez_rms_normalized": 0.00392492418451578,
+          "x_mm": 4.325,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.032101571177131145,
+          "ex_rms_normalized": 0.000758681380031289,
+          "ey_rms_normalized": 0.032092604671544046,
+          "ez_rms_normalized": 0.0039420905833715296,
+          "x_mm": -4.725,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.0323449489518928,
+          "ex_rms_normalized": 0.00047567977205288935,
+          "ey_rms_normalized": 0.03234145097943212,
+          "ez_rms_normalized": 0.0021974884983699135,
+          "x_mm": -4.725,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03248230433135291,
+          "ex_rms_normalized": 0.00023055592338839536,
+          "ey_rms_normalized": 0.03248148609039953,
+          "ez_rms_normalized": 0.001062409756019468,
+          "x_mm": -4.725,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03253215454481186,
+          "ex_rms_normalized": 5.253604361679705e-05,
+          "ey_rms_normalized": 0.03253211212466298,
+          "ez_rms_normalized": 0.0002453556521252496,
+          "x_mm": -4.725,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03247866863047283,
+          "ex_rms_normalized": 0.00022703781413239705,
+          "ey_rms_normalized": 0.03247787508195408,
+          "ez_rms_normalized": 0.0008284628065415339,
+          "x_mm": -4.725,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.032357301390577235,
+          "ex_rms_normalized": 0.0004654992739663117,
+          "ey_rms_normalized": 0.0323539528297021,
+          "ez_rms_normalized": 0.0019237213167263326,
+          "x_mm": -4.725,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03210472113452135,
+          "ex_rms_normalized": 0.0007528233041493645,
+          "ey_rms_normalized": 0.032095893447575366,
+          "ez_rms_normalized": 0.0035810303696804436,
+          "x_mm": -4.725,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03201713979779015,
+          "ex_rms_normalized": 0.0007419387138506762,
+          "ey_rms_normalized": 0.032008542106383535,
+          "ez_rms_normalized": 0.004081469275710645,
+          "x_mm": 4.725,
+          "y_mm": -1.2,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03226880302918393,
+          "ex_rms_normalized": 0.0004618567098377928,
+          "ey_rms_normalized": 0.03226549763006682,
+          "ez_rms_normalized": 0.002284959039340332,
+          "x_mm": 4.725,
+          "y_mm": -0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.032416068564753604,
+          "ex_rms_normalized": 0.00022576490700959313,
+          "ey_rms_normalized": 0.03241528237423777,
+          "ez_rms_normalized": 0.0011247803826027925,
+          "x_mm": 4.725,
+          "y_mm": -0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03245909134282551,
+          "ex_rms_normalized": 5.125123660378376e-05,
+          "ey_rms_normalized": 0.032459050881266334,
+          "ez_rms_normalized": 0.00027663198036558765,
+          "x_mm": 4.725,
+          "y_mm": 0.0,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03242833052778833,
+          "ex_rms_normalized": 0.00021695976184940953,
+          "ey_rms_normalized": 0.03242760474165841,
+          "ez_rms_normalized": 0.0007906837849579021,
+          "x_mm": 4.725,
+          "y_mm": 0.4,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03230432854528609,
+          "ex_rms_normalized": 0.00044739639504580973,
+          "ey_rms_normalized": 0.03230123030516772,
+          "ez_rms_normalized": 0.0018856178588353447,
+          "x_mm": 4.725,
+          "y_mm": 0.8,
+          "z_mm": 6.71
+        },
+        {
+          "e_in_plane_rms_normalized": 0.03205756496408725,
+          "ex_rms_normalized": 0.0007117984720521439,
+          "ey_rms_normalized": 0.032049661688727055,
+          "ez_rms_normalized": 0.003547999093205227,
+          "x_mm": 4.725,
+          "y_mm": 1.2,
+          "z_mm": 6.71
+        }
+      ],
+      "settings": {
+        "chip_maxh_mm": 0.2,
+        "curve_order": 3,
+        "iterations": 80,
+        "maxh_mm": 0.9,
+        "order": 1,
+        "sample_patch_offset_mm": 0.12,
+        "sample_z_mm": 6.71
+      }
     }
   },
   "profiles": {
@@ -2025,6 +3034,50 @@
         "contributing_samples": 14,
         "e_in_plane_rms_normalized_mean": 0.030280344437756786,
         "e_in_plane_rms_normalized_std": 0.00015640094898058748,
+        "x_mm": 4.725
+      }
+    ],
+    "cavity_C": [
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.04192301488374883,
+        "e_in_plane_rms_normalized_std": 0.00026804547951195533,
+        "x_mm": 2.325
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.040946598612669784,
+        "e_in_plane_rms_normalized_std": 0.0002593446889206624,
+        "x_mm": 2.725
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.03970461861031182,
+        "e_in_plane_rms_normalized_std": 0.00024020432636587223,
+        "x_mm": 3.125
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.03821373922529502,
+        "e_in_plane_rms_normalized_std": 0.0002210977919928993,
+        "x_mm": 3.525
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.03647823562074478,
+        "e_in_plane_rms_normalized_std": 0.0002050842059994464,
+        "x_mm": 3.925
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.034508239838828454,
+        "e_in_plane_rms_normalized_std": 0.00019232251726378249,
+        "x_mm": 4.325
+      },
+      {
+        "contributing_samples": 14,
+        "e_in_plane_rms_normalized_mean": 0.03231092835231964,
+        "e_in_plane_rms_normalized_std": 0.00016801787470790877,
         "x_mm": 4.725
       }
     ]
