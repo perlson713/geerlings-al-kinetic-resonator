@@ -33,6 +33,17 @@ class FourResonatorChipTests(unittest.TestCase):
             pin_calibration, field_result
         )
         cls.field_result = field_result
+        square_field_result = json.loads(
+            (
+                ROOT
+                / "results"
+                / "four_resonator_chip"
+                / "centered_square_cavity_field_fem.json"
+            ).read_text(encoding="utf-8")
+        )
+        cls.square_calibration = merge_current_cavity_field_calibration(
+            pin_calibration, square_field_result
+        )
         cls.summary = json.loads(
             (
                 ROOT
@@ -67,6 +78,18 @@ class FourResonatorChipTests(unittest.TestCase):
                 self.assertEqual(
                     [len(row) for row in grid["e_in_plane_rms_normalized"]],
                     [7] * 7,
+                )
+
+    def test_centered_square_field_grids_cover_extended_chip_area(self) -> None:
+        for cavity in self.square_calibration["field_grids"].values():
+            for grid in cavity.values():
+                self.assertEqual(len(grid["local_x_mm"]), 13)
+                self.assertEqual(len(grid["y_mm"]), 13)
+                self.assertLessEqual(min(grid["local_x_mm"]), -2.19)
+                self.assertGreaterEqual(max(grid["local_x_mm"]), 2.19)
+                self.assertEqual(
+                    [len(row) for row in grid["e_in_plane_rms_normalized"]],
+                    [13] * 13,
                 )
 
     def test_rectangle_solution_is_uniform_and_clear(self) -> None:
@@ -151,7 +174,7 @@ class FourResonatorChipTests(unittest.TestCase):
             "geerlings.four_resonator_chip.centered_square_qc.v1",
         )
         self.assertTrue(self.square_summary["constraints"]["centered_on_chip"])
-        self.assertEqual(self.square_summary["constraints"]["square_side_mm"], 0.8)
+        self.assertEqual(self.square_summary["constraints"]["square_side_mm"], 4.0)
         placements = self.square_summary["placements"]
         for cavity in ("cavity_A", "cavity_B", "cavity_C"):
             for chip in ("left", "right"):
@@ -162,18 +185,43 @@ class FourResonatorChipTests(unittest.TestCase):
                 ]
                 self.assertEqual(
                     {float(row["chip_local_x_mm"]) for row in selected},
-                    {-0.4, 0.4},
+                    {-2.0, 2.0},
                 )
                 self.assertEqual(
-                    {float(row["y_mm"]) for row in selected}, {-0.4, 0.4}
+                    {float(row["y_mm"]) for row in selected}, {-2.0, 2.0}
                 )
         self.assertAlmostEqual(
-            self.square_summary["minimum_resonator_center_separation_mm"], 0.8
+            self.square_summary["minimum_resonator_center_separation_mm"], 4.0
         )
         self.assertLess(
             self.square_summary["global_resonator_qc_max_to_min"]["1e+06"],
-            1.17,
+            2.61,
         )
+        self.assertAlmostEqual(
+            self.square_summary["minimum_ground_cutout_edge_gap_mm"], 3.574032
+        )
+
+    def test_centered_square_direct_coupling_is_below_configured_threshold(self) -> None:
+        analysis = json.loads(
+            (
+                ROOT
+                / "results"
+                / "four_resonator_chip"
+                / "centered_square_coupling_analysis.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(analysis["selected_square_side_mm"], 4.0)
+        self.assertLess(
+            analysis["selected_result"]["maximum_pair_coupling_khz"], 100.0
+        )
+        self.assertLess(
+            analysis["selected_result"]["maximum_mixing_amplitude_percent"],
+            1.0,
+        )
+        self.assertLess(
+            analysis["selected_result"]["maximum_dispersive_shift_khz"], 1.0
+        )
+        self.assertFalse(analysis["model"]["exact_zero_claimed"])
 
     def test_committed_gds_readback_is_complete(self) -> None:
         result = ROOT / "results" / "four_resonator_chip"

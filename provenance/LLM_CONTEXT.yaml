@@ -176,18 +176,26 @@ four_resonator_rectangle_chip:
   current_geometry_direct_port_sweep: false
   absolute_qc_model: historical_pin_FEM_plus_current_frequency_alignment_plus_coupled_mode
   centered_square_companion:
-    side_mm: 0.80
-    chip_local_centers_mm: [[-0.40, -0.40], [-0.40, 0.40], [0.40, -0.40], [0.40, 0.40]]
-    cavity_C_qc_max_to_min: 1.1660481141
-    global_24_qc_max_to_min: 1.1673926944
-    minimum_ground_cutout_edge_gap_mm: 0.374032
+    side_mm: 4.00
+    chip_local_centers_mm: [[-2.00, -2.00], [-2.00, 2.00], [2.00, -2.00], [2.00, 2.00]]
+    cavity_A_qc_max_to_min: 2.3974748521
+    cavity_B_qc_max_to_min: 2.5992022356
+    cavity_C_qc_max_to_min: 2.2988793507
+    global_24_qc_max_to_min: 2.6030506766
+    minimum_ground_cutout_edge_gap_mm: 3.574032
+    minimum_outer_ground_strip_mm: 0.212016
+    maximum_pair_coupling_khz: 86.7949842153
+    maximum_mixing_amplitude_percent: 0.8712041149
+    maximum_dispersive_shift_khz: 0.7561614740
+    direct_coupling_method: far_field_electric_plus_magnetic_dipoles_no_cancellation_credit
+    exact_zero_coupling_claimed: false
   output: results/four_resonator_chip
 validation:
   geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
-  current_unittest_count: 45
+  current_unittest_count: 48
   current_unittest_result: pass
   frequency_bank_gds_files: 8
   frequency_bank_gds_top_cells_each: 1
@@ -209,6 +217,7 @@ known_limitations:
   - generic_Al_fit_not_process_specific_measurement
   - square_9ghz_4um_mesh_generated_but_factorization_exceeded_available_memory
   - four_resonator_absolute_qc_uses_hybrid_not_conformal_fullwave_calibration
+  - centered_square_direct_coupling_uses_reduced_order_dipole_estimate_not_simultaneous_fullwave
 security:
   secrets_expected_in_repository: false
   raw_solver_artifacts_policy: github_release_not_git_history

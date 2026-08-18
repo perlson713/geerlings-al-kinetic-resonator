@@ -47,6 +47,8 @@ class Settings:
     iterations: int = 20
     sample_z_mm: float = 6.71
     sample_patch_offset_mm: float = 0.12
+    sample_extent_mm: float = 1.20
+    sample_step_mm: float = 0.40
 
 
 def build_mesh(geometry: Geometry, settings: Settings, mesh_path: Path):
@@ -215,8 +217,18 @@ def solve_fundamental(mesh, geometry: Geometry, settings: Settings):
 
 
 def sample_profile(mesh, field, geometry: Geometry, settings: Settings):
-    x_values = (2.325, 2.725, 3.125, 3.525, 3.925, 4.325, 4.725)
-    y_values = (-1.2, -0.8, -0.4, 0.0, 0.4, 0.8, 1.2)
+    count = round(2.0 * settings.sample_extent_mm / settings.sample_step_mm)
+    local_values = [
+        -settings.sample_extent_mm + index * settings.sample_step_mm
+        for index in range(count + 1)
+    ]
+    if not any(abs(value) < 1.0e-12 for value in local_values):
+        local_values.append(0.0)
+    local_values = sorted(round(value, 12) for value in local_values)
+    x_values = tuple(
+        geometry.chip_center_abs_x_mm + value for value in local_values
+    )
+    y_values = tuple(local_values)
     offsets = (
         -settings.sample_patch_offset_mm,
         0.0,
@@ -289,6 +301,12 @@ def main() -> int:
     parser.add_argument("--chip-maxh", type=float, default=0.20)
     parser.add_argument("--iterations", type=int, default=20)
     parser.add_argument(
+        "--sample-extent",
+        type=float,
+        default=1.20,
+        help="symmetric chip-local x/y field-grid extent in mm",
+    )
+    parser.add_argument(
         "--case",
         action="append",
         metavar="NAME=HEIGHT_MM",
@@ -307,6 +325,7 @@ def main() -> int:
         maxh_mm=args.maxh,
         chip_maxh_mm=args.chip_maxh,
         iterations=args.iterations,
+        sample_extent_mm=args.sample_extent,
     )
     default_cases = {
         "cavity_A": Geometry(cavity_height_mm=18.00),

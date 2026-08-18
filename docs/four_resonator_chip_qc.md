@@ -30,21 +30,21 @@ remains 0.174032 mm.
 ## Centered-square companion version
 
 A second fabrication set fixes every chip to a square centered at the chip
-origin.  Its side is 0.80 mm, so the four chip-local centers are exactly
-`(-0.40, -0.40)`, `(-0.40, +0.40)`, `(+0.40, -0.40)`, and
-`(+0.40, +0.40)` mm.  Only the pattern-to-corner assignment is selected from
-the 3-D field data.
+origin.  Its side is 4.00 mm, so the four chip-local centers are exactly
+`(-2.00, -2.00)`, `(-2.00, +2.00)`, `(+2.00, -2.00)`, and
+`(+2.00, +2.00)` mm.  Only the pattern-to-corner assignment is selected from
+the extended 3-D field data.
 
 | Cavity | SMA pin length (mm) | Resonator Qc min | Resonator Qc max | max/min |
 |---|---:|---:|---:|---:|
-| A | 8.4636 | 934,022.7 | 1,072,376.2 | 1.1481 |
-| B | 8.9309 | 926,691.5 | 1,081,107.0 | 1.1666 |
-| C (15.20 mm) | 9.5642 | 926,086.8 | 1,079,861.8 | 1.1660 |
+| A | 8.4844 | 669,372.9 | 1,604,804.7 | 2.3975 |
+| B | 8.9573 | 616,509.2 | 1,602,432.1 | 2.5992 |
+| C (15.20 mm) | 9.5932 | 663,438.4 | 1,525,164.7 | 2.2989 |
 
-The centered-square global max/min ratio is **1.167393**.  This larger 16.7%
-spread is the direct tradeoff for fixing all four rectangles to the chip
-center instead of allowing the Qc optimizer to move them.  Its minimum
-ground-cutout gap is 0.374032 mm.
+The centered-square global max/min ratio is **2.603051**.  This spread is the
+tradeoff for moving the resonators far apart to suppress direct coupling while
+keeping the square centered.  Its minimum ground-cutout gap is 3.574032 mm,
+and the minimum cutout-to-outer-ground boundary strip is 0.212016 mm.
 
 ![Centered-square layout preview](../results/four_resonator_chip/centered_square_layout_preview.png)
 
@@ -53,6 +53,30 @@ example
 `cavity_A_left_centered_square_below9_P01-P02_above9_P05-P06_4res.gds`.
 The associated CSV, JSON, preview, manifest, and readback files use the same
 `centered_square_` prefix in `results/four_resonator_chip/`.
+
+### Direct resonator-resonator coupling criterion
+
+The spacing selection uses a reduced-order far-field model.  Each reconstructed
+resonator is reduced to its IDC electric dipole and closed meander-loop magnetic
+dipole.  The worst electric orientation factor is used, electric and magnetic
+coupling magnitudes are added, and no cancellation or ground-screening benefit
+is credited.
+
+At 4.00 mm nearest-neighbor spacing, the worst pair is P01--P02:
+
+- electric contribution: 82.77 kHz
+- magnetic contribution: 4.03 kHz
+- conservative total `|J|/2pi`: **86.79 kHz**
+- mixing amplitude at the 9.96 MHz minimum detuning: **0.871%**
+- dispersive frequency shift estimate: **0.756 kHz**
+
+This meets the configured 100 kHz, 1%, and 1 kHz thresholds, respectively.
+It means negligible hybridization under this model, not mathematically zero
+coupling.  A simultaneous four-resonator full-wave solve or measurement is
+still required for fabrication sign-off.  The complete sweep is in
+`centered_square_coupling_analysis.json`,
+`centered_square_coupling_sweep.csv`, and
+`centered_square_coupling_sweep.png`.
 
 ## Optimized rectangle coordinates
 
@@ -126,11 +150,34 @@ $env:PYTHONPATH="$PWD\src"
 python -B scripts\simulate_current_cavity_fields.py --maxh 0.9 --chip-maxh 0.20 --iterations 40
 ```
 
+The coupling-suppressed square uses the separately committed extended field
+grid `centered_square_cavity_field_fem.json`, which covers chip-local
+`x,y = +/-2.2 mm`.  Reproduce it without replacing the rectangle calibration:
+
+```powershell
+$env:PYTHONPATH="$PWD\src"
+python -B scripts\simulate_current_cavity_fields.py `
+  --output results\four_resonator_chip\centered_square_cavity_field_fem.json `
+  --case cavity_A=18.0 --case cavity_B=17.77 `
+  --maxh 0.9 --chip-maxh 0.20 --iterations 40 --sample-extent 2.2
+python -B scripts\simulate_current_cavity_fields.py `
+  --output results\four_resonator_chip\centered_square_cavity_field_fem.json `
+  --case cavity_C=15.2 --update-existing `
+  --maxh 0.9 --chip-maxh 0.20 --iterations 80 --sample-extent 2.2
+```
+
 Optimize the rectangles and regenerate GDS/CSV/JSON/previews:
 
 ```powershell
 $env:PYTHONPATH="$PWD\src"
 python -B scripts\generate_four_resonator_chip.py
+```
+
+Reproduce the direct-coupling spacing check:
+
+```powershell
+$env:PYTHONPATH="$PWD\src"
+python -B scripts\analyze_centered_square_coupling.py
 ```
 
 Machine-readable coordinates, Qc values, provenance, sensitivity envelopes,

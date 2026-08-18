@@ -450,9 +450,15 @@ def main() -> int:
     bank_config_path = _project_path(config["frequency_bank_config"])
     calibration_path = _project_path(config["fem_calibration"])
     field_fem_path = _project_path(config["current_field_fem_results"])
+    square_field_fem_path = _project_path(
+        config.get("centered_square_field_fem_results", field_fem_path)
+    )
     bank = load_json(bank_path)
     calibration = merge_current_cavity_field_calibration(
         load_json(calibration_path), load_json(field_fem_path)
+    )
+    square_calibration = merge_current_cavity_field_calibration(
+        load_json(calibration_path), load_json(square_field_fem_path)
     )
     chip = config["chip"]
     rectangle = config["rectangle"]
@@ -491,7 +497,7 @@ def main() -> int:
     )
     square_summary = optimize_rectangle_qc_positions(
         frequency_map(bank),
-        calibration,
+        square_calibration,
         config["sites"],
         target_qcs=optimization["target_resonator_external_qcs"],
         mean_coupling_mhz=float(optimization["mean_resonator_cavity_g_mhz"]),
@@ -499,7 +505,11 @@ def main() -> int:
         chip_size_mm=float(chip["size_mm"]),
         chip_edge_clearance_mm=float(chip["edge_clearance_mm"]),
         frequency_split_ghz=float(chip["frequency_split_ghz"]),
-        coordinate_limit_mm=float(rectangle["coordinate_limit_mm"]),
+        coordinate_limit_mm=float(
+            centered_square.get(
+                "coordinate_limit_mm", rectangle["coordinate_limit_mm"]
+            )
+        ),
         minimum_center_separation_mm=float(
             rectangle["minimum_center_separation_mm"]
         ),
@@ -656,17 +666,25 @@ def main() -> int:
     (output / "layout_manifest.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    square_summary["inputs"] = dict(summary["inputs"])
+    square_summary["inputs"] = {
+        **summary["inputs"],
+        "centered_square_field_fem_results": square_field_fem_path.relative_to(
+            PROJECT_ROOT
+        ).as_posix(),
+    }
     square_summary["artifacts"] = square_gds_artifacts + [
         square_layout_preview,
         square_qc_preview,
         "centered_square_placements.csv",
         "centered_square_pin_calibration.csv",
         "centered_square_qc_predictions.csv",
-        "current_cavity_field_fem.json",
+        square_field_fem_path.name,
         "centered_square_optimization_summary.json",
         "centered_square_layout_manifest.json",
         "centered_square_gds_readback_verification.json",
+        "centered_square_coupling_analysis.json",
+        "centered_square_coupling_sweep.csv",
+        "centered_square_coupling_sweep.png",
     ]
     (output / "centered_square_optimization_summary.json").write_text(
         json.dumps(square_summary, indent=2, sort_keys=True) + "\n",
@@ -688,6 +706,11 @@ def main() -> int:
         "centers_form_axis_aligned_rectangle": True,
         "centered_on_chip": True,
         "square_side_mm": float(centered_square["side_mm"]),
+        "direct_coupling_analysis": {
+            "artifact": "centered_square_coupling_analysis.json",
+            "exact_zero_claimed": False,
+            "criterion": "negligible hybridization under the configured thresholds",
+        },
         "frequency_partition": square_summary["constraints"]["frequency_partition"],
         "patterns": patterns,
         "rectangle_geometry": square_summary["rectangle_geometry"],

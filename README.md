@@ -82,10 +82,12 @@ solver scope, reproduction commands, and the absolute-Qc limitation are
 documented in
 [`docs/four_resonator_chip_qc.md`](docs/four_resonator_chip_qc.md).
 
-A companion set fixes the four centers to a chip-centered 0.80 mm square
-(`x,y = +/-0.40 mm`).  These six GDS filenames contain `centered_square`;
-their fixed geometry gives a larger modeled global Qc max/min ratio of
-1.167393.
+A companion set fixes the four centers to a chip-centered 4.00 mm square
+(`x,y = +/-2.00 mm`).  These six GDS filenames contain `centered_square`.
+The larger separation suppresses the conservative direct-coupling estimate to
+86.8 kHz (0.87% mixing at the minimum 9.96 MHz detuning), at the cost of a
+larger modeled global Qc max/min ratio of 2.603051.  Exact zero coupling is not
+claimed; the estimate and its limitations are recorded with the GDS files.
 
 ## Main result
 
