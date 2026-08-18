@@ -34,6 +34,13 @@ minimum_outer_ground_strip_mm = 0.10
 sweep_start_side_mm = 0.80
 sweep_step_mm = 0.05
 
+[cavity_c_two_layer_gds]
+spacing_mm = 1.50
+resonator_layer = 1
+corner_l_layer = 2
+marker_outer_um = 100.0
+marker_cutout_um = 75.0
+
 [cavity]
 case_a = "cavity_A"
 case_b = "cavity_B"

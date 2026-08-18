@@ -29,17 +29,18 @@ remains 0.174032 mm.
 
 ## Centered-square companion version
 
-A second fabrication set fixes every chip to a square centered at the chip
-origin.  Its side is 4.00 mm, so the four chip-local centers are exactly
+A second modeled set fixes every chip to a square centered at the chip origin.
+Its reference side is 4.00 mm, so the four chip-local centers are exactly
 `(-2.00, -2.00)`, `(-2.00, +2.00)`, `(+2.00, -2.00)`, and
 `(+2.00, +2.00)` mm.  Only the pattern-to-corner assignment is selected from
-the extended 3-D field data.
+the extended 3-D field data.  The current cavity-A/B GDS files retain this
+geometry; cavity C has the mask-only override documented below.
 
 | Cavity | SMA pin length (mm) | Resonator Qc min | Resonator Qc max | max/min |
 |---|---:|---:|---:|---:|
 | A | 8.4844 | 669,372.9 | 1,604,804.7 | 2.3975 |
 | B | 8.9573 | 616,509.2 | 1,602,432.1 | 2.5992 |
-| C (15.20 mm) | 9.5932 | 663,438.4 | 1,525,164.7 | 2.2989 |
+| C (15.20 mm, 4.00 mm reference) | 9.5932 | 663,438.4 | 1,525,164.7 | 2.2989 |
 
 The centered-square global max/min ratio is **2.603051**.  This spread is the
 tradeoff for moving the resonators far apart to suppress direct coupling while
@@ -54,6 +55,30 @@ example
 The associated CSV, JSON, preview, manifest, and readback files use the same
 `centered_square_` prefix in `results/four_resonator_chip/`.
 
+### Cavity-C one-cell/two-layer fabrication override
+
+The two current cavity-C `centered_square` GDS files replace only the modeled
+4.00 mm cavity-C masks.  They preserve the same below/above-9-GHz pattern
+partition, but use the following fabrication geometry:
+
+- four centers at `(-0.75, -0.75)`, `(-0.75, +0.75)`, `(+0.75, -0.75)`, and
+  `(+0.75, +0.75)` mm: 1.50 mm nearest center-to-center spacing
+- exactly one flat cell per GDS, with no instances
+- layer 1/0: the four isolated resonator metal patterns only
+- layer 2/0: four corner L marks; each is a 100 x 100 um square minus an
+  inward 75 x 75 um square, giving a 25 um leg width
+- no chip-outline layer and no text-label layer
+
+![Cavity-C two-layer preview](../results/four_resonator_chip/cavity_C_two_layer_1p5mm_preview.png)
+
+`cavity_C_two_layer_1p5mm_verification.json` records direct KLayout readback of
+the cell count, populated layers, shape counts, marker bounding boxes, areas,
+and resolved resonator centers.  This is a mask-only override: the 4.00 mm Qc
+table above and the 4.00 mm coupling result below do not describe these two
+cavity-C GDS files.  For orientation, the existing reduced-order sweep at
+1.50 mm estimates 1.646 MHz worst-pair coupling and 16.52% mixing; it therefore
+does not meet the previous negligible-coupling thresholds.
+
 ### Direct resonator-resonator coupling criterion
 
 The spacing selection uses a reduced-order far-field model.  Each reconstructed
@@ -62,7 +87,8 @@ dipole.  The worst electric orientation factor is used, electric and magnetic
 coupling magnitudes are added, and no cancellation or ground-screening benefit
 is credited.
 
-At 4.00 mm nearest-neighbor spacing, the worst pair is P01--P02:
+At 4.00 mm nearest-neighbor spacing for the cavity-A/B masks and the reference
+model, the worst pair is P01--P02:
 
 - electric contribution: 82.77 kHz
 - magnetic contribution: 4.03 kHz
@@ -171,6 +197,16 @@ Optimize the rectangles and regenerate GDS/CSV/JSON/previews:
 ```powershell
 $env:PYTHONPATH="$PWD\src"
 python -B scripts\generate_four_resonator_chip.py
+```
+
+Then apply the approved cavity-C one-cell/two-layer override.  This command
+overwrites only the two cavity-C `centered_square` GDS files and updates their
+preview/readback metadata:
+
+```powershell
+$env:PYTHONPATH="$PWD\src"
+python -B scripts\generate_cavity_c_two_layer_gds.py `
+  --output-directory results\four_resonator_chip
 ```
 
 Reproduce the direct-coupling spacing check:

@@ -222,6 +222,15 @@ class FourResonatorChipTests(unittest.TestCase):
             analysis["selected_result"]["maximum_dispersive_shift_khz"], 1.0
         )
         self.assertFalse(analysis["model"]["exact_zero_claimed"])
+        override = self.square_summary["cavity_C_two_layer_gds_override"]
+        self.assertEqual(
+            override["square_side_and_nearest_center_spacing_mm"], 1.5
+        )
+        self.assertFalse(
+            override["prior_reduced_order_coupling_screen"][
+                "passes_previous_negligible_coupling_thresholds"
+            ]
+        )
 
     def test_committed_gds_readback_is_complete(self) -> None:
         result = ROOT / "results" / "four_resonator_chip"
@@ -254,7 +263,63 @@ class FourResonatorChipTests(unittest.TestCase):
             self.assertTrue((result / name).is_file())
             self.assertEqual(row["top_cells"], 1)
             self.assertEqual(row["bounding_box_um"], [5050.0, 5050.0])
-            self.assertEqual(row["shape_counts"]["101/0"], 4)
+            if name.startswith("cavity_C_"):
+                self.assertEqual(row["cell_count"], 1)
+                self.assertEqual(row["instance_count"], 0)
+                self.assertEqual(row["populated_layers"], ["1/0", "2/0"])
+                self.assertGreater(row["shape_counts"]["1/0"], 1000)
+                self.assertEqual(row["shape_counts"]["2/0"], 4)
+                self.assertEqual(row["resonator_center_spacing_mm"], 1.5)
+            else:
+                self.assertEqual(row["shape_counts"]["101/0"], 4)
+
+    def test_cavity_c_override_gds_is_one_cell_and_two_layers(self) -> None:
+        from klayout import db as kdb
+
+        result = ROOT / "results" / "four_resonator_chip"
+        verification = json.loads(
+            (result / "cavity_C_two_layer_1p5mm_verification.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(verification["resonator_center_spacing_mm"], 1.5)
+        self.assertEqual(verification["corner_L"]["leg_width_um"], 25.0)
+        self.assertEqual(
+            verification["resonator_centers_mm"],
+            [[-0.75, -0.75], [-0.75, 0.75], [0.75, -0.75], [0.75, 0.75]],
+        )
+        self.assertEqual(len(verification["verification"]), 2)
+        for name, recorded in verification["verification"].items():
+            layout = kdb.Layout()
+            layout.read(str(result / name))
+            self.assertEqual(layout.cells(), 1)
+            top_cells = list(layout.top_cells())
+            self.assertEqual(len(top_cells), 1)
+            top = top_cells[0]
+            self.assertEqual(len(list(top.each_inst())), 0)
+            populated = {
+                (info.layer, info.datatype)
+                for info in layout.layer_infos()
+                if not top.shapes(
+                    layout.find_layer(info.layer, info.datatype)
+                ).is_empty()
+            }
+            self.assertEqual(populated, {(1, 0), (2, 0)})
+            resonator_shapes = list(top.each_shape(layout.find_layer(1, 0)))
+            marker_shapes = list(top.each_shape(layout.find_layer(2, 0)))
+            self.assertEqual(len(resonator_shapes), 1332)
+            self.assertEqual(len(marker_shapes), 4)
+            for marker in marker_shapes:
+                self.assertTrue(marker.is_polygon())
+                self.assertAlmostEqual(
+                    marker.polygon.area() * layout.dbu**2,
+                    100.0**2 - 75.0**2,
+                )
+                bbox = marker.polygon.bbox()
+                self.assertAlmostEqual(bbox.width() * layout.dbu, 100.0)
+                self.assertAlmostEqual(bbox.height() * layout.dbu, 100.0)
+            self.assertEqual(recorded["cell_count"], 1)
+            self.assertEqual(recorded["populated_layers"], ["1/0", "2/0"])
 
     def test_fullwave_scope_is_not_overstated(self) -> None:
         provenance = self.summary["fem_calibration_provenance"]

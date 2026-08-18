@@ -177,6 +177,7 @@ four_resonator_rectangle_chip:
   absolute_qc_model: historical_pin_FEM_plus_current_frequency_alignment_plus_coupled_mode
   centered_square_companion:
     side_mm: 4.00
+    side_mm_scope: reference_model_and_cavity_A_B_GDS
     chip_local_centers_mm: [[-2.00, -2.00], [-2.00, 2.00], [2.00, -2.00], [2.00, 2.00]]
     cavity_A_qc_max_to_min: 2.3974748521
     cavity_B_qc_max_to_min: 2.5992022356
@@ -189,13 +190,29 @@ four_resonator_rectangle_chip:
     maximum_dispersive_shift_khz: 0.7561614740
     direct_coupling_method: far_field_electric_plus_magnetic_dipoles_no_cancellation_credit
     exact_zero_coupling_claimed: false
+    cavity_C_two_layer_gds_override:
+      side_and_nearest_center_spacing_mm: 1.50
+      chip_local_centers_mm: [[-0.75, -0.75], [-0.75, 0.75], [0.75, -0.75], [0.75, 0.75]]
+      gds_files: 2
+      cells_per_gds: 1
+      instances_per_gds: 0
+      populated_layers: [[1, 0], [2, 0]]
+      layer_1: isolated_resonator_metal_patterns
+      layer_2: four_corner_L_marks
+      corner_L_outer_um: [100.0, 100.0]
+      corner_L_cutout_um: [75.0, 75.0]
+      corner_L_leg_width_um: 25.0
+      qc_recomputed: false
+      fullwave_coupling_recomputed: false
+      reduced_order_maximum_pair_coupling_khz: 1645.8900710
+      reduced_order_maximum_mixing_amplitude_percent: 16.5206113641
   output: results/four_resonator_chip
 validation:
   geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
   pec_pmc_coarse_delta_percent: -0.0186
   dependency_free_tests_before_kinetic_extension: 26
-  current_unittest_count: 48
+  current_unittest_count: 49
   current_unittest_result: pass
   frequency_bank_gds_files: 8
   frequency_bank_gds_top_cells_each: 1
@@ -208,6 +225,8 @@ validation:
   centered_square_gds_files: 6
   total_four_resonator_gds_files: 12
   centered_square_geometry_verified: true
+  cavity_C_two_layer_gds_readback_verified: true
+  cavity_C_two_layer_gds_byte_reproducible: true
 known_limitations:
   - schematic_reconstruction_not_original_mask
   - scalar_sapphire_permittivity_assumption
@@ -218,6 +237,7 @@ known_limitations:
   - square_9ghz_4um_mesh_generated_but_factorization_exceeded_available_memory
   - four_resonator_absolute_qc_uses_hybrid_not_conformal_fullwave_calibration
   - centered_square_direct_coupling_uses_reduced_order_dipole_estimate_not_simultaneous_fullwave
+  - cavity_C_1p5mm_GDS_override_not_Qc_or_fullwave_coupling_reoptimized
 security:
   secrets_expected_in_repository: false
   raw_solver_artifacts_policy: github_release_not_git_history

@@ -17,8 +17,71 @@
     "centered_square_gds_readback_verification.json",
     "centered_square_coupling_analysis.json",
     "centered_square_coupling_sweep.csv",
-    "centered_square_coupling_sweep.png"
+    "centered_square_coupling_sweep.png",
+    "cavity_C_two_layer_1p5mm_preview.png",
+    "cavity_C_two_layer_1p5mm_verification.json"
   ],
+  "cavity_C_two_layer_gds_override": {
+    "analysis_scope": {
+      "direct_coupling_recomputed_fullwave": false,
+      "kind": "mask-only geometry override",
+      "qc_recomputed": false,
+      "warning": "the 4.00 mm centered-square Qc and negligible-coupling results do not describe these 1.50 mm cavity-C GDS files"
+    },
+    "cavity": "cavity_C",
+    "cavity_height_mm": 15.2,
+    "cell_count_per_gds": 1,
+    "corner_L": {
+      "count": 4,
+      "cutout_square_um": [
+        75.0,
+        75.0
+      ],
+      "leg_width_um": 25.0,
+      "outer_square_um": [
+        100.0,
+        100.0
+      ]
+    },
+    "gds_files": [
+      "cavity_C_left_centered_square_below9_P01-P02_above9_P05-P06_4res.gds",
+      "cavity_C_right_centered_square_below9_P03-P04_above9_P07-P08_4res.gds"
+    ],
+    "instance_count_per_gds": 0,
+    "populated_layers": {
+      "1/0": "four isolated resonator metal patterns",
+      "2/0": "four corner L marks"
+    },
+    "preview": "cavity_C_two_layer_1p5mm_preview.png",
+    "prior_reduced_order_coupling_screen": {
+      "maximum_dispersive_shift_khz": 271.9111021179883,
+      "maximum_mixing_amplitude_percent": 16.52061136411889,
+      "maximum_pair_coupling_khz": 1645.8900710451428,
+      "method": "existing reduced-order electric-plus-magnetic dipole sweep",
+      "passes_previous_negligible_coupling_thresholds": false,
+      "worst_pair": "P01-P02"
+    },
+    "resonator_centers_mm": [
+      [
+        -0.75,
+        -0.75
+      ],
+      [
+        -0.75,
+        0.75
+      ],
+      [
+        0.75,
+        -0.75
+      ],
+      [
+        0.75,
+        0.75
+      ]
+    ],
+    "square_side_and_nearest_center_spacing_mm": 1.5,
+    "verification": "cavity_C_two_layer_1p5mm_verification.json"
+  },
   "constraints": {
     "centered_on_chip": true,
     "centers_form_axis_aligned_rectangle": true,

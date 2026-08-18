@@ -82,12 +82,14 @@ solver scope, reproduction commands, and the absolute-Qc limitation are
 documented in
 [`docs/four_resonator_chip_qc.md`](docs/four_resonator_chip_qc.md).
 
-A companion set fixes the four centers to a chip-centered 4.00 mm square
-(`x,y = +/-2.00 mm`).  These six GDS filenames contain `centered_square`.
-The larger separation suppresses the conservative direct-coupling estimate to
-86.8 kHz (0.87% mixing at the minimum 9.96 MHz detuning), at the cost of a
-larger modeled global Qc max/min ratio of 2.603051.  Exact zero coupling is not
-claimed; the estimate and its limitations are recorded with the GDS files.
+A companion set uses filenames containing `centered_square`.  The cavity-A/B
+files retain the chip-centered 4.00 mm square (`x,y = +/-2.00 mm`) whose
+conservative direct-coupling estimate is 86.8 kHz.  The two cavity-C files are
+a fabrication override: one flat cell, resonators only on layer 1/0, four
+100-by-100 um corner L marks (75-by-75 um cut-out) on layer 2/0, and a 1.50 mm
+centered square (`x,y = +/-0.75 mm`).  The earlier 4.00 mm Qc/coupling results
+do not apply to this cavity-C override; see the dedicated preview and readback
+record in `results/four_resonator_chip/`.
 
 ## Main result
 
