@@ -27,6 +27,8 @@ gui = [
 ]
 analysis = [
   "matplotlib>=3.8",
+  "numpy>=2,<3",
+  "scipy>=1.16,<2",
 ]
 dev = [
   "pytest>=8.3",
@@ -38,6 +40,8 @@ all = [
   "build123d>=0.9,<1",
   "setupEM>=0.1.22,<0.2",
   "matplotlib>=3.8",
+  "numpy>=2,<3",
+  "scipy>=1.16,<2",
 ]
 
 [project.scripts]

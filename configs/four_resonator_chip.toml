@@ -1,0 +1,101 @@
+schema_version = 1
+frequency_bank_results = "results/frequency_bank_8x/results.json"
+frequency_bank_config = "configs/frequency_bank_8x.toml"
+fem_calibration = "configs/four_resonator_chip_fem_calibration.json"
+current_field_fem_results = "results/four_resonator_chip/current_cavity_field_fem.json"
+centered_square_field_fem_results = "results/four_resonator_chip/centered_square_cavity_field_fem.json"
+output_directory = "results/four_resonator_chip"
+
+[chip]
+size_mm = 5.05
+center_abs_x_mm = 3.525
+edge_clearance_mm = 0.10
+frequency_split_ghz = 9.0
+maximum_ground_cutout_width_mm = 0.425968
+maximum_ground_cutout_height_mm = 0.395
+
+[rectangle]
+coordinate_limit_mm = 1.18
+minimum_center_separation_mm = 0.60
+
+[centered_square]
+side_mm = 4.00
+coordinate_limit_mm = 2.03
+
+[centered_square.coupling]
+modal_impedance_ohm = 100.0
+effective_relative_permittivity = 5.20
+electric_orientation_factor = 2.0
+magnetic_orientation_factor = 1.0
+maximum_pair_coupling_khz = 100.0
+maximum_mixing_amplitude_percent = 1.0
+maximum_dispersive_shift_khz = 1.0
+minimum_outer_ground_strip_mm = 0.10
+sweep_start_side_mm = 0.80
+sweep_step_mm = 0.05
+
+[cavity_c_two_layer_gds]
+spacing_mm = 1.50
+resonator_layer = 1
+corner_l_layer = 2
+marker_outer_um = 100.0
+marker_cutout_um = 75.0
+
+[cavity]
+case_a = "cavity_A"
+case_b = "cavity_B"
+case_c = "cavity_C"
+straight_length_mm = 15.0
+width_mm = 4.8
+end_radius_mm = 2.4
+pin_wall_thickness_mm = 7.5
+
+[optimization]
+mean_resonator_cavity_g_mhz = 25.0
+target_resonator_external_qcs = [1.0e6]
+nominal_plot_target_qc = 1.0e6
+position_tolerances_um = [2.0, 5.0, 10.0, 20.0]
+optimizer_seed = 17
+optimizer_maxiter = 100
+optimizer_popsize = 8
+fixed_point_iterations = 2
+
+[[sites]]
+pattern_id = "P01"
+chip = "left"
+column = "inner"
+
+[[sites]]
+pattern_id = "P02"
+chip = "left"
+column = "inner"
+
+[[sites]]
+pattern_id = "P03"
+chip = "right"
+column = "inner"
+
+[[sites]]
+pattern_id = "P04"
+chip = "right"
+column = "inner"
+
+[[sites]]
+pattern_id = "P05"
+chip = "left"
+column = "outer"
+
+[[sites]]
+pattern_id = "P06"
+chip = "left"
+column = "outer"
+
+[[sites]]
+pattern_id = "P07"
+chip = "right"
+column = "outer"
+
+[[sites]]
+pattern_id = "P08"
+chip = "right"
+column = "outer"

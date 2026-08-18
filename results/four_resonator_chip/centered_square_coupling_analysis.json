@@ -1,0 +1,149 @@
+{
+  "artifacts": [
+    "centered_square_coupling_analysis.json",
+    "centered_square_coupling_sweep.csv",
+    "centered_square_coupling_sweep.png"
+  ],
+  "chip_local_centers_mm": [
+    [
+      -2.0,
+      -2.0
+    ],
+    [
+      -2.0,
+      2.0
+    ],
+    [
+      2.0,
+      -2.0
+    ],
+    [
+      2.0,
+      2.0
+    ]
+  ],
+  "frequency_bank_minimum_detuning_mhz": 9.96264626513672,
+  "geometry_clearance": {
+    "maximum_allowed_side_mm": 4.224031999999999,
+    "minimum_ground_cutout_edge_gap_mm": 3.574032,
+    "minimum_outer_ground_strip_mm": 0.21201599999999982
+  },
+  "layout_variant": "centered_square",
+  "model": {
+    "cancellation_credit": false,
+    "effective_relative_permittivity": 5.2,
+    "electric_orientation_factor": 2.0,
+    "exact_zero_claimed": false,
+    "magnetic_orientation_factor": 1.0,
+    "method": "far-field electric plus magnetic dipoles; magnitudes added",
+    "semantics": "spacing-screening estimate for negligible hybridization; a simultaneous multi-resonator full-wave solve or measurement is required for sign-off"
+  },
+  "resonator_dipoles": [
+    {
+      "capacitance_f": 1.7752894229845067e-13,
+      "electric_centroid_separation_m": 4.3883888501783384e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.000425968,
+      "frequency_hz": 8965013874.99588,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.775289422984507e-09,
+      "magnetic_loop_area_m2": 3.1947599999999994e-08,
+      "pattern_id": "P01"
+    },
+    {
+      "capacitance_f": 1.7733104108684427e-13,
+      "electric_centroid_separation_m": 4.388139602121015e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042549799999999996,
+      "frequency_hz": 8975018818.840208,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7733104108684426e-09,
+      "magnetic_loop_area_m2": 3.191235000000007e-08,
+      "pattern_id": "P02"
+    },
+    {
+      "capacitance_f": 1.7713441447820427e-13,
+      "electric_centroid_separation_m": 4.387890852199061e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042502999999999996,
+      "frequency_hz": 8984981465.105345,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7713441447820428e-09,
+      "magnetic_loop_area_m2": 3.187725000000002e-08,
+      "pattern_id": "P03"
+    },
+    {
+      "capacitance_f": 1.7693738045675876e-13,
+      "electric_centroid_separation_m": 4.387640472420847e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042456,
+      "frequency_hz": 8994986965.503922,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7693738045675876e-09,
+      "magnetic_loop_area_m2": 3.1842000000000015e-08,
+      "pattern_id": "P04"
+    },
+    {
+      "capacitance_f": 1.7674077878700774e-13,
+      "electric_centroid_separation_m": 4.387389522674853e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042408999999999996,
+      "frequency_hz": 9004992746.11066,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7674077878700772e-09,
+      "magnetic_loop_area_m2": 3.180675e-08,
+      "pattern_id": "P05"
+    },
+    {
+      "capacitance_f": 1.7654460803018624e-13,
+      "electric_centroid_separation_m": 4.3871380010127024e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042362,
+      "frequency_hz": 9014998807.818727,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7654460803018622e-09,
+      "magnetic_loop_area_m2": 3.177150000000004e-08,
+      "pattern_id": "P06"
+    },
+    {
+      "capacitance_f": 1.7634886675390545e-13,
+      "electric_centroid_separation_m": 4.386885905477132e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042314999999999996,
+      "frequency_hz": 9025005151.521376,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7634886675390545e-09,
+      "magnetic_loop_area_m2": 3.173625000000005e-08,
+      "pattern_id": "P07"
+    },
+    {
+      "capacitance_f": 1.761535535321178e-13,
+      "electric_centroid_separation_m": 4.386633234101933e-05,
+      "footprint_height_m": 0.000395,
+      "footprint_width_m": 0.00042268,
+      "frequency_hz": 9035011778.111923,
+      "impedance_ohm": 100.0,
+      "inductance_h": 1.7615355353211779e-09,
+      "magnetic_loop_area_m2": 3.170099999999999e-08,
+      "pattern_id": "P08"
+    }
+  ],
+  "schema_id": "geerlings.four_resonator_chip.centered_square_coupling.v1",
+  "selected_result": {
+    "electric_coupling_hz": 82768.2472890044,
+    "first_pattern": "P01",
+    "magnetic_coupling_hz": 4026.7369262669263,
+    "maximum_dispersive_shift_khz": 0.7561614740143358,
+    "maximum_mixing_amplitude_percent": 0.8712041149047082,
+    "maximum_pair_coupling_khz": 86.79498421527133,
+    "second_pattern": "P02",
+    "separation_m": 0.004,
+    "total_coupling_hz": 86794.98421527132
+  },
+  "selected_square_side_mm": 4.0,
+  "thresholds": {
+    "maximum_dispersive_shift_khz": 1.0,
+    "maximum_mixing_amplitude_percent": 1.0,
+    "maximum_pair_coupling_khz": 100.0
+  }
+}

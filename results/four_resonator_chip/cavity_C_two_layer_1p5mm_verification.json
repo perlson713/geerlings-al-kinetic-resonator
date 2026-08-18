@@ -1,0 +1,192 @@
+{
+  "analysis_scope": {
+    "direct_coupling_recomputed_fullwave": false,
+    "kind": "mask-only geometry override",
+    "qc_recomputed": false,
+    "warning": "the 4.00 mm centered-square Qc and negligible-coupling results do not describe these 1.50 mm cavity-C GDS files"
+  },
+  "cavity": "cavity_C",
+  "cell_structure": "one flat cell per GDS; no instances",
+  "corner_L": {
+    "count": 4,
+    "cutout_square_um": [
+      75.0,
+      75.0
+    ],
+    "leg_width_um": 25.0,
+    "outer_square_um": [
+      100.0,
+      100.0
+    ]
+  },
+  "layers": {
+    "1/0": "four isolated resonator metal patterns",
+    "2/0": "four corner L marks"
+  },
+  "preview": "cavity_C_two_layer_1p5mm_preview.png",
+  "prior_reduced_order_coupling_screen": {
+    "maximum_dispersive_shift_khz": 271.9111021179883,
+    "maximum_mixing_amplitude_percent": 16.52061136411889,
+    "maximum_pair_coupling_khz": 1645.8900710451428,
+    "method": "existing reduced-order electric-plus-magnetic dipole sweep",
+    "passes_previous_negligible_coupling_thresholds": false,
+    "worst_pair": "P01-P02"
+  },
+  "resonator_center_spacing_mm": 1.5,
+  "resonator_centers_mm": [
+    [
+      -0.75,
+      -0.75
+    ],
+    [
+      -0.75,
+      0.75
+    ],
+    [
+      0.75,
+      -0.75
+    ],
+    [
+      0.75,
+      0.75
+    ]
+  ],
+  "schema_id": "geerlings.cavity_C.two_layer_mask.v1",
+  "verification": {
+    "cavity_C_left_centered_square_below9_P01-P02_above9_P05-P06_4res.gds": {
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "cell_count": 1,
+      "corner_L_areas_um2": [
+        4375.0,
+        4375.0,
+        4375.0,
+        4375.0
+      ],
+      "corner_L_bounding_boxes_um": [
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ]
+      ],
+      "instance_count": 0,
+      "placements": [
+        {
+          "center_x_mm": 0.75,
+          "center_y_mm": 0.75,
+          "frequency_band": "below_9ghz",
+          "pattern_id": "P01"
+        },
+        {
+          "center_x_mm": 0.75,
+          "center_y_mm": -0.75,
+          "frequency_band": "below_9ghz",
+          "pattern_id": "P02"
+        },
+        {
+          "center_x_mm": -0.75,
+          "center_y_mm": -0.75,
+          "frequency_band": "above_9ghz",
+          "pattern_id": "P05"
+        },
+        {
+          "center_x_mm": -0.75,
+          "center_y_mm": 0.75,
+          "frequency_band": "above_9ghz",
+          "pattern_id": "P06"
+        }
+      ],
+      "populated_layers": [
+        "1/0",
+        "2/0"
+      ],
+      "shape_counts": {
+        "1/0_resonator": 1332,
+        "2/0_corner_L": 4
+      },
+      "top_cell_count": 1
+    },
+    "cavity_C_right_centered_square_below9_P03-P04_above9_P07-P08_4res.gds": {
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "cell_count": 1,
+      "corner_L_areas_um2": [
+        4375.0,
+        4375.0,
+        4375.0,
+        4375.0
+      ],
+      "corner_L_bounding_boxes_um": [
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ],
+        [
+          100.0,
+          100.0
+        ]
+      ],
+      "instance_count": 0,
+      "placements": [
+        {
+          "center_x_mm": -0.75,
+          "center_y_mm": 0.75,
+          "frequency_band": "below_9ghz",
+          "pattern_id": "P03"
+        },
+        {
+          "center_x_mm": -0.75,
+          "center_y_mm": -0.75,
+          "frequency_band": "below_9ghz",
+          "pattern_id": "P04"
+        },
+        {
+          "center_x_mm": 0.75,
+          "center_y_mm": -0.75,
+          "frequency_band": "above_9ghz",
+          "pattern_id": "P07"
+        },
+        {
+          "center_x_mm": 0.75,
+          "center_y_mm": 0.75,
+          "frequency_band": "above_9ghz",
+          "pattern_id": "P08"
+        }
+      ],
+      "populated_layers": [
+        "1/0",
+        "2/0"
+      ],
+      "shape_counts": {
+        "1/0_resonator": 1332,
+        "2/0_corner_L": 4
+      },
+      "top_cell_count": 1
+    }
+  },
+  "verification_artifact": "cavity_C_two_layer_1p5mm_verification.json"
+}

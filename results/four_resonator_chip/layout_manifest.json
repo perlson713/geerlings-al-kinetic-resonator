@@ -1,0 +1,749 @@
+{
+  "artifacts": [
+    "cavity_A_left_below9_P01-P02_above9_P05-P06_4res.gds",
+    "cavity_A_right_below9_P03-P04_above9_P07-P08_4res.gds",
+    "cavity_B_left_below9_P01-P02_above9_P05-P06_4res.gds",
+    "cavity_B_right_below9_P03-P04_above9_P07-P08_4res.gds",
+    "cavity_C_left_below9_P01-P02_above9_P05-P06_4res.gds",
+    "cavity_C_right_below9_P03-P04_above9_P07-P08_4res.gds",
+    "four_per_chip_layout_preview.png",
+    "qc_uniformity.png",
+    "placements.csv",
+    "pin_calibration.csv",
+    "qc_predictions.csv",
+    "current_cavity_field_fem.json",
+    "optimization_summary.json",
+    "layout_manifest.json",
+    "gds_readback_verification.json"
+  ],
+  "cavity_design_cases": 3,
+  "centers_form_axis_aligned_rectangle": true,
+  "chip_size_mm": [
+    5.05,
+    5.05
+  ],
+  "chips_per_cavity": 2,
+  "frequency_partition": {
+    "left": {
+      "above_9ghz": [
+        "P05",
+        "P06"
+      ],
+      "below_9ghz": [
+        "P01",
+        "P02"
+      ]
+    },
+    "right": {
+      "above_9ghz": [
+        "P07",
+        "P08"
+      ],
+      "below_9ghz": [
+        "P03",
+        "P04"
+      ]
+    }
+  },
+  "gds_layers": {
+    "chip_outline": [
+      100,
+      0
+    ],
+    "labels": [
+      101,
+      0
+    ],
+    "positive_aluminium_metal": [
+      1,
+      0
+    ]
+  },
+  "gds_readback": {
+    "cavity_A_left_below9_P01-P02_above9_P05-P06_4res.gds": {
+      "above_9ghz_patterns": [
+        "P05",
+        "P06"
+      ],
+      "below_9ghz_patterns": [
+        "P01",
+        "P02"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    },
+    "cavity_A_right_below9_P03-P04_above9_P07-P08_4res.gds": {
+      "above_9ghz_patterns": [
+        "P07",
+        "P08"
+      ],
+      "below_9ghz_patterns": [
+        "P03",
+        "P04"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    },
+    "cavity_B_left_below9_P01-P02_above9_P05-P06_4res.gds": {
+      "above_9ghz_patterns": [
+        "P05",
+        "P06"
+      ],
+      "below_9ghz_patterns": [
+        "P01",
+        "P02"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    },
+    "cavity_B_right_below9_P03-P04_above9_P07-P08_4res.gds": {
+      "above_9ghz_patterns": [
+        "P07",
+        "P08"
+      ],
+      "below_9ghz_patterns": [
+        "P03",
+        "P04"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    },
+    "cavity_C_left_below9_P01-P02_above9_P05-P06_4res.gds": {
+      "above_9ghz_patterns": [
+        "P05",
+        "P06"
+      ],
+      "below_9ghz_patterns": [
+        "P01",
+        "P02"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    },
+    "cavity_C_right_below9_P03-P04_above9_P07-P08_4res.gds": {
+      "above_9ghz_patterns": [
+        "P07",
+        "P08"
+      ],
+      "below_9ghz_patterns": [
+        "P03",
+        "P04"
+      ],
+      "bounding_box_um": [
+        5050.0,
+        5050.0
+      ],
+      "rotation_labels_all_zero": true,
+      "shape_counts": {
+        "1/0": 1333,
+        "100/0": 1,
+        "101/0": 4
+      },
+      "top_cells": 1
+    }
+  },
+  "layout_variant": "qc_optimized_rectangle",
+  "patterns": {
+    "P01": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.968,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 8.96501387499588,
+      "full_width_top_return": true,
+      "nominal_width_um": 425.968
+    },
+    "P02": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.498,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 8.975018818840208,
+      "full_width_top_return": true,
+      "nominal_width_um": 425.498
+    },
+    "P03": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 425.03,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 8.984981465105346,
+      "full_width_top_return": true,
+      "nominal_width_um": 425.03
+    },
+    "P04": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 424.56,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 8.994986965503921,
+      "full_width_top_return": true,
+      "nominal_width_um": 424.56
+    },
+    "P05": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 424.09,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 9.004992746110661,
+      "full_width_top_return": true,
+      "nominal_width_um": 424.09
+    },
+    "P06": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 423.62,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 9.014998807818728,
+      "full_width_top_return": true,
+      "nominal_width_um": 423.62
+    },
+    "P07": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 423.15,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 9.025005151521375,
+      "full_width_top_return": true,
+      "nominal_width_um": 423.15
+    },
+    "P08": {
+      "constant_radius_folds": true,
+      "cutout_height_um": 395.0,
+      "cutout_width_um": 422.68,
+      "fig1_idc_bottom": true,
+      "frequency_ghz": 9.035011778111924,
+      "full_width_top_return": true,
+      "nominal_width_um": 422.68
+    }
+  },
+  "pin_calibration": [
+    {
+      "cavity": "cavity_A",
+      "global_resonator_qc_max_to_min": 1.0243933961980882,
+      "interpolated_cavity_frequency_ghz": 9.750029619230897,
+      "interpolated_cavity_port_qc": 1203.7139648987452,
+      "pin_length_mm": 8.463571749720275,
+      "pin_protrusion_into_cavity_mm": 0.9635717497202752,
+      "resonator_qc_max": 1000397.9371641771,
+      "resonator_qc_max_to_min": 1.0009035817839234,
+      "resonator_qc_min": 999494.8118590553,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_B",
+      "global_resonator_qc_max_to_min": 1.0243933961980882,
+      "interpolated_cavity_frequency_ghz": 9.79035266632964,
+      "interpolated_cavity_port_qc": 1088.4999219577742,
+      "pin_length_mm": 8.930918437456189,
+      "pin_protrusion_into_cavity_mm": 1.4309184374561887,
+      "resonator_qc_max": 1001049.4776125094,
+      "resonator_qc_max_to_min": 1.0026172033193284,
+      "resonator_qc_min": 998436.3666396021,
+      "target_resonator_external_qc": 1000000.0
+    },
+    {
+      "cavity": "cavity_C",
+      "global_resonator_qc_max_to_min": 1.0243933961980882,
+      "interpolated_cavity_frequency_ghz": 10.307801871772842,
+      "interpolated_cavity_port_qc": 418.46184429970515,
+      "pin_length_mm": 9.563236404084776,
+      "pin_protrusion_into_cavity_mm": 2.063236404084776,
+      "resonator_qc_max": 1011935.9912236535,
+      "resonator_qc_max_to_min": 1.0243933961980882,
+      "resonator_qc_min": 987839.2373275063,
+      "target_resonator_external_qc": 1000000.0
+    }
+  ],
+  "placements": [
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 1.170965219940993,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 1000146.4366438361,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03917113914499608,
+      "x_mm": -2.354034780059007,
+      "y_mm": 0.19040454517036576
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 1.170965219940993,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 1000228.7047942559,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.038691888651666465,
+      "x_mm": -2.354034780059007,
+      "y_mm": -1.1449800027324666
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.8183934844440897,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 999494.8118590553,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.038229730795833645,
+      "x_mm": 2.7066065155559103,
+      "y_mm": -0.0012152232134668983
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.8183934844440897,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 1000391.8389062879,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03773382517650274,
+      "x_mm": 2.7066065155559103,
+      "y_mm": 1.015194210295069
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 0.46208907697575335,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 999749.655781739,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03726644509980638,
+      "x_mm": -3.0629109230242464,
+      "y_mm": 0.19040454517036576
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "left",
+      "chip_local_x_mm": 0.46208907697575335,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1000096.0745209492,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.0367799951336951,
+      "x_mm": -3.0629109230242464,
+      "y_mm": -1.1449800027324666
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.21323339725128804,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1000397.9371641771,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.036293942437678736,
+      "x_mm": 3.311766602748712,
+      "y_mm": -0.0012152232134668983
+    },
+    {
+      "cavity": "cavity_A",
+      "chip": "right",
+      "chip_local_x_mm": -0.21323339725128804,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 999495.0242542393,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03582903153331334,
+      "x_mm": 3.311766602748712,
+      "y_mm": 1.015194210295069
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 1.18,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 1001049.4776125094,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03955899756800931,
+      "x_mm": -2.3449999999999998,
+      "y_mm": -0.003953361923039522
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 1.18,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 1001035.8121706728,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.03910152155595223,
+      "x_mm": -2.3449999999999998,
+      "y_mm": 0.9939152207392391
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.8198764986657803,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 998436.3666396021,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.038695441131661096,
+      "x_mm": 2.70512350133422,
+      "y_mm": 0.5022913209080526
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.8198764986657803,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 998436.372720092,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03823598124023881,
+      "x_mm": 2.70512350133422,
+      "y_mm": -1.1765598376382869
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 0.5039323442838739,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1000746.8435030552,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.037732328954806285,
+      "x_mm": -3.0210676557161262,
+      "y_mm": -0.003953361923039522
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "left",
+      "chip_local_x_mm": 0.5039323442838739,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 999027.7831013378,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.037304336086429524,
+      "x_mm": -3.0210676557161262,
+      "y_mm": 0.9939152207392391
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.21987649866578035,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1001047.5029114416,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.036806148262034856,
+      "x_mm": 3.3051235013342195,
+      "y_mm": 0.5022913209080526
+    },
+    {
+      "cavity": "cavity_B",
+      "chip": "right",
+      "chip_local_x_mm": -0.21987649866578035,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 1000224.7003805287,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03636000024893879,
+      "x_mm": 3.3051235013342195,
+      "y_mm": -1.1765598376382869
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "left",
+      "chip_local_x_mm": 1.1792186730609278,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.96501387499588,
+      "pattern_id": "P01",
+      "predicted_external_qc": 989361.9178658706,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.042185847679918065,
+      "x_mm": -2.345781326939072,
+      "y_mm": 0.015693451238483425
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "left",
+      "chip_local_x_mm": 1.1792186730609278,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.975018818840208,
+      "pattern_id": "P02",
+      "predicted_external_qc": 988495.1592493249,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.04191324769265841,
+      "x_mm": -2.345781326939072,
+      "y_mm": -0.7774337599486757
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "right",
+      "chip_local_x_mm": -1.111398972784775,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.984981465105346,
+      "pattern_id": "P03",
+      "predicted_external_qc": 988488.037257688,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.041623175623173865,
+      "x_mm": 2.4136010272152246,
+      "y_mm": 0.8666107395907635
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "right",
+      "chip_local_x_mm": -1.111398972784775,
+      "column": "inner",
+      "frequency_band": "below_9ghz",
+      "frequency_ghz": 8.994986965503921,
+      "pattern_id": "P04",
+      "predicted_external_qc": 987839.2373275063,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.04134491217787689,
+      "x_mm": 2.4136010272152246,
+      "y_mm": -1.1791398128273594
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "left",
+      "chip_local_x_mm": 0.5791757559300836,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.004992746110661,
+      "pattern_id": "P05",
+      "predicted_external_qc": 1011935.9903614627,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.04056088255138144,
+      "x_mm": -2.9458242440699163,
+      "y_mm": 0.015693451238483425
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "left",
+      "chip_local_x_mm": 0.5791757559300836,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.014998807818728,
+      "pattern_id": "P06",
+      "predicted_external_qc": 1010938.8201482814,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.040291572207696344,
+      "x_mm": -2.9458242440699163,
+      "y_mm": -0.7774337599486757
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "right",
+      "chip_local_x_mm": -0.5111910937317043,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.025005151521375,
+      "pattern_id": "P07",
+      "predicted_external_qc": 1011536.6307605262,
+      "rotation_deg": 0.0,
+      "row": "upper",
+      "sampled_field": 0.039990073696460265,
+      "x_mm": 3.0138089062682956,
+      "y_mm": 0.8666107395907635
+    },
+    {
+      "cavity": "cavity_C",
+      "chip": "right",
+      "chip_local_x_mm": -0.5111910937317043,
+      "column": "outer",
+      "frequency_band": "above_9ghz",
+      "frequency_ghz": 9.035011778111924,
+      "pattern_id": "P08",
+      "predicted_external_qc": 1011935.9912236535,
+      "rotation_deg": 0.0,
+      "row": "lower",
+      "sampled_field": 0.03969228200720113,
+      "x_mm": 3.0138089062682956,
+      "y_mm": -1.1791398128273594
+    }
+  ],
+  "rectangle_geometry": {
+    "cavity_A": {
+      "left": {
+        "center_x_mm": 0.8165271484583732,
+        "center_y_mm": -0.4772877287810504,
+        "half_height_mm": 0.6676922739514162,
+        "half_width_mm": 0.3544380714826198,
+        "height_mm": 1.3353845479028323,
+        "width_mm": 0.7088761429652396,
+        "x_high_mm": 1.170965219940993,
+        "x_low_mm": 0.46208907697575335,
+        "y_high_mm": 0.19040454517036576,
+        "y_low_mm": -1.1449800027324666
+      },
+      "right": {
+        "center_x_mm": -0.5158134408476889,
+        "center_y_mm": 0.506989493540801,
+        "half_height_mm": 0.5082047167542679,
+        "half_width_mm": 0.30258004359640084,
+        "height_mm": 1.0164094335085359,
+        "width_mm": 0.6051600871928017,
+        "x_high_mm": -0.21323339725128804,
+        "x_low_mm": -0.8183934844440897,
+        "y_high_mm": 1.015194210295069,
+        "y_low_mm": -0.0012152232134668983
+      }
+    },
+    "cavity_B": {
+      "left": {
+        "center_x_mm": 0.8419661721419369,
+        "center_y_mm": 0.4949809294080998,
+        "half_height_mm": 0.4989342913311393,
+        "half_width_mm": 0.338033827858063,
+        "height_mm": 0.9978685826622786,
+        "width_mm": 0.676067655716126,
+        "x_high_mm": 1.18,
+        "x_low_mm": 0.5039323442838739,
+        "y_high_mm": 0.9939152207392391,
+        "y_low_mm": -0.003953361923039522
+      },
+      "right": {
+        "center_x_mm": -0.5198764986657803,
+        "center_y_mm": -0.33713425836511707,
+        "half_height_mm": 0.8394255792731697,
+        "half_width_mm": 0.3,
+        "height_mm": 1.6788511585463395,
+        "width_mm": 0.6,
+        "x_high_mm": -0.21987649866578035,
+        "x_low_mm": -0.8198764986657803,
+        "y_high_mm": 0.5022913209080526,
+        "y_low_mm": -1.1765598376382869
+      }
+    },
+    "cavity_C": {
+      "left": {
+        "center_x_mm": 0.8791972144955057,
+        "center_y_mm": -0.38087015435509614,
+        "half_height_mm": 0.39656360559357956,
+        "half_width_mm": 0.30002145856542206,
+        "height_mm": 0.7931272111871591,
+        "width_mm": 0.6000429171308441,
+        "x_high_mm": 1.1792186730609278,
+        "x_low_mm": 0.5791757559300836,
+        "y_high_mm": 0.015693451238483425,
+        "y_low_mm": -0.7774337599486757
+      },
+      "right": {
+        "center_x_mm": -0.8112950332582397,
+        "center_y_mm": -0.1562645366182979,
+        "half_height_mm": 1.0228752762090614,
+        "half_width_mm": 0.30010393952653536,
+        "height_mm": 2.0457505524181228,
+        "width_mm": 0.6002078790530707,
+        "x_high_mm": -0.5111910937317043,
+        "x_low_mm": -1.111398972784775,
+        "y_high_mm": 0.8666107395907635,
+        "y_low_mm": -1.1791398128273594
+      }
+    }
+  },
+  "resonators_per_chip": 4,
+  "rotation_deg": 0.0,
+  "schema_id": "geerlings.four_resonator_chip.gds.v1",
+  "total_resonators": 24
+}

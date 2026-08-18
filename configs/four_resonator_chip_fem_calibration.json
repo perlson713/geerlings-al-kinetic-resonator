@@ -1,0 +1,187 @@
+{
+  "schema_id": "geerlings.four_resonator_chip.qc_calibration.v1",
+  "provenance": {
+    "cavity_repository": "https://github.com/perlson713/aluminum-cavity-chip-layouts",
+    "cavity_commit": "c4f1f96e9642886d9b08d15d4b79748056be25f0",
+    "field_sources": [
+      "cavity_project/results/four_per_chip_eight_per_cavity_qc/corner_fields_16.json",
+      "cavity_project/results/staggered_x3p5_field_grid/field_grid.json"
+    ],
+    "pin_sources": [
+      "cavity_project/results/resonator_external_qc_pin_sweep_extended/sweep.json",
+      "cavity_project/results/resonator_external_qc_pin_sweep_deep/sweep.json",
+      "cavity_project/results/resonator_external_qc_pin_sweep_b11/sweep.json"
+    ],
+    "field_semantics": "mean in-plane RMS electric-field samples from silicon-loaded direct 3-D FEM modes",
+    "pin_semantics": "direct 3-D FEM cavity-port anchors",
+    "pin_geometry_scope": "historical silicon-loaded Qc campaign near 10.1 GHz",
+    "pin_case_mapping": {
+      "cavity_A": "historical original_high port case",
+      "cavity_B": "historical moved_low port case",
+      "cavity_C": "proxy to historical moved_low port case; frequency-aligned to the current 15.20 mm closed-cavity solve"
+    },
+    "current_field_profile_source": "results/four_resonator_chip/current_cavity_field_fem.json",
+    "current_depth_field_revalidated": true,
+    "current_geometry_port_sweep_revalidated": false
+  },
+  "pin_anchor_aliases": {
+    "cavity_C": "cavity_B"
+  },
+  "historical_profiles_not_used": {
+    "cavity_A": [
+      {
+        "x_mm": 2.325,
+        "e_in_plane_rms_normalized_mean": 0.04392813747780108,
+        "contributing_samples": 18
+      },
+      {
+        "x_mm": 2.725,
+        "e_in_plane_rms_normalized_mean": 0.043029141046113564,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.125,
+        "e_in_plane_rms_normalized_mean": 0.04181204921925859,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.525,
+        "e_in_plane_rms_normalized_mean": 0.04023486127816232,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.925,
+        "e_in_plane_rms_normalized_mean": 0.03832933608145426,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 4.325,
+        "e_in_plane_rms_normalized_mean": 0.03614880264369386,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 4.725,
+        "e_in_plane_rms_normalized_mean": 0.03373138754261042,
+        "contributing_samples": 18
+      }
+    ],
+    "cavity_B": [
+      {
+        "x_mm": 2.325,
+        "e_in_plane_rms_normalized_mean": 0.043989601848714456,
+        "contributing_samples": 18
+      },
+      {
+        "x_mm": 2.725,
+        "e_in_plane_rms_normalized_mean": 0.04305299465015955,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.125,
+        "e_in_plane_rms_normalized_mean": 0.04185517232320155,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.525,
+        "e_in_plane_rms_normalized_mean": 0.040254022736659664,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 3.925,
+        "e_in_plane_rms_normalized_mean": 0.03835446364298551,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 4.325,
+        "e_in_plane_rms_normalized_mean": 0.03622064467905694,
+        "contributing_samples": 14
+      },
+      {
+        "x_mm": 4.725,
+        "e_in_plane_rms_normalized_mean": 0.03378396690857107,
+        "contributing_samples": 18
+      }
+    ]
+  },
+  "pin_anchors": {
+    "cavity_A": [
+      {
+        "pin_length_mm": 7.75,
+        "frequency_ghz": 10.091238270043911,
+        "cavity_port_qc": 7409.998324749713
+      },
+      {
+        "pin_length_mm": 8.25,
+        "frequency_ghz": 10.086224124815368,
+        "cavity_port_qc": 1908.725594590533
+      },
+      {
+        "pin_length_mm": 8.75,
+        "frequency_ghz": 10.071461911624441,
+        "cavity_port_qc": 695.308760726926
+      },
+      {
+        "pin_length_mm": 9.25,
+        "frequency_ghz": 10.046204564282338,
+        "cavity_port_qc": 296.5924519653638
+      },
+      {
+        "pin_length_mm": 9.75,
+        "frequency_ghz": 10.003316833883513,
+        "cavity_port_qc": 146.54925711582493
+      },
+      {
+        "pin_length_mm": 10.25,
+        "frequency_ghz": 9.94102880388115,
+        "cavity_port_qc": 75.84391359636062
+      },
+      {
+        "pin_length_mm": 10.75,
+        "frequency_ghz": 9.849577591272629,
+        "cavity_port_qc": 40.86783588998032
+      }
+    ],
+    "cavity_B": [
+      {
+        "pin_length_mm": 7.75,
+        "frequency_ghz": 10.093199910462461,
+        "cavity_port_qc": 15983.824777273965
+      },
+      {
+        "pin_length_mm": 8.25,
+        "frequency_ghz": 10.091705110906743,
+        "cavity_port_qc": 4191.897512230467
+      },
+      {
+        "pin_length_mm": 8.75,
+        "frequency_ghz": 10.088183250750392,
+        "cavity_port_qc": 1486.5792329283931
+      },
+      {
+        "pin_length_mm": 9.25,
+        "frequency_ghz": 10.081763379654584,
+        "cavity_port_qc": 661.8096770531124
+      },
+      {
+        "pin_length_mm": 9.75,
+        "frequency_ghz": 10.066310722974588,
+        "cavity_port_qc": 323.6553005259385
+      },
+      {
+        "pin_length_mm": 10.25,
+        "frequency_ghz": 10.044991612791282,
+        "cavity_port_qc": 171.90808761326974
+      },
+      {
+        "pin_length_mm": 10.75,
+        "frequency_ghz": 10.011580324740557,
+        "cavity_port_qc": 92.08167641984282
+      },
+      {
+        "pin_length_mm": 11.0,
+        "frequency_ghz": 9.990268228100534,
+        "cavity_port_qc": 67.63560635433448
+      }
+    ]
+  }
+}

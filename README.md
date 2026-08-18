@@ -64,6 +64,33 @@ resolved by eight full-wave solves.
 The complete CAD bundle is attached to GitHub Release
 [`frequency-bank-8x-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1).
 
+## Four-resonator rectangle chips
+
+Four zero-rotation resonators are placed at the corners of an optimized
+rectangle on each 5.05 mm chip.  Every chip contains two modes below 9 GHz and
+two above 9 GHz; the GDS filenames and internal labels state both groups
+explicitly.  A current-depth 3-D cavity field solve plus a hybrid pin-coupling
+calibration gives nominal Qc max/min ratios of **1.002617** for the original
+18.00/17.77 mm cases and **1.024393** for the added 15.20 mm case at
+`Qc = 1e6`, with 0.174 mm minimum ground-cutout clearance.
+
+![Four-resonator rectangle layout](results/four_resonator_chip/four_per_chip_layout_preview.png)
+
+The six optimized-rectangle fabrication GDS files and machine-readable results are under
+[`results/four_resonator_chip`](results/four_resonator_chip).  Coordinates,
+solver scope, reproduction commands, and the absolute-Qc limitation are
+documented in
+[`docs/four_resonator_chip_qc.md`](docs/four_resonator_chip_qc.md).
+
+A companion set uses filenames containing `centered_square`.  The cavity-A/B
+files retain the chip-centered 4.00 mm square (`x,y = +/-2.00 mm`) whose
+conservative direct-coupling estimate is 86.8 kHz.  The two cavity-C files are
+a fabrication override: one flat cell, resonators only on layer 1/0, four
+100-by-100 um corner L marks (75-by-75 um cut-out) on layer 2/0, and a 1.50 mm
+centered square (`x,y = +/-0.75 mm`).  The earlier 4.00 mm Qc/coupling results
+do not apply to this cavity-C override; see the dedicated preview and readback
+record in `results/four_resonator_chip/`.
+
 ## Main result
 
 The converged zero-thickness PEC baseline is **10.416985 GHz**. Applying the
@@ -135,6 +162,7 @@ the material model are choices for this follow-up analysis.
 - `results/baseline_pec/`: compact PEC convergence data and selected field plot.
 - `results/kinetic_inductance_sweep_100_200nm/`: CSV, JSON, and sweep plot.
 - `results/frequency_bank_8x/`: eight GDS/SVG pattern sets and frequency table.
+- `results/four_resonator_chip/`: rectangle-chip GDS, FEM fields, and Qc tables.
 - `build/`: regenerable raw solver output; excluded from Git history.
 - GitHub Release `em-results-v1`: archived raw NGSolve meshes and VTU fields.
 - `provenance/`: LLM-oriented context, event log, and SHA-256 manifest.
