@@ -64,6 +64,27 @@ resolved by eight full-wave solves.
 The complete CAD bundle is attached to GitHub Release
 [`frequency-bank-8x-v1`](https://github.com/perlson713/geerlings-al-kinetic-resonator/releases/tag/frequency-bank-8x-v1).
 
+## Eight-pattern 15 MHz frequency bank
+
+The same generator produces a wider bank on a uniform 15 MHz grid, again
+centered on 9 GHz with four patterns below and four above: 8.9475, 8.9625,
+8.9775, 8.9925, 9.0075, 9.0225, 9.0375, and 9.0525 GHz at Al 200 nm. The grid
+center, spacing, and count are config values
+([`configs/frequency_bank_8x_15mhz.toml`](configs/frequency_bank_8x_15mhz.toml)),
+and the corresponding cutout widths are 426.790 down to 421.858 um.
+
+![Eight-pattern 15 MHz frequency bank](results/frequency_bank_8x_15mhz/frequency_bank_preview.png)
+
+Artifacts are under
+[`results/frequency_bank_8x_15mhz`](results/frequency_bank_8x_15mhz) and the
+table and method are in
+[`docs/frequency_bank_8x_15mhz.md`](docs/frequency_bank_8x_15mhz.md). The same
+caveat applies: 15 MHz is a calibrated relative-design grid, finer than the
++/-0.10 GHz absolute PEC mesh envelope, and is not claimed as independently
+resolved by eight full-wave solves. The chip-level placement of this bank,
+four equally pitched resonators on each of two 5.05 mm square chips, lives in
+the companion repository `aluminum-cavity-chip-layouts`.
+
 ## Main result
 
 The converged zero-thickness PEC baseline is **10.416985 GHz**. Applying the
@@ -135,6 +156,7 @@ the material model are choices for this follow-up analysis.
 - `results/baseline_pec/`: compact PEC convergence data and selected field plot.
 - `results/kinetic_inductance_sweep_100_200nm/`: CSV, JSON, and sweep plot.
 - `results/frequency_bank_8x/`: eight GDS/SVG pattern sets and frequency table.
+- `results/frequency_bank_8x_15mhz/`: the same bank on a 15 MHz grid.
 - `build/`: regenerable raw solver output; excluded from Git history.
 - GitHub Release `em-results-v1`: archived raw NGSolve meshes and VTU fields.
 - `provenance/`: LLM-oriented context, event log, and SHA-256 manifest.

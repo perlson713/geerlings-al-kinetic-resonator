@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate eight Fig. 1-topology layouts on a nominal 10 MHz frequency grid."""
+"""Generate eight Fig. 1-topology layouts on a nominal frequency grid.
+
+The grid centre, spacing, and pattern count come from the selected config, so
+the same script produces the 10 MHz bank and the 15 MHz bank.
+"""
 
 from __future__ import annotations
 
@@ -228,7 +232,7 @@ def _write_pattern(output: Path, pattern: dict, data: dict) -> None:
     )
 
 
-def _write_preview(path: Path, patterns: list[dict]) -> None:
+def _write_preview(path: Path, patterns: list[dict], spacing_mhz: float) -> None:
     figure, axes = plt.subplots(2, 4, figsize=(13.2, 7.3), constrained_layout=True)
     figure.patch.set_facecolor("#dbe2ea")
     for axis, pattern in zip(axes.flat, patterns):
@@ -270,7 +274,8 @@ def _write_preview(path: Path, patterns: list[dict]) -> None:
             color="#193549",
         )
     figure.suptitle(
-        "Eight Fig. 1-topology patterns | Al 200 nm nominal | 10 MHz spacing",
+        "Eight Fig. 1-topology patterns | Al 200 nm nominal | "
+        f"{spacing_mhz:g} MHz spacing",
         fontsize=15,
         color="#193549",
     )
@@ -377,7 +382,9 @@ def main() -> int:
     (output / "results.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    _write_preview(output / "frequency_bank_preview.png", patterns)
+    _write_preview(
+        output / "frequency_bank_preview.png", patterns, float(grid["spacing_mhz"])
+    )
     print(json.dumps({"output": str(output), "patterns": rows}, indent=2))
     return 0
 

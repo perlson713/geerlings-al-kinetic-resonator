@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Stackup schemaVersion="2.0">
+  <Materials>
+    <Material Name="Nb" Type="Conductor" Permittivity="1" DielectricLossTangent="0" Conductivity="35000000" Color="d9e7ff" />
+    <Material Name="Sapphire" Type="Dielectric" Permittivity="9.4" DielectricLossTangent="1e-06" Conductivity="0" Color="6baed6" />
+    <Material Name="AIR" Type="Dielectric" Permittivity="1" DielectricLossTangent="0" Conductivity="0" Color="d0d0d0" />
+  </Materials>
+  <ELayers LengthUnit="um">
+    <Dielectrics>
+      <Dielectric Name="AIR" Material="AIR" Thickness="300" />
+      <Dielectric Name="Sapphire" Material="Sapphire" Thickness="430" />
+    </Dielectrics>
+    <Layers>
+      <Substrate Offset="430" />
+      <Layer Name="Nb" Type="conductor" Zmin="0" Zmax="0.2" Material="Nb" Layer="1" />
+    </Layers>
+  </ELayers>
+</Stackup>

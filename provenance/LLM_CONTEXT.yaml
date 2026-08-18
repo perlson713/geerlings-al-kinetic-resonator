@@ -7,6 +7,7 @@ read_order:
   - provenance/EVENTS.jsonl
   - provenance/ARTIFACTS.sha256
   - results/frequency_bank_8x/results.json
+  - results/frequency_bank_8x_15mhz/results.json
   - results/fig1_square_9ghz/kinetic/results.json
   - results/kinetic_inductance_sweep_100_200nm/results.json
 objective_graph:
@@ -27,6 +28,8 @@ objective_graph:
     - id: approved_fig1_topology_near_square_9ghz
       state: complete
     - id: frequency_bank_8x_10mhz_spacing
+      state: complete
+    - id: frequency_bank_8x_15mhz_spacing
       state: complete
 hard_invariants:
   canonical_workspace: I:/dono/work/geerlings-resonator
@@ -145,6 +148,32 @@ frequency_bank_8x:
   independent_fullwave_solve_per_pattern: false
   nominal_spacing_below_absolute_pec_mesh_envelope: true
   output: results/frequency_bank_8x
+frequency_bank_8x_15mhz:
+  lifecycle: accepted_current
+  relation_to_frequency_bank_8x: parallel_wider_grid_same_generator_and_topology
+  reference_thickness_nm: 200.0
+  target_center_ghz: 9.0
+  target_spacing_mhz: 15.0
+  patterns_below_center: 4
+  patterns_above_center: 4
+  center_frequency_occupied: false
+  target_frequencies_ghz: [8.9475, 8.9625, 8.9775, 8.9925, 9.0075, 9.0225, 9.0375, 9.0525]
+  nominal_widths_um: [426.790, 426.086, 425.382, 424.676, 423.972, 423.268, 422.564, 421.858]
+  predicted_al150_ghz: [8.9296171745, 8.9445739023, 8.9595313571, 8.9745320381, 8.9894909591, 9.0044506176, 9.0194110170, 9.0344146651]
+  predicted_al200_ghz: [8.9475165334, 8.9625020391, 8.9774881669, 8.9925174968, 9.0075048798, 9.0224928940, 9.0374815423, 9.0525134120]
+  maximum_target_error_mhz: 0.0184576543
+  width_quantization_nm: 2.0
+  gds_coordinate_grid_nm: 1.0
+  frequency_method: linear_two_point_PEC_calibration_plus_geometry_specific_reduced_order_kinetic_inductance
+  pec_calibration_points: [[424.0, 9.111777769251562], [431.0, 8.96110968294529]]
+  pec_slope_mhz_per_um: -21.524012329467417
+  width_span_inside_calibration_bracket: true
+  independent_fullwave_solve_per_pattern: false
+  nominal_spacing_below_absolute_pec_mesh_envelope: true
+  config: configs/frequency_bank_8x_15mhz.toml
+  output: results/frequency_bank_8x_15mhz
+  chip_placement_repository: aluminum-cavity-chip-layouts
+  chip_placement_path: chip_layouts/equal_pitch_15mhz
 validation:
   geometry_centerline_length_um: 2812.8942919921856
   trace_width_um: 5.0
@@ -156,6 +185,11 @@ validation:
   frequency_bank_gds_top_cells_each: 1
   frequency_bank_gds_metal_polygons_each: 337
   frequency_bank_gds_port_layers_absent: true
+  frequency_bank_15mhz_gds_files: 8
+  frequency_bank_15mhz_gds_top_cells_each: 1
+  frequency_bank_15mhz_gds_metal_polygons_each: 337
+  frequency_bank_15mhz_gds_port_layers_absent: true
+  frequency_bank_10mhz_regenerated_widths_identical: true
 known_limitations:
   - schematic_reconstruction_not_original_mask
   - scalar_sapphire_permittivity_assumption

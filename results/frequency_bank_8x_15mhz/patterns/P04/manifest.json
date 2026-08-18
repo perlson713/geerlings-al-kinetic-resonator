@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    "layout.gds",
+    "layout.svg",
+    "stackup.xml",
+    "manifest.json"
+  ],
+  "branch_squares": 570.2796461709642,
+  "centerline_length_um": 2817.62629199219,
+  "frequency_semantics": "calibrated_PEC_surrogate_plus_reduced_order_kinetic_inductance",
+  "material_reference": {
+    "reference_thickness_nm": 200.0,
+    "reported_thicknesses_nm": [
+      150.0,
+      200.0
+    ],
+    "temperature_mk": 20.0
+  },
+  "not_independent_full_wave_solve": true,
+  "pattern_id": "P04",
+  "pec_frequency_ghz": 9.097227536916842,
+  "reference_frequency_ghz": 8.99251749684234,
+  "schema_id": "geerlings.frequency_bank.pattern.v1",
+  "target_error_mhz": 0.017496842339426166,
+  "target_frequency_ghz": 8.9925,
+  "thickness_points": {
+    "150": {
+      "corrected_modal_impedance_ohm": 101.3671520514415,
+      "effective_squares": 581.9180062969023,
+      "frequency_ghz": 8.974532038051349,
+      "frequency_shift_mhz": -122.69549886549314,
+      "geometric_inductance_ph": 1749.488428711269,
+      "kinetic_fraction": 0.02679235915387531,
+      "kinetic_inductance_ph": 48.163331595741596,
+      "penetration_depth_nm": 64.6077414556491,
+      "sheet_inductance_fh_per_sq": 82.76652565235803,
+      "thickness_nm": 150.0
+    },
+    "200": {
+      "corrected_modal_impedance_ohm": 101.16441297013068,
+      "effective_squares": 581.9180062969023,
+      "frequency_ghz": 8.99251749684234,
+      "frequency_shift_mhz": -104.71004007450269,
+      "geometric_inductance_ph": 1749.488428711269,
+      "kinetic_fraction": 0.022887726595301666,
+      "kinetic_inductance_ph": 40.97974606179468,
+      "penetration_depth_nm": 55.95194538172914,
+      "sheet_inductance_fh_per_sq": 70.42185603187242,
+      "thickness_nm": 200.0
+    }
+  },
+  "topology": {
+    "constant_radius_folds": true,
+    "cutout_height_um": 395.0,
+    "cutout_width_um": 424.676,
+    "fig1_idc_bottom": true,
+    "full_width_top_return": true,
+    "left_right_mirror_symmetry": true
+  },
+  "width_um": 424.676
+}

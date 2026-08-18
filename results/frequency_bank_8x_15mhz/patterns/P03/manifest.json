@@ -1,0 +1,61 @@
+{
+  "artifacts": [
+    "layout.gds",
+    "layout.svg",
+    "stackup.xml",
+    "manifest.json"
+  ],
+  "branch_squares": 571.2798930878056,
+  "centerline_length_um": 2822.568291992189,
+  "frequency_semantics": "calibrated_PEC_surrogate_plus_reduced_order_kinetic_inductance",
+  "material_reference": {
+    "reference_thickness_nm": 200.0,
+    "reported_thicknesses_nm": [
+      150.0,
+      200.0
+    ],
+    "temperature_mk": 20.0
+  },
+  "not_independent_full_wave_solve": true,
+  "pattern_id": "P03",
+  "pec_frequency_ghz": 9.082031584212238,
+  "reference_frequency_ghz": 8.977488166933965,
+  "schema_id": "geerlings.frequency_bank.pattern.v1",
+  "target_error_mhz": -0.01183306603458334,
+  "target_frequency_ghz": 8.9775,
+  "thickness_points": {
+    "150": {
+      "corrected_modal_impedance_ohm": 101.36726154830306,
+      "effective_squares": 582.9386664161282,
+      "frequency_ghz": 8.959531357059014,
+      "frequency_shift_mhz": -122.50022715322473,
+      "geometric_inductance_ph": 1752.4156529973154,
+      "kinetic_fraction": 0.026794461669483724,
+      "kinetic_inductance_ph": 48.247808087681854,
+      "penetration_depth_nm": 64.6077414556491,
+      "sheet_inductance_fh_per_sq": 82.76652565235803,
+      "thickness_nm": 150.0
+    },
+    "200": {
+      "corrected_modal_impedance_ohm": 101.16450632219522,
+      "effective_squares": 582.9386664161282,
+      "frequency_ghz": 8.977488166933965,
+      "frequency_shift_mhz": -104.54341727827376,
+      "geometric_inductance_ph": 1752.4156529973154,
+      "kinetic_fraction": 0.022889529903779293,
+      "kinetic_inductance_ph": 41.051622841768285,
+      "penetration_depth_nm": 55.95194538172914,
+      "sheet_inductance_fh_per_sq": 70.42185603187242,
+      "thickness_nm": 200.0
+    }
+  },
+  "topology": {
+    "constant_radius_folds": true,
+    "cutout_height_um": 395.0,
+    "cutout_width_um": 425.382,
+    "fig1_idc_bottom": true,
+    "full_width_top_return": true,
+    "left_right_mirror_symmetry": true
+  },
+  "width_um": 425.382
+}
